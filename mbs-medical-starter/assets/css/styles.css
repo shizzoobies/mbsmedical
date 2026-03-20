@@ -197,6 +197,36 @@ footer{
 .menu-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .menu-toggle.open span:nth-child(2){opacity:0}
 .menu-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* ── Practice Better HIPAA portal block ─────────────── */
+.pb-portal{
+  display:flex;flex-direction:column;align-items:flex-start;gap:1rem;
+}
+.pb-portal-lock{
+  font-size:2rem;line-height:1;
+}
+.pb-portal-btn{
+  align-self:stretch;text-align:center;justify-content:center;
+  background:var(--accent);color:white;border-color:var(--accent);
+  font-size:1rem;padding:1rem 1.5rem;
+}
+.pb-portal-btn:hover{background:var(--primary);border-color:var(--primary)}
+.pb-trust{
+  display:flex;flex-wrap:wrap;gap:.65rem 1.25rem;
+  font-size:.85rem;font-weight:700;color:var(--accent);
+}
+.pb-trust span::before{margin-right:.25rem}
+.pb-portal small{
+  color:var(--muted);font-size:.8rem;line-height:1.5;
+  border-top:1px solid var(--border);padding-top:.75rem;width:100%;
+}
+.pb-portal-note{
+  background:linear-gradient(135deg,#e3f7f5,#f0fbfa);
+  border:1px solid #b2e8e4;border-radius:var(--radius);
+  padding:1.25rem 1.5rem;margin-top:.5rem;
+  display:flex;flex-direction:column;gap:.4rem;
+}
+.pb-portal-note p{margin:0;font-size:.92rem;color:var(--primary-dark)}
+
 @media (max-width: 980px){
   .hero-wrap,.grid-3,.grid-2,.split,.footer-grid,.pricing-row,.provider-wrap{grid-template-columns:1fr}
   .menu-toggle{display:block}
