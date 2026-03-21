@@ -53,7 +53,7 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(238,237,246,.9
 .menu a { padding: .45rem .85rem; border-radius: 8px; color: var(--muted); font-weight: 600; font-size: .9rem; transition: color .2s, background .2s; }
 .menu a:hover { color: var(--navy); background: var(--lavender); }
 .menu .btn { padding: .6rem 1.35rem; border-radius: 999px; background: var(--grad); color: white; font-weight: 700; font-size: .9rem; box-shadow: 0 4px 18px rgba(123,63,170,.3); transition: transform .2s, box-shadow .2s; margin-left: .5rem; }
-.menu .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(123,63,170,.42); }
+.menu .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(123,63,170,.42); background: var(--grad); color: white; }
 
 /* ── Buttons ── */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .9rem 1.9rem; border-radius: 999px; font-weight: 700; font-size: .97rem; transition: transform .2s, box-shadow .2s; cursor: pointer; border: none; }
@@ -320,6 +320,7 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
   .service-card-img img, .testi-img img, .service-row-img img { transition: none; }
   .btn, .btn-primary, .btn-ghost, .btn-outline, .btn-white, .btn-portal, .menu .btn { transition: none; }
   .chat-pulse { animation: none; }
+  .chat-label { animation: none; }
   .chat-window { transition: none; }
   .chat-toggle { transition: none; }
 }
@@ -359,6 +360,13 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
 
 /* ── Chat Widget ── */
 .mbs-chat { position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; }
+.chat-toggle-row { display: flex; align-items: center; gap: .75rem; }
+.chat-label { background: white; border: 1px solid var(--border); border-radius: 999px; padding: .4rem .95rem; font-size: .83rem; font-weight: 600; color: var(--navy); box-shadow: 0 4px 16px rgba(30,58,110,.12); white-space: nowrap; position: relative; animation: chatLabelIn .35s .9s ease-out both; cursor: pointer; transition: background .2s, color .2s; }
+.chat-label:hover { background: var(--lavender); color: var(--purple); }
+.chat-label::after { content: ''; position: absolute; right: -7px; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-left-color: white; }
+.chat-label::before { content: ''; position: absolute; right: -9px; top: 50%; transform: translateY(-50%); border: 7px solid transparent; border-left-color: var(--border); }
+@keyframes chatLabelIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+.mbs-chat.open .chat-label { display: none; }
 .chat-toggle { width: 62px; height: 62px; border-radius: 50%; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(30,58,110,.32); transition: transform .2s, box-shadow .2s; position: relative; padding: 0; overflow: hidden; }
 .chat-toggle:hover { transform: scale(1.07); box-shadow: 0 10px 32px rgba(30,58,110,.4); }
 .chat-toggle-img { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; object-position: center top; display: block; position: absolute; inset: 0; transition: opacity .2s; }

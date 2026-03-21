@@ -129,11 +129,14 @@
     wrap.className = 'mbs-chat';
     wrap.setAttribute('aria-label', 'MBS Medical chat assistant');
     wrap.innerHTML =
-      '<button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatWindow" aria-label="Open chat assistant">' +
-        '<img class="chat-toggle-img" src="' + imgUrl + '" alt="" aria-hidden="true" />' +
-        '<svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
-        '<span class="chat-pulse" aria-hidden="true"></span>' +
-      '</button>' +
+      '<div class="chat-toggle-row">' +
+        '<span class="chat-label" id="chatLabel" role="button" tabindex="0" aria-label="Open chat assistant">Need help?</span>' +
+        '<button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatWindow" aria-label="Open chat assistant">' +
+          '<img class="chat-toggle-img" src="' + imgUrl + '" alt="" aria-hidden="true" />' +
+          '<svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+          '<span class="chat-pulse" aria-hidden="true"></span>' +
+        '</button>' +
+      '</div>' +
       '<div class="chat-window" id="chatWindow" role="dialog" aria-label="MBS Medical assistant" aria-modal="false" hidden>' +
         '<div class="chat-header">' +
           '<div class="chat-header-info">' +
@@ -248,6 +251,15 @@
     toggle.addEventListener('click', function () {
       wrap.classList.contains('open') ? closeChat() : openChat();
     });
+
+    // "Need help?" label also opens chat
+    var label = document.getElementById('chatLabel');
+    if (label) {
+      label.addEventListener('click', openChat);
+      label.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChat(); }
+      });
+    }
     closeBtn.addEventListener('click', closeChat);
 
     send.addEventListener('click', function () {
