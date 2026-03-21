@@ -29,6 +29,13 @@ function mbs_enqueue_assets() {
         '2.0.0',
         true
     );
+    wp_enqueue_script(
+        'mbs-chat',
+        get_template_directory_uri() . '/assets/js/chat.js',
+        [],
+        '1.0.0',
+        true
+    );
 }
 add_action( 'wp_enqueue_scripts', 'mbs_enqueue_assets' );
 
