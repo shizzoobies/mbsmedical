@@ -265,12 +265,8 @@
     <p class="lead">Real feedback from real patients.</p>
     <div class="testi-grid">
       <div class="testi-card">
-        <div class="ph ph-card" style="border-radius:var(--radius) var(--radius) 0 0">
-          <div class="ph-img-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <div class="ph-label">Patient Photo: Primary Care</div>
-          <div class="ph-sublabel">Replace with real photo</div>
+        <div class="testi-img">
+          <img src="<?php echo $img; ?>/testi-primary-care.png" alt="Primary Care Patient" />
         </div>
         <div class="testi-body">
           <p class="testi-text">&ldquo;I finally have a provider who knows my history. Same-week appointment, no waiting room.&rdquo;</p>
@@ -278,12 +274,8 @@
         </div>
       </div>
       <div class="testi-card">
-        <div class="ph ph-card" style="border-radius:var(--radius) var(--radius) 0 0">
-          <div class="ph-img-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <div class="ph-label">Patient Photo: Weight Loss</div>
-          <div class="ph-sublabel">Replace with real photo</div>
+        <div class="testi-img">
+          <img src="<?php echo $img; ?>/testi-weight-loss.png" alt="Weight Loss Program Patient" />
         </div>
         <div class="testi-body">
           <p class="testi-text">&ldquo;The process was completely clear from the first visit. I knew exactly what the next step was.&rdquo;</p>
@@ -291,12 +283,8 @@
         </div>
       </div>
       <div class="testi-card">
-        <div class="ph ph-card" style="border-radius:var(--radius) var(--radius) 0 0">
-          <div class="ph-img-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <div class="ph-label">Patient Photo: TRT</div>
-          <div class="ph-sublabel">Replace with real photo</div>
+        <div class="testi-img">
+          <img src="<?php echo $img; ?>/testi-trt.png" alt="TRT Evaluation Patient" />
         </div>
         <div class="testi-body">
           <p class="testi-text">&ldquo;I&rsquo;d been putting off addressing my symptoms for years. Getting evaluated was easier than I expected.&rdquo;</p>

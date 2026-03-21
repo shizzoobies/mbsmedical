@@ -215,6 +215,9 @@ h2.title.light { color: white; }
 .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .testi-card { background: white; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: transform .25s, box-shadow .25s; }
 .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.testi-img { overflow: hidden; aspect-ratio: 4/3; }
+.testi-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .4s; display: block; }
+.testi-card:hover .testi-img img { transform: scale(1.04); }
 .testi-body { padding: 1.25rem; }
 .testi-text { font-size: .9rem; color: var(--text); line-height: 1.7; margin-bottom: .75rem; font-style: italic; font-weight: 400; }
 .testi-person { font-weight: 600; font-size: .82rem; color: var(--muted); }
