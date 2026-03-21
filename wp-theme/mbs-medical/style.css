@@ -285,11 +285,12 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
 .mbs-splash-logo {
   width: 210px; max-width: 55vw;
   position: relative; z-index: 1;
-  animation: splashReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: splashLogo 3s ease-out both;
 }
-@keyframes splashReveal {
-  from { opacity: 0; transform: scale(0.88) translateY(10px); }
-  to   { opacity: 1; transform: scale(1)    translateY(0);   }
+@keyframes splashLogo {
+  0%   { opacity: 0; transform: scale(0.9);  }
+  18%  { opacity: 1; transform: scale(1);    }
+  100% { opacity: 1; transform: scale(1.14); }
 }
 
 /* ── Responsive ── */

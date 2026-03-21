@@ -21,7 +21,7 @@
   setTimeout(function () {
     splash.classList.add('hidden');
     sessionStorage.setItem('mbsSplashSeen', '1');
-  }, 3400);
+  }, 2600);
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
