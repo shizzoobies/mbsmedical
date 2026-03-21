@@ -283,9 +283,9 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
 }
 .mbs-splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .mbs-splash-logo {
-  width: 210px; max-width: 55vw;
+  width: 340px; max-width: 72vw;
   position: relative; z-index: 1;
-  animation: splashLogo 3s ease-out both;
+  animation: splashLogo 2.6s ease-out both;
 }
 @keyframes splashLogo {
   0%   { opacity: 0; transform: scale(0.9);  }
