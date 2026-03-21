@@ -10,7 +10,7 @@
   setTimeout(function () {
     splash.classList.add('hidden');
     sessionStorage.setItem('mbsSplashSeen', '1');
-  }, 2000);
+  }, 3000);
 })();
 
 document.addEventListener('DOMContentLoaded', () => {

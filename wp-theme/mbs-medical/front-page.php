@@ -44,8 +44,8 @@
 </div>
 
 <!-- Cinematic lifestyle image -->
-<div style="width:100%;overflow:hidden;max-height:420px;">
-  <img src="<?php echo $img; ?>/cinematic.png" alt="MBS Medical telehealth care" style="width:100%;object-fit:cover;display:block;" />
+<div class="cinematic-wrap">
+  <img src="<?php echo $img; ?>/cinematic.png" alt="MBS Medical telehealth care" />
 </div>
 
 <!-- Services -->

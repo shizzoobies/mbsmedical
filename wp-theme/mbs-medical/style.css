@@ -112,8 +112,8 @@ h2.title.light { color: white; }
 .trust-item { display: flex; align-items: center; gap: .55rem; color: white; font-weight: 600; font-size: .88rem; }
 
 /* ── Cinematic image ── */
-.cinematic-wrap { width: 100%; overflow: hidden; max-height: 420px; }
-.cinematic-wrap img { width: 100%; object-fit: cover; display: block; }
+.cinematic-wrap { width: 100%; overflow: hidden; max-height: 620px; }
+.cinematic-wrap img { width: 100%; object-fit: cover; object-position: center; display: block; }
 
 /* ── Image/Video placeholders ── */
 .ph { background: linear-gradient(135deg, #0e1e36 0%, #1a1040 50%, #0e2535 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; position: relative; overflow: hidden; }
@@ -266,9 +266,28 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
 .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
 /* ── Splash screen ── */
-.mbs-splash { position: fixed; inset: 0; z-index: 9999; background: var(--navy-dark); display: flex; align-items: center; justify-content: center; transition: opacity .5s ease, visibility .5s ease; }
+.mbs-splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--navy-dark);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .9s ease, visibility .9s ease;
+}
+.mbs-splash::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(123,63,170,.22) 0%, rgba(18,181,200,.06) 50%, transparent 70%);
+  pointer-events: none;
+}
 .mbs-splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.mbs-splash-logo { width: 140px; max-width: 50vw; }
+.mbs-splash-logo {
+  width: 210px; max-width: 55vw;
+  position: relative; z-index: 1;
+  animation: splashReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes splashReveal {
+  from { opacity: 0; transform: scale(0.88) translateY(10px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);   }
+}
 
 /* ── Responsive ── */
 @media (max-width: 980px) {
