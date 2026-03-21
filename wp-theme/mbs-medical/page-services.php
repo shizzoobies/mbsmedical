@@ -42,7 +42,7 @@
         <div class="service-card-body">
           <div class="service-icon icon-pk">🔬</div>
           <h3>TRT Evaluation</h3>
-          <p>Evaluation and ongoing care for men experiencing symptoms that may be related to low testosterone &mdash; labs, clinical review, and monitoring included.</p>
+          <p>Evaluation and ongoing care for men experiencing symptoms that may be related to low testosterone. Labs, clinical review, and monitoring are all included.</p>
           <a href="<?php echo esc_url( home_url( '/trt/' ) ); ?>" class="service-link">See TRT details →</a>
         </div>
       </div>
@@ -66,7 +66,7 @@
       <div class="step">
         <div class="step-number">2</div>
         <h3>Meet your provider virtually</h3>
-        <p>A real conversation about your history, your goals, and your options &mdash; no rushed 7-minute slot.</p>
+        <p>A real conversation about your history, your goals, and your options. No rushed 7-minute slots.</p>
       </div>
       <div class="step">
         <div class="step-number">3</div>

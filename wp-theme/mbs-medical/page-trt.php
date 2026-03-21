@@ -6,7 +6,7 @@
   <div class="container">
     <div class="label">TRT Evaluation</div>
     <h1>Testosterone evaluation and ongoing care</h1>
-    <p class="lead">Talk with a licensed provider about your symptoms, get a proper lab-based evaluation, and understand your options &mdash; without the guesswork.</p>
+    <p class="lead">Talk with a licensed provider about your symptoms, get a proper lab-based evaluation, and understand your options without the guesswork.</p>
   </div>
 </section>
 
@@ -20,7 +20,7 @@
       <div class="split-text">
         <div class="label">Clinical approach</div>
         <h2>Evaluation before treatment, always</h2>
-        <p>If you have been experiencing fatigue, low energy, mood changes, reduced libido, or difficulty recovering the way you used to &mdash; these are worth discussing with a provider. Symptoms like these can have multiple causes, and the right starting point is a proper evaluation, not assumptions.</p>
+        <p>If you have been experiencing fatigue, low energy, mood changes, reduced libido, or difficulty recovering the way you used to, these are worth discussing with a provider. Symptoms like these can have multiple causes, and the right starting point is a proper evaluation, not assumptions.</p>
         <p>MBS Medical approaches TRT with a clinical-first mindset. Your provider will review your symptoms, health history, and lab results before any treatment recommendation is made. Monitoring continues throughout your care so adjustments can be made based on how you are responding.</p>
         <div class="features-grid">
           <div class="feature-item">
@@ -70,7 +70,7 @@
       </div>
       <div class="faq-item">
         <h3>Who is a good candidate for evaluation?</h3>
-        <p>Men experiencing symptoms that may be related to low testosterone &mdash; fatigue, low libido, mood changes, decreased muscle mass, or brain fog &mdash; who want a medical evaluation and honest guidance on their options.</p>
+        <p>Men experiencing symptoms that may be related to low testosterone (fatigue, low libido, mood changes, decreased muscle mass, or brain fog) who want a medical evaluation and honest guidance on their options.</p>
       </div>
       <div class="faq-item">
         <h3>How does the evaluation process work?</h3>

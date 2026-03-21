@@ -16,7 +16,7 @@
 <div class="topbar">
   <div class="container">
     <span>Cash-pay telehealth &nbsp;&middot;&nbsp; No insurance required &nbsp;&middot;&nbsp; Primary care, weight loss &amp; TRT</span>
-    <span>Book online &mdash; same-week appointments available</span>
+    <span>Book online, same-week appointments available</span>
   </div>
 </div>
 
@@ -25,7 +25,7 @@
   <div class="container nav">
     <a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
       <span class="brand-mark">MBS</span>
-      <span>MBS Medical</span>
+      <span>Medical</span>
     </a>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>

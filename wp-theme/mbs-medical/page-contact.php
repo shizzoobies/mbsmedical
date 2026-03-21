@@ -4,7 +4,7 @@
   <div class="container">
     <div class="label">Get in touch</div>
     <h1>Book a visit or ask a question</h1>
-    <p class="lead">All scheduling and patient intake are handled through our secure Practice Better portal &mdash; keeping your health information private and protected.</p>
+    <p class="lead">All scheduling and patient intake are handled through our secure Practice Better portal, keeping your health information private and protected.</p>
   </div>
 </section>
 
@@ -30,8 +30,8 @@
         <p>For general questions, you can email us and we will get back to you within one business day.</p>
         <ul class="cred-list" style="margin-top:1.5rem">
           <li><div class="cred-pip"></div> hello@mbsmedical.com</li>
-          <li><div class="cred-pip"></div> Telehealth &mdash; available statewide</li>
-          <li><div class="cred-pip"></div> Mon&ndash;Fri, 8:00 AM&ndash;6:00 PM</li>
+          <li><div class="cred-pip"></div> Telehealth, available statewide</li>
+          <li><div class="cred-pip"></div> Mon to Fri, 8:00 AM to 6:00 PM</li>
         </ul>
         <div style="margin-top:2rem;padding:1.25rem 1.5rem;background:var(--lavender);border-radius:var(--radius);border-left:3px solid var(--teal)">
           <p style="font-size:.9rem;color:var(--text);line-height:1.7;font-weight:500;margin:0">For emergencies, call 911 or go to the nearest emergency room. Telehealth is not appropriate for urgent or emergency care.</p>

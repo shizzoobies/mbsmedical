@@ -8,7 +8,7 @@
     <div>
       <div class="hero-kicker">Telehealth &middot; Cash Pay &middot; No Insurance Needed</div>
       <h1>Healthcare built around you,<br>not your insurer</h1>
-      <p class="hero-lead">Primary care, medically supervised weight loss, and TRT &mdash; from a licensed provider who actually knows your history.</p>
+      <p class="hero-lead">Primary care, medically supervised weight loss, and TRT. From a licensed provider who actually knows your history.</p>
       <div class="hero-actions">
         <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Your Visit</a>
         <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="btn btn-ghost">Explore Services</a>
@@ -17,7 +17,7 @@
         <div class="hero-trust-item"><span class="trust-pip"></span> No insurance required</div>
         <div class="hero-trust-item"><span class="trust-pip"></span> Transparent visit fees</div>
         <div class="hero-trust-item"><span class="trust-pip"></span> Same-week appointments</div>
-        <div class="hero-trust-item"><span class="trust-pip"></span> Army-trained provider</div>
+        <div class="hero-trust-item"><span class="trust-pip"></span> Veteran provider</div>
       </div>
     </div>
     <div class="hero-img-col">
@@ -35,8 +35,8 @@
 <!-- Trust bar -->
 <div class="trust-bar">
   <div class="trust-bar-inner">
-    <div class="trust-item">🎖️ Army-trained PA-C</div>
-    <div class="trust-item">💳 Cash pay &mdash; no insurance</div>
+    <div class="trust-item">🎖️ Veteran provider</div>
+    <div class="trust-item">💳 Cash pay, no insurance</div>
     <div class="trust-item">📅 Same-week appointments</div>
     <div class="trust-item">🔒 Secure patient portal</div>
     <div class="trust-item">📋 No surprise billing</div>
@@ -53,7 +53,7 @@
   <div class="container">
     <div class="label">What we treat</div>
     <h2 class="title">Three focused services,<br>one dedicated provider</h2>
-    <p class="lead">Everything at MBS Medical is built around a direct, ongoing relationship between you and your provider &mdash; not a rotating roster of strangers.</p>
+    <p class="lead">Everything at MBS Medical is built around a direct, ongoing relationship between you and your provider. Not a rotating roster of strangers.</p>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-card-img">
@@ -98,13 +98,13 @@
     <div class="video-label-row">
       <div class="label">The process</div>
       <h2 class="title" style="text-align:center">See how it works</h2>
-      <p class="lead center">From first visit to ongoing care in three simple steps &mdash; watch the 60-second overview.</p>
+      <p class="lead center">From first visit to ongoing care in three simple steps. Watch the 60-second overview.</p>
     </div>
     <div class="ph ph-wide" style="max-width:860px;margin:0 auto;cursor:pointer">
       <div class="ph-play">
         <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </div>
-      <div class="ph-label" style="margin-top:.75rem">How MBS Medical Works &mdash; 60 sec Explainer</div>
+      <div class="ph-label" style="margin-top:.75rem">How MBS Medical Works, 60 sec Explainer</div>
       <div class="ph-sublabel">ElevenLabs video render &middot; 16:9 &middot; autoplay muted loop option</div>
     </div>
   </div>
@@ -126,7 +126,7 @@
       <div class="step">
         <div class="step-number">2</div>
         <h3>Meet your provider virtually</h3>
-        <p>A real conversation about your history, your goals, and your options &mdash; not a rushed 7-minute appointment.</p>
+        <p>A real conversation about your history, your goals, and your options. No rushed 7-minute appointments.</p>
       </div>
       <div class="step">
         <div class="step-number">3</div>
@@ -148,10 +148,10 @@
         <div class="label">Your provider</div>
         <h2>David Hervig, PA-C</h2>
         <p>David is a Physician Assistant and a man of many hats. Always a medical provider first, he also serves as one of our office managers and currently leads marketing for the practice.</p>
-        <p>Trained in the US Army, David spent 12 years in service &mdash; learning medicine from the ground up in some of the most demanding environments imaginable. That background shapes how he practices today: direct, thorough, and genuinely invested in the people he works with.</p>
+        <p>David is a US Army Veteran with 12 years of service. He learned medicine from the ground up in some of the most demanding environments imaginable, and that background shapes how he practices today: direct, thorough, and genuinely invested in the people he works with.</p>
         <ul class="cred-list">
           <li><div class="cred-pip"></div> Physician Assistant (PA-C)</li>
-          <li><div class="cred-pip"></div> US Army trained &mdash; 12 years of service</li>
+          <li><div class="cred-pip"></div> US Army Veteran, 12 years of service</li>
           <li><div class="cred-pip"></div> Primary care, weight loss &amp; TRT</li>
           <li><div class="cred-pip"></div> Cash-pay, direct-care model</li>
         </ul>
@@ -165,7 +165,7 @@
   <div class="container">
     <div class="label">Transparent pricing</div>
     <h2 class="title">You know the cost before you book</h2>
-    <p class="lead">No claims. No denials. No surprise bills. MBS Medical is a cash-pay practice &mdash; your fee is clear, confirmed, and fair.</p>
+    <p class="lead">No claims. No denials. No surprise bills. MBS Medical is a cash-pay practice. Your fee is clear, confirmed, and fair.</p>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-accent"></div>
@@ -228,7 +228,7 @@
           </div>
           <div class="feature-item">
             <h4>Ongoing care</h4>
-            <p>Follow-ups and plan adjustments are built in &mdash; not add-ons you have to ask for.</p>
+            <p>Follow-ups and plan adjustments are built in. Not add-ons you have to ask for.</p>
           </div>
           <div class="feature-item">
             <h4>Cash pay</h4>
@@ -269,12 +269,12 @@
           <div class="ph-img-icon">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <div class="ph-label">Patient Photo &mdash; Primary Care</div>
+          <div class="ph-label">Patient Photo: Primary Care</div>
           <div class="ph-sublabel">Replace with real photo</div>
         </div>
         <div class="testi-body">
           <p class="testi-text">&ldquo;I finally have a provider who knows my history. Same-week appointment, no waiting room.&rdquo;</p>
-          <div class="testi-person">&mdash; Primary Care Patient</div>
+          <div class="testi-person">Primary Care Patient</div>
         </div>
       </div>
       <div class="testi-card">
@@ -282,12 +282,12 @@
           <div class="ph-img-icon">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <div class="ph-label">Patient Photo &mdash; Weight Loss</div>
+          <div class="ph-label">Patient Photo: Weight Loss</div>
           <div class="ph-sublabel">Replace with real photo</div>
         </div>
         <div class="testi-body">
           <p class="testi-text">&ldquo;The process was completely clear from the first visit. I knew exactly what the next step was.&rdquo;</p>
-          <div class="testi-person">&mdash; Weight Loss Program Patient</div>
+          <div class="testi-person">Weight Loss Program Patient</div>
         </div>
       </div>
       <div class="testi-card">
@@ -295,12 +295,12 @@
           <div class="ph-img-icon">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <div class="ph-label">Patient Photo &mdash; TRT</div>
+          <div class="ph-label">Patient Photo: TRT</div>
           <div class="ph-sublabel">Replace with real photo</div>
         </div>
         <div class="testi-body">
           <p class="testi-text">&ldquo;I&rsquo;d been putting off addressing my symptoms for years. Getting evaluated was easier than I expected.&rdquo;</p>
-          <div class="testi-person">&mdash; TRT Evaluation Patient</div>
+          <div class="testi-person">TRT Evaluation Patient</div>
         </div>
       </div>
     </div>

@@ -21,11 +21,11 @@
         <div class="label">Your provider</div>
         <h2>David Hervig, PA-C</h2>
         <p>David is a Physician Assistant and a man of many hats. Always a medical provider first, he also serves as one of our office managers and currently leads marketing for the practice.</p>
-        <p>Trained in the US Army, David spent 12 years in service &mdash; learning medicine from the ground up in some of the most demanding environments imaginable. That background shapes how he practices today: direct, thorough, and genuinely invested in the people he works with.</p>
+        <p>David is a US Army Veteran with 12 years of service. He learned medicine from the ground up in some of the most demanding environments imaginable, and that background shapes how he practices today: direct, thorough, and genuinely invested in the people he works with.</p>
         <p>He built MBS Medical around the belief that good care should be accessible, honest, and uncomplicated by insurance bureaucracy.</p>
         <ul class="cred-list">
           <li><div class="cred-pip"></div> Physician Assistant (PA-C)</li>
-          <li><div class="cred-pip"></div> US Army trained &mdash; 12 years of service</li>
+          <li><div class="cred-pip"></div> US Army Veteran, 12 years of service</li>
           <li><div class="cred-pip"></div> Primary care, weight loss &amp; TRT</li>
           <li><div class="cred-pip"></div> Cash-pay, direct-care model</li>
         </ul>
@@ -41,7 +41,7 @@
       <div class="split-text">
         <div class="label">Our approach</div>
         <h2>Built for today, designed to grow with you</h2>
-        <p>MBS Medical was created for patients who want more from their healthcare &mdash; more consistency, more clarity, and more convenience. We started with telehealth because it removes the friction that keeps most people from getting the care they need.</p>
+        <p>MBS Medical was created for patients who want more from their healthcare: more consistency, more clarity, and more convenience. We started with telehealth because it removes the friction that keeps most people from getting the care they need.</p>
         <p>No waiting rooms, no scheduling gaps, no having to repeat yourself to a new provider every visit. Our current focus is primary care, medically supervised weight loss, and TRT evaluation and monitoring.</p>
         <div class="features-grid">
           <div class="feature-item">
@@ -54,7 +54,7 @@
           </div>
           <div class="feature-item">
             <h4>Cash pay model</h4>
-            <p>No insurance required. Your visit fee is confirmed before you book &mdash; every time.</p>
+            <p>No insurance required. Your visit fee is confirmed before you book, every time.</p>
           </div>
           <div class="feature-item">
             <h4>Built to grow</h4>

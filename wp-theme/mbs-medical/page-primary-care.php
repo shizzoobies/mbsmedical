@@ -6,7 +6,7 @@
   <div class="container">
     <div class="label">Primary Care</div>
     <h1>Primary care you can actually rely on</h1>
-    <p class="lead">Routine visits, medication management, wellness planning, and ongoing care from a provider who knows your history &mdash; all via telehealth, on your schedule.</p>
+    <p class="lead">Routine visits, medication management, wellness planning, and ongoing care from a provider who knows your history. All via telehealth, on your schedule.</p>
   </div>
 </section>
 
@@ -20,8 +20,8 @@
       <div class="split-text">
         <div class="label">The foundation</div>
         <h2>A home base for your health</h2>
-        <p>Most people don&rsquo;t struggle to find healthcare &mdash; they struggle to find care that sticks. MBS Medical is built for patients who want a consistent provider relationship, not a different face every time they have a question or need a refill.</p>
-        <p>Your provider builds familiarity with your history, goals, and concerns over time. That continuity changes how care feels &mdash; and how effective it is. From routine wellness visits to medication reviews and follow-up care, MBS Medical is designed to be the provider you actually keep coming back to.</p>
+        <p>Most people don&rsquo;t struggle to find healthcare. They struggle to find care that sticks. MBS Medical is built for patients who want a consistent provider relationship, not a different face every time they have a question or need a refill.</p>
+        <p>Your provider builds familiarity with your history, goals, and concerns over time. That continuity changes how care feels and how effective it is. From routine wellness visits to medication reviews and follow-up care, MBS Medical is designed to be the provider you actually keep coming back to.</p>
         <div class="features-grid">
           <div class="feature-item">
             <h4>Continuity of care</h4>
@@ -66,11 +66,11 @@
     <div class="faq-grid">
       <div class="faq-item">
         <h3>Do you accept insurance?</h3>
-        <p>No. MBS Medical is a direct-pay practice &mdash; we do not accept or bill insurance. This keeps visits simple, fast, and free of claim delays. Your visit fee is clear and confirmed before you book. Many patients find the direct-pay model saves both time and money compared to using insurance for routine care.</p>
+        <p>No. MBS Medical is a direct-pay practice. We do not accept or bill insurance. This keeps visits simple, fast, and free of claim delays. Your visit fee is clear and confirmed before you book. Many patients find the direct-pay model saves both time and money compared to using insurance for routine care.</p>
       </div>
       <div class="faq-item">
         <h3>Who is this for?</h3>
-        <p>Adults looking for a consistent telehealth provider for routine visits, preventive care, medication management, and general health concerns &mdash; especially those who want ongoing care rather than one-off appointments.</p>
+        <p>Adults looking for a consistent telehealth provider for routine visits, preventive care, medication management, and general health concerns. Especially those who want ongoing care rather than one-off appointments.</p>
       </div>
       <div class="faq-item">
         <h3>What types of concerns can be addressed?</h3>
@@ -78,7 +78,7 @@
       </div>
       <div class="faq-item">
         <h3>How does a visit work?</h3>
-        <p>Complete a short online intake, then meet with your provider via telehealth. Your provider reviews your concerns, documents your history, and outlines clear next steps &mdash; including any follow-up care, labs, or referrals needed.</p>
+        <p>Complete a short online intake, then meet with your provider via telehealth. Your provider reviews your concerns, documents your history, and outlines clear next steps, including any follow-up care, labs, or referrals needed.</p>
       </div>
       <div class="faq-item">
         <h3>Can MBS Medical be my regular doctor?</h3>

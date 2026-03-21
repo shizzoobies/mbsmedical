@@ -25,8 +25,8 @@
         <h4>Contact</h4>
         <div class="footer-links">
           <span>hello@mbsmedical.com</span>
-          <span>Telehealth &mdash; available statewide</span>
-          <span>Mon&ndash;Fri, 8:00 AM&ndash;6:00 PM</span>
+          <span>Telehealth, available statewide</span>
+          <span>Mon to Fri, 8:00 AM to 6:00 PM</span>
         </div>
       </div>
     </div>

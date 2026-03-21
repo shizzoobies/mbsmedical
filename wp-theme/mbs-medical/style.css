@@ -60,9 +60,9 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(238,237,246,.9
 .btn-primary { background: var(--grad); color: white; box-shadow: 0 6px 22px rgba(123,63,170,.35); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(123,63,170,.45); color: white; }
 .btn-ghost { background: transparent; color: rgba(255,255,255,.8); border: 1.5px solid rgba(255,255,255,.25); }
-.btn-ghost:hover { border-color: rgba(255,255,255,.5); color: white; }
+.btn-ghost:hover { border-color: rgba(255,255,255,.5); color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
 .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
-.btn-outline:hover { border-color: var(--purple); color: var(--purple); }
+.btn-outline:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(123,63,170,.15); }
 .btn-white { background: white; color: var(--navy); box-shadow: 0 4px 18px rgba(0,0,0,.12); }
 .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.18); }
 
