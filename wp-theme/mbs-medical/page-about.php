@@ -18,7 +18,7 @@
         <img src="<?php echo $img; ?>/david.png" alt="David Hervig, PA-C" style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);display:block;" />
       </div>
       <div class="split-text">
-        <div class="label">Your provider</div>
+        <div class="label">Meet the team</div>
         <h2>David Hervig, PA-C</h2>
         <p>David is a Physician Assistant and a man of many hats. Always a medical provider first, he also serves as one of our office managers and currently leads marketing for the practice.</p>
         <p>David is a US Army Veteran with 12 years of service. He learned medicine from the ground up in some of the most demanding environments imaginable, and that background shapes how he practices today: direct, thorough, and genuinely invested in the people he works with.</p>
@@ -34,8 +34,31 @@
   </div>
 </section>
 
-<!-- About the practice -->
+<!-- MD provider bio -->
 <section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="split-text">
+        <div class="label">Collaborating physician</div>
+        <h2>[First Name] [Last Name], MD</h2>
+        <p>[Physician first name] brings [X] years of clinical medicine to the MBS Medical team. Board-certified in [specialty], [he/she/they] provide the physician oversight and collaborative medical direction that supports the practice across all three service lines.</p>
+        <p>[Add 1 to 2 sentences about their background, training, or philosophy here. What makes them a good fit for a cash-pay, direct-care model? What do they care about clinically?]</p>
+        <ul class="cred-list">
+          <li><div class="cred-pip"></div> Medical Doctor (MD)</li>
+          <li><div class="cred-pip"></div> Board-certified, [specialty]</li>
+          <li><div class="cred-pip"></div> [X] years of clinical experience</li>
+          <li><div class="cred-pip"></div> Collaborating physician, MBS Medical</li>
+        </ul>
+      </div>
+      <div>
+        <img src="<?php echo $img; ?>/doctor.png" alt="[Doctor Name], MD" style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);display:block;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About the practice -->
+<section class="section section-alt">
   <div class="container">
     <div class="split">
       <div class="split-text">
