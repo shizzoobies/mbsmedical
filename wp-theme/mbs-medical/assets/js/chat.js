@@ -106,8 +106,8 @@
     { label: '🚫 Do you take insurance?', text: 'Do you accept insurance?' }
   ];
 
-  var FALLBACK_TEXT = "I'm not sure I have a great answer for that. You can email us at <a href='mailto:hello@mbsmedical.com' style='color:var(--teal)'>hello@mbsmedical.com</a> or browse our services page.";
-  var FALLBACK_ACTIONS = [{ label: 'All Services', url: '/services/' }, { label: 'Contact Us', url: '/contact/' }];
+  var FALLBACK_TEXT = "I don't have a specific answer for that, but our team can help. Send us a message and we'll get back to you within one business day.";
+  var FALLBACK_ACTIONS = [{ label: 'Contact Us', url: '/contact/' }, { label: 'All Services', url: '/services/' }];
 
   // ── Match input to knowledge base ───────────────────────────────────────────
   function matchResponse(input) {
@@ -248,19 +248,26 @@
       toggle.focus();
     }
 
-    toggle.addEventListener('click', function () {
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
       wrap.classList.contains('open') ? closeChat() : openChat();
     });
 
     // "Need help?" label also opens chat
     var label = document.getElementById('chatLabel');
     if (label) {
-      label.addEventListener('click', openChat);
+      label.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openChat();
+      });
       label.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChat(); }
       });
     }
-    closeBtn.addEventListener('click', closeChat);
+    closeBtn.addEventListener('click', function (e) { e.stopPropagation(); closeChat(); });
+
+    // Prevent any click inside the chat window from triggering outside-click close
+    win.addEventListener('click', function (e) { e.stopPropagation(); });
 
     send.addEventListener('click', function () {
       handleInput(input.value);

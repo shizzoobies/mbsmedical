@@ -53,6 +53,58 @@
   </div>
 </div>
 
+<!-- Who this is for -->
+<section class="section section-alt" aria-labelledby="wl-who-heading">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 3rem">
+      <div class="label" aria-hidden="true">Is this right for you?</div>
+      <h2 class="title" id="wl-who-heading">This program is built for people who are done guessing</h2>
+      <p class="lead" style="margin-bottom:0">Not a quick fix. A medically grounded plan that treats weight as a clinical issue, not a willpower problem.</p>
+    </div>
+    <div class="features-grid" style="max-width:860px;margin:0 auto;grid-template-columns:repeat(3,1fr)">
+      <div class="feature-item">
+        <h4>You have tried before</h4>
+        <p>Diet and exercise haven't produced lasting results, and you suspect there may be underlying factors your provider hasn't looked at.</p>
+      </div>
+      <div class="feature-item">
+        <h4>You want clinical oversight</h4>
+        <p>You want a licensed provider reviewing your full health picture before any recommendation is made, not an app or a template.</p>
+      </div>
+      <div class="feature-item">
+        <h4>You want ongoing support</h4>
+        <p>You want follow-ups built in, not an initial consult that leaves you on your own to figure out the rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How the program works -->
+<section class="section section-navy" aria-labelledby="wl-process-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3.5rem">
+      <div class="label label-light" aria-hidden="true">What to expect</div>
+      <h2 class="title light" id="wl-process-heading">How the program works</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number" aria-hidden="true">1</div>
+        <h3>Complete a short intake</h3>
+        <p>Share your health history and goals online. Your provider reviews everything before your first appointment so you can hit the ground running.</p>
+      </div>
+      <div class="step">
+        <div class="step-number" aria-hidden="true">2</div>
+        <h3>Meet with your provider</h3>
+        <p>A real clinical conversation about what has and hasn't worked, what may be contributing, and what options actually fit your situation.</p>
+      </div>
+      <div class="step">
+        <div class="step-number" aria-hidden="true">3</div>
+        <h3>Follow your personalized plan</h3>
+        <p>Your plan is built after your visit. Follow-ups are scheduled from the start so your progress is tracked and your approach stays on course.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Main content -->
 <section class="section" aria-labelledby="wl-approach-heading">
   <div class="container">
