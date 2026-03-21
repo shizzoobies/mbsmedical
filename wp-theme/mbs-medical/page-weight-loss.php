@@ -2,18 +2,56 @@
 
 <?php $img = get_template_directory_uri() . '/assets/img'; ?>
 
-<section class="page-hero">
+<!-- Hero with image -->
+<section class="page-hero page-hero-split">
   <div class="container">
-    <div class="label">Weight Loss</div>
-    <h1>Medical weight loss support built around you</h1>
-    <p class="lead">Telehealth weight management with a licensed provider, personalized care planning, and scheduled follow-ups to keep you on track.</p>
+    <div class="page-hero-grid">
+      <div class="page-hero-text">
+        <div class="label">Weight Loss</div>
+        <h1>Medical weight loss support built around you</h1>
+        <p class="lead">Telehealth weight management with a licensed provider, personalized care planning, and scheduled follow-ups to keep you on track.</p>
+        <div class="page-hero-badges">
+          <span>&#10003; Cash pay, no insurance</span>
+          <span>&#10003; Same-week appointments</span>
+          <span>&#10003; Personalized care plan</span>
+        </div>
+      </div>
+      <div class="page-hero-img">
+        <img src="<?php echo $img; ?>/weight-loss.png" alt="Medical weight loss support" />
+      </div>
+    </div>
   </div>
 </section>
 
-<div style="overflow:hidden;max-height:460px;">
-  <img src="<?php echo $img; ?>/weight-loss.png" alt="Medical weight loss support" style="width:100%;object-fit:cover;display:block;" />
+<!-- Highlights bar -->
+<div class="highlights-bar">
+  <div class="container">
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <div class="highlight-icon">📋</div>
+        <h4>Clinical evaluation</h4>
+        <p>Provider reviews your full health picture before any plan is made</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">🎯</div>
+        <h4>Personalized plan</h4>
+        <p>Built around your history and goals, not a template program</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">📅</div>
+        <h4>Regular check-ins</h4>
+        <p>Structured follow-ups to track progress and adjust your plan</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">💳</div>
+        <h4>Cash pay</h4>
+        <p>Transparent fee, no insurance needed, no surprise billing</p>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- Main content -->
 <section class="section">
   <div class="container">
     <div class="split">

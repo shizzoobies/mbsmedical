@@ -4,53 +4,76 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="label">What we offer</div>
-    <h1>What we treat at MBS Medical</h1>
-    <p class="lead">Focused telehealth services designed to make it easier to get care, understand your options, and stay consistent with your health goals.</p>
+    <div class="label">Our services</div>
+    <h1>Three focused services,<br>one dedicated provider</h1>
+    <p class="lead">Primary care, medically supervised weight loss, and TRT evaluation. Each built around a real provider relationship, a clear plan, and ongoing follow-up.</p>
   </div>
 </section>
 
-<section class="section">
+<div class="service-rows">
   <div class="container">
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-card-img">
-          <img src="<?php echo $img; ?>/primary-care.png" alt="Primary Care" />
-        </div>
-        <div class="service-card-body">
-          <div class="service-icon icon-t">🩺</div>
-          <h3>Primary Care</h3>
-          <p>Routine visits, medication management, wellness planning, and ongoing care from a provider who builds familiarity with your health over time.</p>
-          <a href="<?php echo esc_url( home_url( '/primary-care/' ) ); ?>" class="service-link">Learn more →</a>
-        </div>
+
+    <!-- Primary Care -->
+    <div class="service-row">
+      <div class="service-row-img">
+        <img src="<?php echo $img; ?>/primary-care.png" alt="Telehealth primary care" />
       </div>
-      <div class="service-card">
-        <div class="service-card-img">
-          <img src="<?php echo $img; ?>/weight-loss.png" alt="Weight Loss" />
-        </div>
-        <div class="service-card-body">
-          <div class="service-icon icon-p">📉</div>
-          <h3>Weight Loss</h3>
-          <p>Medically supervised weight management with a personalized care plan, structured follow-ups, and clinical oversight at every step.</p>
-          <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="service-link">Explore weight loss →</a>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-img">
-          <img src="<?php echo $img; ?>/trt.png" alt="TRT" />
-        </div>
-        <div class="service-card-body">
-          <div class="service-icon icon-pk">🔬</div>
-          <h3>TRT Evaluation</h3>
-          <p>Evaluation and ongoing care for men experiencing symptoms that may be related to low testosterone. Labs, clinical review, and monitoring are all included.</p>
-          <a href="<?php echo esc_url( home_url( '/trt/' ) ); ?>" class="service-link">See TRT details →</a>
-        </div>
+      <div class="service-row-text">
+        <div class="svc-icon-lg icon-t">🩺</div>
+        <h2>Primary Care</h2>
+        <p>A consistent telehealth provider for routine visits, medication management, wellness planning, and ongoing care. Your provider builds real familiarity with your history over time.</p>
+        <ul class="svc-bullets">
+          <li>Routine and preventive care visits</li>
+          <li>Medication and lab management</li>
+          <li>Continuity with the same provider</li>
+          <li>Same-week appointments available</li>
+        </ul>
+        <a href="<?php echo esc_url( home_url( '/primary-care/' ) ); ?>" class="btn btn-primary">Learn More</a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- How it works steps -->
+    <!-- Weight Loss -->
+    <div class="service-row">
+      <div class="service-row-text">
+        <div class="svc-icon-lg icon-p">📉</div>
+        <h2>Medical Weight Loss</h2>
+        <p>Medically supervised weight management built around your health history and goals. Your provider evaluates your full picture first, then builds a plan that can be adjusted as you move forward.</p>
+        <ul class="svc-bullets">
+          <li>Personalized, provider-built care plan</li>
+          <li>Structured progress check-ins</li>
+          <li>Clinical oversight at every step</li>
+          <li>No one-size-fits-all programs</li>
+        </ul>
+        <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="btn btn-primary">Explore Weight Loss</a>
+      </div>
+      <div class="service-row-img">
+        <img src="<?php echo $img; ?>/weight-loss.png" alt="Medical weight loss support" />
+      </div>
+    </div>
+
+    <!-- TRT -->
+    <div class="service-row">
+      <div class="service-row-img">
+        <img src="<?php echo $img; ?>/trt.png" alt="TRT evaluation and care" />
+      </div>
+      <div class="service-row-text">
+        <div class="svc-icon-lg icon-pk">🔬</div>
+        <h2>TRT Evaluation</h2>
+        <p>Lab-driven evaluation and ongoing care for men experiencing fatigue, low energy, mood changes, or reduced vitality. Symptoms first, labs second, recommendations only after a full clinical review.</p>
+        <ul class="svc-bullets">
+          <li>Symptom review and health history</li>
+          <li>Bloodwork-guided clinical decisions</li>
+          <li>Discreet telehealth from home</li>
+          <li>Regular monitoring and follow-up</li>
+        </ul>
+        <a href="<?php echo esc_url( home_url( '/trt/' ) ); ?>" class="btn btn-primary">See TRT Details</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- How it works -->
 <section class="section section-navy">
   <div class="container">
     <div style="text-align:center;margin-bottom:3.5rem">

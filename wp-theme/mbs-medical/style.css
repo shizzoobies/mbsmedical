@@ -293,13 +293,52 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
   100% { opacity: 1; transform: scale(1.14); }
 }
 
+/* ── Service page hero split (image in hero) ── */
+.page-hero-split { padding: 4.5rem 0 0; overflow: visible; }
+.page-hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3.5rem; align-items: end; position: relative; z-index: 1; }
+.page-hero-text { padding-bottom: 4rem; }
+.page-hero-img { border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden; }
+.page-hero-img img { width: 100%; max-height: 500px; object-fit: cover; object-position: center top; display: block; }
+.page-hero-badges { display: flex; flex-wrap: wrap; gap: .45rem 1.4rem; margin-top: 1.5rem; }
+.page-hero-badges span { font-size: .83rem; color: rgba(255,255,255,.48); font-weight: 600; }
+
+/* ── Highlights bar ── */
+.highlights-bar { background: var(--lavender); border-bottom: 1px solid var(--border); }
+.highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.highlight-item { padding: 1.75rem 1.25rem; border-right: 1px solid var(--border); text-align: center; }
+.highlight-item:last-child { border-right: none; }
+.highlight-icon { font-size: 1.5rem; margin-bottom: .5rem; }
+.highlight-item h4 { font-size: .88rem; font-weight: 700; color: var(--navy-dark); margin-bottom: .25rem; }
+.highlight-item p { font-size: .81rem; color: var(--muted); font-weight: 400; line-height: 1.55; margin: 0; }
+
+/* ── Service rows (services hub) ── */
+.service-rows { padding: 5rem 0; }
+.service-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 4.5rem 0; border-bottom: 1px solid var(--border); }
+.service-row:first-child { padding-top: 0; }
+.service-row:last-child { border-bottom: none; padding-bottom: 0; }
+.service-row-img { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+.service-row-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .5s; }
+.service-row:hover .service-row-img img { transform: scale(1.03); }
+.service-row-text .svc-icon-lg { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.1rem; }
+.service-row-text h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 800; color: var(--navy-dark); letter-spacing: -.02em; margin-bottom: .75rem; }
+.service-row-text p { color: var(--muted); line-height: 1.8; font-size: .97rem; font-weight: 400; margin-bottom: .85rem; }
+.svc-bullets { list-style: none; padding: 0; display: grid; gap: .5rem; margin: 1.25rem 0 1.75rem; }
+.svc-bullets li { display: flex; align-items: center; gap: .65rem; font-size: .92rem; color: var(--text); font-weight: 500; }
+.svc-bullets li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--purple); flex-shrink: 0; }
+
 /* ── Responsive ── */
 @media (max-width: 980px) {
-  .hero-grid, .split, .services-grid, .steps-grid, .pricing-grid, .testi-grid, .features-grid, .footer-grid, .faq-grid { grid-template-columns: 1fr; }
+  .hero-grid, .split, .services-grid, .steps-grid, .pricing-grid, .testi-grid, .features-grid, .footer-grid, .faq-grid, .page-hero-grid, .highlights-grid, .service-row { grid-template-columns: 1fr; }
   .menu-toggle { display: block; }
   .menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; align-items: flex-start; padding: 1rem 1.25rem 1.5rem; gap: .85rem; border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(15,37,53,.08); z-index: 99; }
   .menu.open { display: flex; }
   .hero { padding-top: 3rem; }
+  .page-hero-split { padding-top: 3rem; }
+  .page-hero-text { padding-bottom: 2.5rem; }
+  .page-hero-img { max-height: 300px; border-radius: var(--radius-lg); }
+  .highlight-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .highlight-item:last-child { border-bottom: none; }
+  .service-row { gap: 2.5rem; }
   .hero-float-card { position: static; margin-top: 1.5rem; }
   .section { padding: 4rem 0; }
   .trust-bar-inner { justify-content: center; }

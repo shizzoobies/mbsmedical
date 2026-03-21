@@ -2,18 +2,56 @@
 
 <?php $img = get_template_directory_uri() . '/assets/img'; ?>
 
-<section class="page-hero">
+<!-- Hero with image -->
+<section class="page-hero page-hero-split">
   <div class="container">
-    <div class="label">Primary Care</div>
-    <h1>Primary care you can actually rely on</h1>
-    <p class="lead">Routine visits, medication management, wellness planning, and ongoing care from a provider who knows your history. All via telehealth, on your schedule.</p>
+    <div class="page-hero-grid">
+      <div class="page-hero-text">
+        <div class="label">Primary Care</div>
+        <h1>Primary care you can actually rely on</h1>
+        <p class="lead">Routine visits, medication management, wellness planning, and ongoing care from a provider who knows your history. All via telehealth, on your schedule.</p>
+        <div class="page-hero-badges">
+          <span>&#10003; Same provider every visit</span>
+          <span>&#10003; Same-week appointments</span>
+          <span>&#10003; Cash pay, no insurance</span>
+        </div>
+      </div>
+      <div class="page-hero-img">
+        <img src="<?php echo $img; ?>/primary-care.png" alt="Telehealth primary care" />
+      </div>
+    </div>
   </div>
 </section>
 
-<div style="overflow:hidden;max-height:460px;">
-  <img src="<?php echo $img; ?>/primary-care.png" alt="Telehealth primary care" style="width:100%;object-fit:cover;display:block;" />
+<!-- Highlights bar -->
+<div class="highlights-bar">
+  <div class="container">
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <div class="highlight-icon">🩺</div>
+        <h4>Your provider</h4>
+        <p>Same provider every visit, building real familiarity with your history</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">📋</div>
+        <h4>Ongoing care</h4>
+        <p>Follow-up, medication management, and continuity built in from day one</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">⚡</div>
+        <h4>Same-week</h4>
+        <p>Appointments available quickly, without long waits or referral chains</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">💳</div>
+        <h4>Cash pay</h4>
+        <p>Transparent, no-insurance pricing confirmed before you book, every time</p>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- Main content -->
 <section class="section">
   <div class="container">
     <div class="split">

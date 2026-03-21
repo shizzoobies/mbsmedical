@@ -2,18 +2,56 @@
 
 <?php $img = get_template_directory_uri() . '/assets/img'; ?>
 
-<section class="page-hero">
+<!-- Hero with image -->
+<section class="page-hero page-hero-split">
   <div class="container">
-    <div class="label">TRT Evaluation</div>
-    <h1>Testosterone evaluation and ongoing care</h1>
-    <p class="lead">Talk with a licensed provider about your symptoms, get a proper lab-based evaluation, and understand your options without the guesswork.</p>
+    <div class="page-hero-grid">
+      <div class="page-hero-text">
+        <div class="label">TRT Evaluation</div>
+        <h1>Testosterone evaluation and ongoing care</h1>
+        <p class="lead">Talk with a licensed provider about your symptoms, get a proper lab-based evaluation, and understand your options without the guesswork.</p>
+        <div class="page-hero-badges">
+          <span>&#10003; Lab-driven evaluation</span>
+          <span>&#10003; Discreet telehealth</span>
+          <span>&#10003; Cash pay, no insurance</span>
+        </div>
+      </div>
+      <div class="page-hero-img">
+        <img src="<?php echo $img; ?>/trt.png" alt="TRT evaluation and care" />
+      </div>
+    </div>
   </div>
 </section>
 
-<div style="overflow:hidden;max-height:460px;">
-  <img src="<?php echo $img; ?>/trt.png" alt="Testosterone evaluation and care" style="width:100%;object-fit:cover;display:block;" />
+<!-- Highlights bar -->
+<div class="highlights-bar">
+  <div class="container">
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <div class="highlight-icon">🔬</div>
+        <h4>Lab-driven</h4>
+        <p>Bloodwork is central to every evaluation and every clinical decision</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">🔒</div>
+        <h4>Discreet care</h4>
+        <p>Private telehealth appointments from home, fully on your schedule</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">📊</div>
+        <h4>Monitored ongoing</h4>
+        <p>Regular follow-up visits to review labs and adjust care as needed</p>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">💳</div>
+        <h4>Cash pay</h4>
+        <p>Clear fee before you book. No insurance required, no surprises</p>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- Main content -->
 <section class="section">
   <div class="container">
     <div class="split">
