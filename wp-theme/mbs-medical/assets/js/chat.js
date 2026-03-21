@@ -123,20 +123,21 @@
 
   // ── Build the widget DOM ────────────────────────────────────────────────────
   function buildWidget() {
+    var imgUrl = (window.mbsChatData && window.mbsChatData.assistantImg) ? window.mbsChatData.assistantImg : '';
     var wrap = document.createElement('div');
     wrap.id = 'mbsChatWidget';
     wrap.className = 'mbs-chat';
     wrap.setAttribute('aria-label', 'MBS Medical chat assistant');
     wrap.innerHTML =
       '<button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chatWindow" aria-label="Open chat assistant">' +
-        '<svg class="icon-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z"/></svg>' +
+        '<img class="chat-toggle-img" src="' + imgUrl + '" alt="" aria-hidden="true" />' +
         '<svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
         '<span class="chat-pulse" aria-hidden="true"></span>' +
       '</button>' +
       '<div class="chat-window" id="chatWindow" role="dialog" aria-label="MBS Medical assistant" aria-modal="false" hidden>' +
         '<div class="chat-header">' +
           '<div class="chat-header-info">' +
-            '<div class="chat-avatar" aria-hidden="true">M</div>' +
+            '<div class="chat-avatar" aria-hidden="true"><img src="' + imgUrl + '" alt="" /></div>' +
             '<div>' +
               '<div class="chat-name">MBS Assistant</div>' +
               '<div class="chat-status">Ask me anything</div>' +

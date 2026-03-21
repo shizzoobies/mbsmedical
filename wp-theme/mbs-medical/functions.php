@@ -36,6 +36,9 @@ function mbs_enqueue_assets() {
         '1.0.0',
         true
     );
+    wp_localize_script( 'mbs-chat', 'mbsChatData', [
+        'assistantImg' => get_template_directory_uri() . '/assets/img/chat-assistant.png',
+    ] );
 }
 add_action( 'wp_enqueue_scripts', 'mbs_enqueue_assets' );
 

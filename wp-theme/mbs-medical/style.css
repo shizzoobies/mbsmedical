@@ -359,11 +359,12 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
 
 /* ── Chat Widget ── */
 .mbs-chat { position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; }
-.chat-toggle { width: 58px; height: 58px; border-radius: 50%; background: var(--grad); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(123,63,170,.45); transition: transform .2s, box-shadow .2s; position: relative; }
-.chat-toggle:hover { transform: scale(1.08); box-shadow: 0 10px 32px rgba(123,63,170,.55); }
-.chat-toggle .icon-open { width: 24px; height: 24px; fill: white; transition: opacity .2s; }
-.chat-toggle .icon-close { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2.5px; stroke-linecap: round; position: absolute; opacity: 0; transition: opacity .2s; }
-.mbs-chat.open .chat-toggle .icon-open { opacity: 0; }
+.chat-toggle { width: 62px; height: 62px; border-radius: 50%; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(30,58,110,.32); transition: transform .2s, box-shadow .2s; position: relative; padding: 0; overflow: hidden; }
+.chat-toggle:hover { transform: scale(1.07); box-shadow: 0 10px 32px rgba(30,58,110,.4); }
+.chat-toggle-img { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; object-position: center top; display: block; position: absolute; inset: 0; transition: opacity .2s; }
+.chat-toggle .icon-close { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2.5px; stroke-linecap: round; position: absolute; opacity: 0; transition: opacity .2s; z-index: 1; }
+.mbs-chat.open .chat-toggle { background: var(--grad); }
+.mbs-chat.open .chat-toggle-img { opacity: 0; }
 .mbs-chat.open .chat-toggle .icon-close { opacity: 1; }
 .chat-pulse { position: absolute; top: 2px; right: 2px; width: 13px; height: 13px; border-radius: 50%; background: var(--teal); border: 2px solid var(--white); animation: chatPulse 2.2s ease-in-out infinite; }
 @keyframes chatPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: .65; } }
@@ -375,7 +376,8 @@ footer p { font-size: .88rem; line-height: 1.75; font-weight: 400; }
 
 .chat-header { background: var(--navy-dark); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
 .chat-header-info { display: flex; align-items: center; gap: .75rem; }
-.chat-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .95rem; color: white; flex-shrink: 0; }
+.chat-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(255,255,255,.2); }
+.chat-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 .chat-name { color: white; font-weight: 700; font-size: .95rem; line-height: 1.2; }
 .chat-status { color: rgba(255,255,255,.45); font-size: .74rem; font-weight: 500; }
 .chat-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,.5); display: flex; align-items: center; justify-content: center; padding: .35rem; border-radius: 6px; transition: color .2s, background .2s; }
