@@ -1,4 +1,3 @@
-
 // Splash screen — shows on first visit AND every reload; skips on internal page nav
 (function () {
   var splash = document.getElementById('mbsSplash');
@@ -44,17 +43,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
   if (toggle && menu) {
+    // Open / close menu
     toggle.addEventListener('click', () => {
       const isOpen = menu.classList.toggle('open');
       toggle.classList.toggle('open', isOpen);
       toggle.setAttribute('aria-expanded', isOpen);
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
+
+    // Close menu when a link is clicked; return focus to toggle
     menu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         menu.classList.remove('open');
         toggle.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        toggle.focus();
       });
+    });
+
+    // Close menu on Escape key; return focus to toggle
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        toggle.focus();
+      }
     });
   }
 });

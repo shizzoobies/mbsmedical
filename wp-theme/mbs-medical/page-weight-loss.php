@@ -2,48 +2,50 @@
 
 <?php $img = get_template_directory_uri() . '/assets/img'; ?>
 
+<main id="main-content">
+
 <!-- Hero with image -->
-<section class="page-hero page-hero-split">
+<section class="page-hero page-hero-split" aria-labelledby="wl-hero-heading">
   <div class="container">
     <div class="page-hero-grid">
       <div class="page-hero-text">
-        <div class="label">Weight Loss</div>
-        <h1>Medical weight loss support built around you</h1>
+        <div class="label" aria-hidden="true">Weight Loss</div>
+        <h1 id="wl-hero-heading">Medical weight loss support built around you</h1>
         <p class="lead">Telehealth weight management with a licensed provider, personalized care planning, and scheduled follow-ups to keep you on track.</p>
-        <div class="page-hero-badges">
-          <span>&#10003; Cash pay, no insurance</span>
-          <span>&#10003; Same-week appointments</span>
-          <span>&#10003; Personalized care plan</span>
-        </div>
+        <ul class="page-hero-badges" aria-label="Program highlights">
+          <li><span aria-hidden="true">&#10003;</span> Cash pay, no insurance</li>
+          <li><span aria-hidden="true">&#10003;</span> Same-week appointments</li>
+          <li><span aria-hidden="true">&#10003;</span> Personalized care plan</li>
+        </ul>
       </div>
       <div class="page-hero-img">
-        <img src="<?php echo $img; ?>/weight-loss.png" alt="Medical weight loss support" />
+        <img src="<?php echo $img; ?>/weight-loss.png" alt="Medical weight loss support consultation" />
       </div>
     </div>
   </div>
 </section>
 
 <!-- Highlights bar -->
-<div class="highlights-bar">
+<div class="highlights-bar" role="region" aria-label="Program features">
   <div class="container">
     <div class="highlights-grid">
       <div class="highlight-item">
-        <div class="highlight-icon">📋</div>
+        <div class="highlight-icon" aria-hidden="true">📋</div>
         <h4>Clinical evaluation</h4>
         <p>Provider reviews your full health picture before any plan is made</p>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">🎯</div>
+        <div class="highlight-icon" aria-hidden="true">🎯</div>
         <h4>Personalized plan</h4>
         <p>Built around your history and goals, not a template program</p>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">📅</div>
+        <div class="highlight-icon" aria-hidden="true">📅</div>
         <h4>Regular check-ins</h4>
         <p>Structured follow-ups to track progress and adjust your plan</p>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">💳</div>
+        <div class="highlight-icon" aria-hidden="true">💳</div>
         <h4>Cash pay</h4>
         <p>Transparent fee, no insurance needed, no surprise billing</p>
       </div>
@@ -52,12 +54,12 @@
 </div>
 
 <!-- Main content -->
-<section class="section">
+<section class="section" aria-labelledby="wl-approach-heading">
   <div class="container">
     <div class="split">
       <div class="split-text">
-        <div class="label">The approach</div>
-        <h2>A structured approach to lasting results</h2>
+        <div class="label" aria-hidden="true">The approach</div>
+        <h2 id="wl-approach-heading">A structured approach to lasting results</h2>
         <p>Losing weight isn&rsquo;t just about willpower. For many people, underlying factors (hormones, metabolism, medication, lifestyle) play a significant role. MBS Medical takes a clinical approach: evaluate first, then build a plan that fits your health history and your goals.</p>
         <p>You work directly with a licensed provider who reviews your full picture before making any recommendations. Progress is tracked at follow-up visits, and your plan can be adjusted as you move forward.</p>
         <div class="features-grid">
@@ -80,16 +82,16 @@
         </div>
       </div>
       <div class="portal-card">
-        <div class="portal-icon">📅</div>
+        <div class="portal-icon" aria-hidden="true">📅</div>
         <h3>Book a weight loss consult</h3>
         <p>Scheduling and intake are handled through our secure, HIPAA-compliant patient portal. No health information is collected on this website.</p>
-        <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn-portal" target="_blank" rel="noopener noreferrer">Book Securely via Practice Better &rarr;</a>
-        <div class="portal-trust">
-          <span>🔐 Encrypted &amp; secure</span>
-          <span>🛡️ HIPAA-compliant</span>
-          <span>&#10003; No patient data collected here</span>
+        <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn-portal" target="_blank" rel="noopener noreferrer">Book Securely via Practice Better <span aria-hidden="true">&rarr;</span></a>
+        <div class="portal-trust" aria-label="Security and privacy assurances">
+          <span><span aria-hidden="true">🔐</span> Encrypted &amp; secure</span>
+          <span><span aria-hidden="true">🛡️</span> HIPAA-compliant</span>
+          <span>No patient data collected here</span>
         </div>
-        <hr class="portal-divider">
+        <hr class="portal-divider" aria-hidden="true">
         <p class="portal-small">You will be taken to our secure Practice Better portal to complete your intake and request a consultation. All clinical decisions are made after provider review.</p>
       </div>
     </div>
@@ -97,10 +99,10 @@
 </section>
 
 <!-- FAQ -->
-<section class="section section-alt">
+<section class="section section-alt" aria-labelledby="wl-faq-heading">
   <div class="container">
-    <div class="label">Common questions</div>
-    <h2 class="title">Weight loss at MBS Medical</h2>
+    <div class="label" aria-hidden="true">Common questions</div>
+    <h2 class="title" id="wl-faq-heading">Weight loss at MBS Medical</h2>
     <div class="faq-grid">
       <div class="faq-item">
         <h3>Does insurance cover this program?</h3>
@@ -131,10 +133,10 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section" aria-labelledby="wl-cta-heading">
   <div class="container">
     <div class="cta-inner">
-      <h2>Ready to get started?</h2>
+      <h2 id="wl-cta-heading">Ready to get started?</h2>
       <p>Same-week telehealth appointments available. Start with a short online intake and connect with a provider.</p>
       <div class="cta-actions">
         <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Your Visit</a>
@@ -143,5 +145,7 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <?php get_footer(); ?>

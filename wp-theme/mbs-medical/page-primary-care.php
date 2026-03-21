@@ -2,48 +2,50 @@
 
 <?php $img = get_template_directory_uri() . '/assets/img'; ?>
 
+<main id="main-content">
+
 <!-- Hero with image -->
-<section class="page-hero page-hero-split">
+<section class="page-hero page-hero-split" aria-labelledby="pc-hero-heading">
   <div class="container">
     <div class="page-hero-grid">
       <div class="page-hero-text">
-        <div class="label">Primary Care</div>
-        <h1>Primary care you can actually rely on</h1>
+        <div class="label" aria-hidden="true">Primary Care</div>
+        <h1 id="pc-hero-heading">Primary care you can actually rely on</h1>
         <p class="lead">Routine visits, medication management, wellness planning, and ongoing care from a provider who knows your history. All via telehealth, on your schedule.</p>
-        <div class="page-hero-badges">
-          <span>&#10003; Same provider every visit</span>
-          <span>&#10003; Same-week appointments</span>
-          <span>&#10003; Cash pay, no insurance</span>
-        </div>
+        <ul class="page-hero-badges" aria-label="Service highlights">
+          <li><span aria-hidden="true">&#10003;</span> Same provider every visit</li>
+          <li><span aria-hidden="true">&#10003;</span> Same-week appointments</li>
+          <li><span aria-hidden="true">&#10003;</span> Cash pay, no insurance</li>
+        </ul>
       </div>
       <div class="page-hero-img">
-        <img src="<?php echo $img; ?>/primary-care.png" alt="Telehealth primary care" />
+        <img src="<?php echo $img; ?>/primary-care.png" alt="Telehealth primary care consultation with licensed provider" />
       </div>
     </div>
   </div>
 </section>
 
 <!-- Highlights bar -->
-<div class="highlights-bar">
+<div class="highlights-bar" role="region" aria-label="Service features">
   <div class="container">
     <div class="highlights-grid">
       <div class="highlight-item">
-        <div class="highlight-icon">🩺</div>
+        <div class="highlight-icon" aria-hidden="true">🩺</div>
         <h4>Your provider</h4>
         <p>Same provider every visit, building real familiarity with your history</p>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">📋</div>
+        <div class="highlight-icon" aria-hidden="true">📋</div>
         <h4>Ongoing care</h4>
         <p>Follow-up, medication management, and continuity built in from day one</p>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">⚡</div>
+        <div class="highlight-icon" aria-hidden="true">⚡</div>
         <h4>Same-week</h4>
         <p>Appointments available quickly, without long waits or referral chains</p>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">💳</div>
+        <div class="highlight-icon" aria-hidden="true">💳</div>
         <h4>Cash pay</h4>
         <p>Transparent, no-insurance pricing confirmed before you book, every time</p>
       </div>
@@ -52,12 +54,12 @@
 </div>
 
 <!-- Main content -->
-<section class="section">
+<section class="section" aria-labelledby="pc-approach-heading">
   <div class="container">
     <div class="split">
       <div class="split-text">
-        <div class="label">The foundation</div>
-        <h2>A home base for your health</h2>
+        <div class="label" aria-hidden="true">The foundation</div>
+        <h2 id="pc-approach-heading">A home base for your health</h2>
         <p>Most people don&rsquo;t struggle to find healthcare. They struggle to find care that sticks. MBS Medical is built for patients who want a consistent provider relationship, not a different face every time they have a question or need a refill.</p>
         <p>Your provider builds familiarity with your history, goals, and concerns over time. That continuity changes how care feels and how effective it is. From routine wellness visits to medication reviews and follow-up care, MBS Medical is designed to be the provider you actually keep coming back to.</p>
         <div class="features-grid">
@@ -80,16 +82,16 @@
         </div>
       </div>
       <div class="portal-card">
-        <div class="portal-icon">📅</div>
+        <div class="portal-icon" aria-hidden="true">📅</div>
         <h3>Book a primary care visit</h3>
         <p>Scheduling and intake are handled through our secure, HIPAA-compliant patient portal. No health information is collected on this website.</p>
-        <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn-portal" target="_blank" rel="noopener noreferrer">Book Securely via Practice Better &rarr;</a>
-        <div class="portal-trust">
-          <span>🔐 Encrypted &amp; secure</span>
-          <span>🛡️ HIPAA-compliant</span>
-          <span>&#10003; No patient data collected here</span>
+        <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn-portal" target="_blank" rel="noopener noreferrer">Book Securely via Practice Better <span aria-hidden="true">&rarr;</span></a>
+        <div class="portal-trust" aria-label="Security and privacy assurances">
+          <span><span aria-hidden="true">🔐</span> Encrypted &amp; secure</span>
+          <span><span aria-hidden="true">🛡️</span> HIPAA-compliant</span>
+          <span>No patient data collected here</span>
         </div>
-        <hr class="portal-divider">
+        <hr class="portal-divider" aria-hidden="true">
         <p class="portal-small">You will be taken to our secure Practice Better portal to complete your intake and book your visit. All clinical recommendations are made after provider review.</p>
       </div>
     </div>
@@ -97,10 +99,10 @@
 </section>
 
 <!-- FAQ -->
-<section class="section section-alt">
+<section class="section section-alt" aria-labelledby="pc-faq-heading">
   <div class="container">
-    <div class="label">Common questions</div>
-    <h2 class="title">Primary care at MBS Medical</h2>
+    <div class="label" aria-hidden="true">Common questions</div>
+    <h2 class="title" id="pc-faq-heading">Primary care at MBS Medical</h2>
     <div class="faq-grid">
       <div class="faq-item">
         <h3>Do you accept insurance?</h3>
@@ -131,10 +133,10 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section" aria-labelledby="pc-cta-heading">
   <div class="container">
     <div class="cta-inner">
-      <h2>Book your first visit today</h2>
+      <h2 id="pc-cta-heading">Book your first visit today</h2>
       <p>Same-week telehealth appointments available. Complete a short intake and connect with a provider who will actually know your name next time.</p>
       <div class="cta-actions">
         <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Your Visit</a>
@@ -143,5 +145,7 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <?php get_footer(); ?>
