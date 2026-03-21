@@ -1,16 +1,27 @@
 
-// Splash screen — shows once per session (not on every internal page nav)
+// Splash screen — shows on first visit AND every reload; skips on internal page nav
 (function () {
   var splash = document.getElementById('mbsSplash');
   if (!splash) return;
-  if (sessionStorage.getItem('mbsSplashSeen')) {
-    splash.classList.add('hidden');
+
+  // Detect hard reload vs internal page navigation
+  var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+  var isReload = navEntry && navEntry.type === 'reload';
+
+  // Internal nav (not a reload): hide instantly with no transition
+  if (!isReload && sessionStorage.getItem('mbsSplashSeen')) {
+    splash.style.transition = 'none';
+    splash.style.opacity = '0';
+    splash.style.visibility = 'hidden';
+    splash.style.pointerEvents = 'none';
     return;
   }
+
+  // First visit or reload: run the full splash
   setTimeout(function () {
     splash.classList.add('hidden');
     sessionStorage.setItem('mbsSplashSeen', '1');
-  }, 3000);
+  }, 3400);
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
