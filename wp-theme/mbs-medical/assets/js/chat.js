@@ -1,125 +1,13 @@
 (function () {
   'use strict';
 
-  // ── Knowledge base ──────────────────────────────────────────────────────────
-  var KB = [
-    {
-      keywords: ['emergency', 'urgent', '911', 'crisis', 'help me', 'dying', 'chest pain', 'danger'],
-      response: '⚠️ If this is a medical emergency, please call 911 or go to your nearest emergency room immediately. Telehealth is not appropriate for emergencies.',
-      actions: []
-    },
-    {
-      keywords: ['book', 'appointment', 'schedule', 'reserve', 'sign up', 'get started', 'start', 'intake', 'new patient'],
-      response: "Booking is done through our secure Practice Better portal — it takes just a few minutes. No health information is collected on this website.",
-      actions: [{ label: 'Book Your Visit', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['insurance', 'coverage', 'covered', 'bill', 'billing', 'claim', 'medicaid', 'medicare', 'tricare', 'accept insurance', 'file insurance'],
-      response: "MBS Medical is a cash-pay practice — we don't accept or bill insurance. You pay a clear, fixed fee per visit. No claims, no denials, no surprise bills.",
-      actions: [{ label: 'See Pricing', url: '/#pricing' }]
-    },
-    {
-      keywords: ['cost', 'price', 'fee', 'how much', 'pay', 'dollar', 'rate', 'charge', 'pricing', 'afford'],
-      response: "Visit fees are transparent and confirmed before you book — no surprise billing ever. Check our pricing section for current rates.",
-      actions: [{ label: 'View Pricing', url: '/#pricing' }]
-    },
-    {
-      keywords: ['primary care', 'general care', 'regular doctor', 'checkup', 'check up', 'physical', 'medication refill', 'refill', 'prescription', 'wellness', 'preventive', 'preventative', 'chronic', 'routine visit', 'annual', 'follow up'],
-      response: "Our primary care service covers routine visits, medication management, lab reviews, referrals, and ongoing care — with the same provider every time, so they actually know your history.",
-      actions: [{ label: 'Primary Care Details', url: '/primary-care/' }, { label: 'Book a Visit', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['weight', 'lose weight', 'weight loss', 'diet', 'overweight', 'obesity', 'body fat', 'glp', 'semaglutide', 'tirzepatide', 'ozempic', 'wegovy', 'slim', 'fat loss', 'bmi'],
-      response: "Our medical weight loss program is clinically supervised and fully personalized. Your provider evaluates your full health picture first — no cookie-cutter programs or templates.",
-      actions: [{ label: 'Explore Weight Loss', url: '/weight-loss/' }, { label: 'Book a Consult', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['trt', 'testosterone', 'hormone', 'low t', 'low energy', 'no energy', 'libido', 'sex drive', 'fatigue', 'tired all the time', 'muscle mass', 'vitality', 'mood', 'brain fog', 'low testosterone', 'hormone therapy', 'hrt'],
-      response: "Our TRT evaluation is lab-driven — your provider reviews your symptoms and bloodwork before any recommendation is made. Discreet telehealth from home, with regular monitoring built in.",
-      actions: [{ label: 'TRT Evaluation Details', url: '/trt/' }, { label: 'Book an Evaluation', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['services', 'what do you offer', 'what do you treat', 'what can you help', 'what do you do', 'options', 'specialties'],
-      response: "MBS Medical offers three focused services — all via telehealth, all cash-pay:",
-      actions: [
-        { label: 'Primary Care', url: '/primary-care/' },
-        { label: 'Medical Weight Loss', url: '/weight-loss/' },
-        { label: 'TRT Evaluation', url: '/trt/' }
-      ]
-    },
-    {
-      keywords: ['telehealth', 'virtual visit', 'remote', 'online visit', 'video call', 'from home', 'video appointment', 'telemedicine'],
-      response: "All MBS Medical services are via telehealth — private video appointments from your home, on your schedule. Available statewide, subject to provider availability and state licensing.",
-      actions: [{ label: 'Book a Visit', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['david', 'hervig', 'provider', 'pa-c', 'physician assistant', 'who is my doctor', 'who are the providers', 'about the doctor', 'doctor background', 'meet the provider'],
-      response: "Your provider is David Hervig, PA-C — a Physician Assistant and US Army Veteran with 12 years of service. He built MBS Medical around direct, honest, ongoing care. No rotating roster of strangers.",
-      actions: [{ label: 'About David', url: '/about/' }]
-    },
-    {
-      keywords: ['md', 'medical director', 'collaborating', 'physician', 'who else', 'other doctor', 'supervising'],
-      response: "MBS Medical also has a collaborating physician (MD) who provides medical oversight across all three service lines. You can learn more on our About page.",
-      actions: [{ label: 'Meet the Team', url: '/about/' }]
-    },
-    {
-      keywords: ['hours', 'open', 'available hours', 'when are you open', 'monday', 'friday', 'weekend', 'what time'],
-      response: "MBS Medical is available Monday to Friday, 8:00 AM to 6:00 PM. Same-week appointments are typically available — no long waits.",
-      actions: [{ label: 'Book an Appointment', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['contact', 'email', 'reach you', 'message', 'talk to someone', 'question', 'hello@'],
-      response: "For general questions, email us at hello@mbsmedical.com and we'll get back to you within one business day. For booking, use the portal.",
-      actions: [{ label: 'Contact Page', url: '/contact/' }]
-    },
-    {
-      keywords: ['veteran', 'military', 'army', 'us army', 'served', 'service member'],
-      response: "David Hervig, PA-C is a US Army Veteran with 12 years of service. That background shapes a care style that's direct, thorough, and genuinely invested in the people he works with.",
-      actions: [{ label: 'About David', url: '/about/' }]
-    },
-    {
-      keywords: ['hipaa', 'privacy', 'secure', 'data', 'personal information', 'health info', 'safe', 'confidential', 'protected'],
-      response: "No health or personal information is collected on this website. All scheduling and intake happen through our HIPAA-compliant Practice Better portal — encrypted and secure.",
-      actions: [{ label: 'Book Securely', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['lab', 'labs', 'bloodwork', 'blood test', 'blood work', 'testing', 'labcorp', 'quest'],
-      response: "Lab work is a standard part of our TRT evaluation and may be part of weight loss care. Lab costs are separate from visit fees and always disclosed upfront — no hidden charges.",
-      actions: [{ label: 'TRT Evaluation', url: '/trt/' }, { label: 'Weight Loss', url: '/weight-loss/' }]
-    },
-    {
-      keywords: ['same week', 'same-week', 'how soon', 'when can i', 'available this week', 'quick', 'fast'],
-      response: "Same-week telehealth appointments are typically available for all three services. Complete a short intake and a provider will follow up within one business day.",
-      actions: [{ label: 'Book Your Visit', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    },
-    {
-      keywords: ['state', 'where', 'location', 'what state', 'statewide', 'travel', 'in person', 'office'],
-      response: "MBS Medical is telehealth-only and available statewide, subject to provider licensing. No in-person office visits at this time.",
-      actions: [{ label: 'Book a Telehealth Visit', url: '#PRACTICE-BETTER-PORTAL-URL', external: true }]
-    }
-  ];
-
+  // ── Quick reply chips shown on first open ────────────────────────────────────
   var QUICK_REPLIES = [
-    { label: '📅 Book a visit',         text: 'I want to book an appointment' },
+    { label: '📅 Book a visit',          text: 'How do I book an appointment?' },
     { label: '🩺 Our services',          text: 'What services do you offer?' },
     { label: '💳 Cost and pricing',      text: 'How much does a visit cost?' },
     { label: '🚫 Do you take insurance?', text: 'Do you accept insurance?' }
   ];
-
-  var FALLBACK_TEXT = "I don't have a specific answer for that, but our team can help. Send us a message and we'll get back to you within one business day.";
-  var FALLBACK_ACTIONS = [{ label: 'Contact Us', url: '/contact/' }, { label: 'All Services', url: '/services/' }];
-
-  // ── Match input to knowledge base ───────────────────────────────────────────
-  function matchResponse(input) {
-    var lower = input.toLowerCase();
-    for (var i = 0; i < KB.length; i++) {
-      var entry = KB[i];
-      for (var j = 0; j < entry.keywords.length; j++) {
-        if (lower.indexOf(entry.keywords[j]) !== -1) return entry;
-      }
-    }
-    return null;
-  }
 
   // ── Build the widget DOM ────────────────────────────────────────────────────
   function buildWidget() {
@@ -154,7 +42,7 @@
         '<div class="chat-quick-replies" id="chatQuickReplies" aria-label="Suggested questions"></div>' +
         '<div class="chat-input-row">' +
           '<label for="chatInput" class="sr-only">Type your question</label>' +
-          '<input type="text" id="chatInput" class="chat-input" placeholder="Ask a question..." autocomplete="off" />' +
+          '<input type="text" id="chatInput" class="chat-input" placeholder="Ask a question..." autocomplete="off" maxlength="500" />' +
           '<button id="chatSend" class="chat-send" aria-label="Send message">' +
             '<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>' +
           '</button>' +
@@ -166,11 +54,12 @@
   }
 
   // ── Add a message bubble ────────────────────────────────────────────────────
-  function addMessage(type, html, actions) {
+  function addMessage(type, text, actions) {
     var msgs = document.getElementById('chatMessages');
     var bubble = document.createElement('div');
     bubble.className = 'chat-msg ' + type;
-    bubble.innerHTML = html;
+    // Escape HTML — never inject raw API text as innerHTML
+    bubble.textContent = text;
     if (actions && actions.length) {
       var actWrap = document.createElement('div');
       actWrap.className = 'chat-msg-actions';
@@ -186,6 +75,24 @@
     }
     msgs.appendChild(bubble);
     msgs.scrollTop = msgs.scrollHeight;
+    return bubble;
+  }
+
+  // ── Typing indicator ────────────────────────────────────────────────────────
+  function showTyping() {
+    var msgs = document.getElementById('chatMessages');
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg bot chat-typing';
+    bubble.id = 'chatTypingIndicator';
+    bubble.setAttribute('aria-label', 'Assistant is typing');
+    bubble.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(bubble);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function hideTyping() {
+    var el = document.getElementById('chatTypingIndicator');
+    if (el) el.parentNode.removeChild(el);
   }
 
   // ── Render quick reply chips ────────────────────────────────────────────────
@@ -205,17 +112,98 @@
     });
   }
 
-  // ── Handle user input ───────────────────────────────────────────────────────
+  // ── Send message to WordPress AJAX → Claude API ─────────────────────────────
+  var isBusy = false;
+
   function handleInput(text) {
     var trimmed = text.trim();
-    if (!trimmed) return;
+    if (!trimmed || isBusy) return;
+
+    // Clear quick replies
+    var qr = document.getElementById('chatQuickReplies');
+    if (qr) qr.innerHTML = '';
+
     addMessage('user', trimmed, null);
-    var match = matchResponse(trimmed);
-    if (match) {
-      addMessage('bot', match.response, match.actions);
-    } else {
-      addMessage('bot', FALLBACK_TEXT, FALLBACK_ACTIONS);
+
+    // Check for AJAX config
+    var ajaxUrl = window.mbsChatData && window.mbsChatData.ajaxUrl;
+    var nonce   = window.mbsChatData && window.mbsChatData.nonce;
+
+    if (!ajaxUrl || !nonce) {
+      // Fallback if config is missing
+      addMessage('bot', "I'm not set up correctly right now. Please use our contact form and we'll get back to you within one business day.", [
+        { label: 'Contact Us', url: '/contact/' }
+      ]);
+      return;
     }
+
+    isBusy = true;
+    var input  = document.getElementById('chatInput');
+    var send   = document.getElementById('chatSend');
+    if (input) input.disabled = true;
+    if (send)  send.disabled  = true;
+
+    showTyping();
+
+    // Build form data
+    var body = 'action=mbs_chat_message' +
+               '&nonce=' + encodeURIComponent(nonce) +
+               '&message=' + encodeURIComponent(trimmed);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', ajaxUrl, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    xhr.timeout = 30000; // 30 seconds
+
+    xhr.onload = function () {
+      hideTyping();
+      isBusy = false;
+      if (input) input.disabled = false;
+      if (send)  send.disabled  = false;
+      if (input) input.focus();
+
+      if (xhr.status >= 200 && xhr.status < 300) {
+        var data;
+        try { data = JSON.parse(xhr.responseText); } catch (e) { data = null; }
+
+        if (data && data.success && data.data && data.data.message) {
+          var links = (data.data.links && data.data.links.length) ? data.data.links : null;
+          addMessage('bot', data.data.message, links);
+        } else {
+          var errMsg = (data && data.data && data.data.message) ? data.data.message :
+            "I'm having trouble connecting right now. Please use our contact form and we'll get back to you within one business day.";
+          addMessage('bot', errMsg, [
+            { label: 'Contact Us', url: '/contact/' }
+          ]);
+        }
+      } else {
+        addMessage('bot', "Something went wrong on my end. Please use our contact form and we'll get back to you within one business day.", [
+          { label: 'Contact Us', url: '/contact/' }
+        ]);
+      }
+    };
+
+    xhr.onerror = function () {
+      hideTyping();
+      isBusy = false;
+      if (input) input.disabled = false;
+      if (send)  send.disabled  = false;
+      addMessage('bot', "I couldn't connect. Please check your internet connection or use our contact form.", [
+        { label: 'Contact Us', url: '/contact/' }
+      ]);
+    };
+
+    xhr.ontimeout = function () {
+      hideTyping();
+      isBusy = false;
+      if (input) input.disabled = false;
+      if (send)  send.disabled  = false;
+      addMessage('bot', "That took too long to respond. Please try again or use our contact form.", [
+        { label: 'Contact Us', url: '/contact/' }
+      ]);
+    };
+
+    xhr.send(body);
   }
 
   // ── Initialise ──────────────────────────────────────────────────────────────
@@ -264,15 +252,15 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChat(); }
       });
     }
+
     closeBtn.addEventListener('click', function (e) { e.stopPropagation(); closeChat(); });
 
-    // Prevent any click inside the chat window from triggering outside-click close
+    // Prevent clicks inside the chat window from triggering outside-click close
     win.addEventListener('click', function (e) { e.stopPropagation(); });
 
     send.addEventListener('click', function () {
       handleInput(input.value);
       input.value = '';
-      input.focus();
     });
 
     input.addEventListener('keydown', function (e) {

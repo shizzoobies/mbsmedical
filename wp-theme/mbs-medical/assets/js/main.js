@@ -43,33 +43,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
   if (toggle && menu) {
+    const closeMenu = () => {
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      toggle.focus();
+    };
+
     // Open / close menu
     toggle.addEventListener('click', () => {
       const isOpen = menu.classList.toggle('open');
       toggle.classList.toggle('open', isOpen);
       toggle.setAttribute('aria-expanded', isOpen);
       toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      // Move focus to first menu link when opening
+      if (isOpen) {
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+      }
     });
 
     // Close menu when a link is clicked; return focus to toggle
     menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('open');
-        toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Open menu');
-        toggle.focus();
-      });
+      link.addEventListener('click', closeMenu);
     });
 
-    // Close menu on Escape key; return focus to toggle
+    // Focus trap — keep Tab/Shift+Tab inside menu while open
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.classList.contains('open')) {
-        menu.classList.remove('open');
-        toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Open menu');
-        toggle.focus();
+      if (!menu.classList.contains('open')) return;
+
+      if (e.key === 'Escape') { closeMenu(); return; }
+
+      if (e.key === 'Tab') {
+        const focusable = Array.from(menu.querySelectorAll('a'));
+        const first = focusable[0];
+        const last  = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          // Shift+Tab: wrap from first link back to toggle
+          if (document.activeElement === first) {
+            e.preventDefault();
+            toggle.focus();
+          }
+        } else {
+          // Tab: wrap from toggle forward to first link, or from last link back to toggle
+          if (document.activeElement === toggle) {
+            e.preventDefault();
+            first.focus();
+          } else if (document.activeElement === last) {
+            e.preventDefault();
+            toggle.focus();
+          }
+        }
       }
     });
   }

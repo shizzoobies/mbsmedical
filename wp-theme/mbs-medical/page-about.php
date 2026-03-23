@@ -12,55 +12,68 @@
   </div>
 </section>
 
-<!-- Provider bio — David -->
-<section class="section section-alt" aria-labelledby="david-heading">
+<!-- Team gallery -->
+<section class="section section-alt" aria-labelledby="team-heading">
   <div class="container">
-    <div class="split">
-      <div>
-        <img src="<?php echo $img; ?>/david.png" alt="David Hervig PA-C, Physician Assistant and US Army Veteran" style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);display:block;" />
-      </div>
-      <div class="split-text">
-        <div class="label" aria-hidden="true">Meet the team</div>
-        <h2 id="david-heading">David Hervig, PA-C</h2>
-        <p>David is a Physician Assistant and a man of many hats. Always a medical provider first, he also serves as one of our office managers and currently leads marketing for the practice.</p>
-        <p>David is a US Army Veteran with 12 years of service. He learned medicine from the ground up in some of the most demanding environments imaginable, and that background shapes how he practices today: direct, thorough, and genuinely invested in the people he works with.</p>
+    <div style="text-align:center;margin-bottom:3rem">
+      <div class="label" aria-hidden="true">Meet the team</div>
+      <h2 class="title" id="team-heading">The people behind your care</h2>
+      <p class="lead center">A licensed PA supported by board-certified supervising physicians with decades of clinical experience.</p>
+    </div>
+    <div class="team-grid">
+
+      <!-- David Hervig PA-C -->
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="<?php echo $img; ?>/david.png" alt="David Hervig PA-C, Physician Assistant" />
+        </div>
+        <h3>David Hervig, PA-C</h3>
+        <p class="team-role">Physician Assistant, Primary Provider</p>
+        <p>David is a Physician Assistant and US Army Veteran with 12 years of service. He learned medicine in some of the most demanding environments imaginable, and that background shapes how he practices today: direct, thorough, and genuinely invested in each patient.</p>
         <p>He built MBS Medical around the belief that good care should be accessible, honest, and uncomplicated by insurance bureaucracy.</p>
         <ul class="cred-list">
           <li><div class="cred-pip" aria-hidden="true"></div> Physician Assistant (PA-C)</li>
-          <li><div class="cred-pip" aria-hidden="true"></div> US Army Veteran, 12 years of service</li>
+          <li><div class="cred-pip" aria-hidden="true"></div> US Army Veteran, 12 years</li>
           <li><div class="cred-pip" aria-hidden="true"></div> Primary care, weight loss &amp; TRT</li>
-          <li><div class="cred-pip" aria-hidden="true"></div> Cash-pay, direct-care model</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- MD provider bio -->
-<section class="section" aria-labelledby="md-heading">
-  <div class="container">
-    <div class="split">
-      <div class="split-text">
-        <div class="label" aria-hidden="true">Collaborating physician</div>
-        <h2 id="md-heading">[First Name] [Last Name], MD</h2>
-        <p>[Physician first name] brings [X] years of clinical medicine to the MBS Medical team. Board-certified in [specialty], [he/she/they] provide the physician oversight and collaborative medical direction that supports the practice across all three service lines.</p>
-        <p>[Add 1 to 2 sentences about their background, training, or philosophy here. What makes them a good fit for a cash-pay, direct-care model? What do they care about clinically?]</p>
+      <!-- Dr. Eric Folkens -->
+      <div class="team-card">
+        <div class="team-avatar team-avatar-ph" aria-hidden="true">EF</div>
+        <h3>Eric Folkens, MD</h3>
+        <p class="team-role">Supervising Physician</p>
+        <p>Dr. Folkens is a board-certified family medicine physician with over 34 years of clinical experience in Florida. He founded urgent care centers across Bradenton, Sarasota, and Lakewood Ranch, and currently serves as Medical Director of the Bradenton Research Center, where he has overseen more than 150 clinical trials spanning conditions from Alzheimer&rsquo;s disease and multiple sclerosis to COVID-19.</p>
+        <p>A Chief Resident alumnus and ABFM Diplomate, Dr. Folkens brings deep primary care expertise and a research-driven perspective to his supervising role at MBS Medical.</p>
         <ul class="cred-list">
           <li><div class="cred-pip" aria-hidden="true"></div> Medical Doctor (MD)</li>
-          <li><div class="cred-pip" aria-hidden="true"></div> Board-certified, [specialty]</li>
-          <li><div class="cred-pip" aria-hidden="true"></div> [X] years of clinical experience</li>
-          <li><div class="cred-pip" aria-hidden="true"></div> Collaborating physician, MBS Medical</li>
+          <li><div class="cred-pip" aria-hidden="true"></div> ABFM Board-Certified, Family Medicine</li>
+          <li><div class="cred-pip" aria-hidden="true"></div> 34+ years of clinical experience</li>
+          <li><div class="cred-pip" aria-hidden="true"></div> Supervising physician, MBS Medical</li>
         </ul>
       </div>
-      <div>
-        <img src="<?php echo $img; ?>/doctor.png" alt="[Doctor Name] MD, Collaborating Physician at MBS Medical" style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);display:block;" />
+
+      <!-- Dr. Mark Dawson -->
+      <div class="team-card">
+        <div class="team-avatar team-avatar-ph" aria-hidden="true">MD</div>
+        <h3>Mark Dawson, MD</h3>
+        <p class="team-role">Supervising Physician</p>
+        <p>Dr. Dawson is a gastroenterologist whose clinical career spans more than three decades, including 31 years in private practice in Bradenton before joining Lee Health full-time. Mentored early in his career by Dr. Bashar Attar, he found his calling in a specialty where precise diagnostics and timely intervention can be genuinely life-saving.</p>
+        <p>He values collaborative, patient-centered care and brings that same commitment and belief that good medicine is built on trust to his role as a supervising physician at MBS Medical.</p>
+        <ul class="cred-list">
+          <li><div class="cred-pip" aria-hidden="true"></div> Medical Doctor (MD)</li>
+          <li><div class="cred-pip" aria-hidden="true"></div> Gastroenterology</li>
+          <li><div class="cred-pip" aria-hidden="true"></div> 30+ years of clinical experience</li>
+          <li><div class="cred-pip" aria-hidden="true"></div> Supervising physician, MBS Medical</li>
+        </ul>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- About the practice -->
-<section class="section section-alt" aria-labelledby="practice-heading">
+<section class="section" aria-labelledby="practice-heading">
   <div class="container">
     <div class="split">
       <div class="split-text">

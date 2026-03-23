@@ -12,7 +12,7 @@
   </div>
 </section>
 
-<div class="service-rows">
+<section class="service-rows" aria-label="Service details">
   <div class="container">
 
     <!-- Primary Care -->
@@ -73,7 +73,7 @@
     </div>
 
   </div>
-</div>
+</section>
 
 <!-- How it works -->
 <section class="section section-navy" aria-labelledby="how-it-works-heading">
