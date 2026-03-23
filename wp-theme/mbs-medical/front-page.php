@@ -5,20 +5,20 @@ $img   = get_template_directory_uri() . '/assets/img';
 $video = get_template_directory_uri() . '/assets/video';
 ?>
 
-<main id="main-content">
-
-<!-- ══ Split Hero ═══════════════════════════════════════════ -->
-<section class="hero hero-split" aria-labelledby="hero-heading">
+<!-- ====================================================
+     HERO SPLIT
+     ==================================================== -->
+<section class="hero-split" aria-labelledby="hero-heading">
 
   <!-- Left: dark content panel -->
   <div class="hero-panel-dark">
     <div class="hero-panel-content">
-      <span class="eyebrow eyebrow-light">Bradenton &amp; Sarasota area &middot; Telehealth statewide</span>
-      <h1 id="hero-heading">Primary care, weight loss, and TRT from one modern practice</h1>
-      <p class="hero-lead">MBS Medical makes getting quality care simpler. Start online, meet with a licensed provider who knows your history, and follow a plan built around your goals.</p>
+      <span class="eyebrow eyebrow--light">Bradenton &amp; Sarasota area &middot; Telehealth statewide</span>
+      <h1 id="hero-heading" class="on-dark">Primary care, weight loss, and TRT from one modern practice</h1>
+      <p class="lead lead--light">MBS Medical makes getting quality care simpler. Start online, meet with a licensed provider who knows your history, and follow a plan built around your goals.</p>
       <div class="hero-actions btn-row">
-        <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn btn-inverse" target="_blank" rel="noopener noreferrer">Book Your Visit</a>
-        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="btn btn-ghost">Explore Services</a>
+        <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn btn--inverse" target="_blank" rel="noopener noreferrer">Book Your Visit</a>
+        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="btn-ghost">Explore Services</a>
       </div>
       <div class="hero-stats" aria-label="Practice highlights">
         <div>
@@ -40,16 +40,18 @@ $video = get_template_directory_uri() . '/assets/video';
   <!-- Right: intro video -->
   <div class="hero-panel-image">
     <video autoplay muted playsinline loop
-           class="hero-panel-video"
+           class="hero-panel-photo"
            aria-label="MBS Medical intro video"
-           poster="<?php echo $img; ?>/hero.png">
-      <source src="<?php echo $video; ?>/intro.mp4" type="video/mp4">
+           poster="<?php echo esc_url( $img ); ?>/hero.png">
+      <source src="<?php echo esc_url( $video ); ?>/intro.mp4" type="video/mp4">
     </video>
   </div>
 
 </section>
 
-<!-- ══ Services ═════════════════════════════════════════════ -->
+<!-- ====================================================
+     SERVICES
+     ==================================================== -->
 <section class="section" aria-labelledby="services-heading">
   <div class="container">
     <div class="section-header">
@@ -62,7 +64,7 @@ $video = get_template_directory_uri() . '/assets/video';
 
       <article class="service-card" aria-labelledby="home-svc-pc">
         <div class="service-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
         </div>
         <h3 id="home-svc-pc">Primary Care</h3>
         <p>Routine visits, medication management, and ongoing care from a provider who actually knows your history. No rushed appointments, no revolving door.</p>
@@ -71,7 +73,7 @@ $video = get_template_directory_uri() . '/assets/video';
 
       <article class="service-card" aria-labelledby="home-svc-wl">
         <div class="service-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg>
         </div>
         <h3 id="home-svc-wl">Weight Loss</h3>
         <p>Medically supervised weight management built around your health history, your goals, and real clinical oversight. Progress check-ins built in.</p>
@@ -80,7 +82,7 @@ $video = get_template_directory_uri() . '/assets/video';
 
       <article class="service-card" aria-labelledby="home-svc-trt">
         <div class="service-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
         </div>
         <h3 id="home-svc-trt">TRT Evaluation</h3>
         <p>Lab-driven evaluation and ongoing care for men dealing with low energy, mood changes, or reduced vitality. Discreet, thorough, and clinically sound.</p>
@@ -94,10 +96,12 @@ $video = get_template_directory_uri() . '/assets/video';
   </div>
 </section>
 
-<!-- ══ How it works ══════════════════════════════════════════ -->
-<section class="section section-alt" aria-labelledby="steps-heading">
+<!-- ====================================================
+     HOW IT WORKS
+     ==================================================== -->
+<section class="section section--tinted" aria-labelledby="steps-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header section-header--center">
       <hr class="section-rule" aria-hidden="true">
       <span class="eyebrow">Simple. Honest. Effective.</span>
       <h2 id="steps-heading">Three steps to better care</h2>
@@ -123,13 +127,15 @@ $video = get_template_directory_uri() . '/assets/video';
   </div>
 </section>
 
-<!-- ══ Testimonials (dark) ════════════════════════════════════ -->
-<section class="section section-dark" aria-labelledby="testimonials-heading">
+<!-- ====================================================
+     TESTIMONIALS
+     ==================================================== -->
+<section class="section section--dark" aria-labelledby="testimonials-heading">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow eyebrow-light">Patient Experiences</span>
-      <h2 id="testimonials-heading" style="color:white">What patients are saying</h2>
-      <p class="lead" style="color:rgba(255,255,255,.55)">Real feedback from real patients.</p>
+    <div class="section-header section-header--center">
+      <span class="eyebrow eyebrow--light">Patient Experiences</span>
+      <h2 id="testimonials-heading">What patients are saying</h2>
+      <p class="lead">Real feedback from real patients.</p>
     </div>
     <div class="testimonials-grid">
 
@@ -163,14 +169,18 @@ $video = get_template_directory_uri() . '/assets/video';
   </div>
 </section>
 
-<!-- ══ Provider ══════════════════════════════════════════════ -->
+<!-- ====================================================
+     PROVIDER
+     ==================================================== -->
 <section class="section" aria-labelledby="provider-heading">
   <div class="container">
-    <div class="split">
+    <div class="about-grid">
       <div>
-        <img src="<?php echo $img; ?>/david.png" alt="David Hervig PA-C, Physician Assistant and US Army Veteran" style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)" />
+        <img src="<?php echo esc_url( $img ); ?>/david.png"
+             alt="David Hervig PA-C, Physician Assistant and US Army Veteran"
+             style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)" />
       </div>
-      <div class="split-text">
+      <div>
         <span class="eyebrow">Your Provider</span>
         <h2 id="provider-heading">David Hervig, PA-C</h2>
         <p>David is a Physician Assistant and a man of many hats. Always a medical provider first, he also serves as one of our office managers and currently leads marketing for the practice.</p>
@@ -182,23 +192,26 @@ $video = get_template_directory_uri() . '/assets/video';
           <li><div class="cred-pip" aria-hidden="true"></div> Cash-pay, direct-care model</li>
         </ul>
         <div class="btn-row" style="margin-top:2rem">
-          <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="btn btn-outline">Meet the Team</a>
+          <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="btn-secondary">Meet the Team</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ Pricing ════════════════════════════════════════════════ -->
-<section class="section section-alt" id="pricing" aria-labelledby="pricing-heading">
+<!-- ====================================================
+     PRICING
+     ==================================================== -->
+<section class="section section--tinted" id="pricing" aria-labelledby="pricing-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header section-header--center">
       <hr class="section-rule" aria-hidden="true">
       <span class="eyebrow">Transparent Pricing</span>
       <h2 id="pricing-heading">You know the cost before you book</h2>
       <p class="lead">No claims. No denials. No surprise bills. MBS Medical is a cash-pay practice. Your fee is clear, confirmed, and fair.</p>
     </div>
     <div class="pricing-grid">
+
       <div class="price-card">
         <div class="price-accent" aria-hidden="true"></div>
         <div class="price-icon" aria-hidden="true">&#129682;</div>
@@ -211,8 +224,11 @@ $video = get_template_directory_uri() . '/assets/video';
           <li><div class="price-check" aria-hidden="true">&#10003;</div> Care notes and follow-up plan</li>
           <li><div class="price-check" aria-hidden="true">&#10003;</div> Lab orders and referrals as needed</li>
         </ul>
-        <div class="price-cta"><a href="<?php echo esc_url( home_url( '/primary-care/' ) ); ?>" class="btn btn-outline" style="width:100%;justify-content:center">Learn More</a></div>
+        <div class="price-cta">
+          <a href="<?php echo esc_url( home_url( '/primary-care/' ) ); ?>" class="btn-secondary" style="width:100%;justify-content:center">Learn More</a>
+        </div>
       </div>
+
       <div class="price-card featured">
         <div class="price-accent" aria-hidden="true"></div>
         <div class="price-icon" aria-hidden="true">&#128201;</div>
@@ -225,8 +241,11 @@ $video = get_template_directory_uri() . '/assets/video';
           <li><div class="price-check" aria-hidden="true">&#10003;</div> Structured progress check-ins</li>
           <li><div class="price-check" aria-hidden="true">&#10003;</div> Plan adjustments over time</li>
         </ul>
-        <div class="price-cta"><a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="btn btn-primary" style="width:100%;justify-content:center">Explore Weight Loss</a></div>
+        <div class="price-cta">
+          <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="btn" style="width:100%;justify-content:center">Explore Weight Loss</a>
+        </div>
       </div>
+
       <div class="price-card">
         <div class="price-accent" aria-hidden="true"></div>
         <div class="price-icon" aria-hidden="true">&#128300;</div>
@@ -239,26 +258,29 @@ $video = get_template_directory_uri() . '/assets/video';
           <li><div class="price-check" aria-hidden="true">&#10003;</div> Lab-guided clinical decisions</li>
           <li><div class="price-check" aria-hidden="true">&#10003;</div> Regular follow-up monitoring</li>
         </ul>
-        <div class="price-cta"><a href="<?php echo esc_url( home_url( '/trt/' ) ); ?>" class="btn btn-outline" style="width:100%;justify-content:center">See TRT Details</a></div>
+        <div class="price-cta">
+          <a href="<?php echo esc_url( home_url( '/trt/' ) ); ?>" class="btn-secondary" style="width:100%;justify-content:center">See TRT Details</a>
+        </div>
       </div>
+
     </div>
-    <p style="text-align:center;margin-top:1.25rem;font-size:.85rem;color:var(--muted)">Fees shown are placeholders. Replace with actual visit pricing before launch. Lab costs are separate and disclosed at time of ordering.</p>
+    <p style="text-align:center;margin-top:1.25rem;font-size:.85rem;color:var(--text-muted)">Fees shown are placeholders. Replace with actual visit pricing before launch. Lab costs are separate and disclosed at time of ordering.</p>
   </div>
 </section>
 
-<!-- ══ CTA ═══════════════════════════════════════════════════ -->
+<!-- ====================================================
+     CTA STRIP
+     ==================================================== -->
 <section class="cta-strip" aria-labelledby="cta-heading">
   <div class="container">
-    <span class="eyebrow">Ready to Get Started?</span>
+    <span class="eyebrow eyebrow--light">Ready to Get Started?</span>
     <h2 id="cta-heading">Take control of your health today</h2>
     <p>Same-week telehealth appointments available. Complete a short intake online and a provider will follow up within one business day.</p>
     <div class="btn-row">
-      <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn btn-inverse" target="_blank" rel="noopener noreferrer">Book Your Visit</a>
-      <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="btn btn-ghost">Learn About Services</a>
+      <a href="#PRACTICE-BETTER-PORTAL-URL" class="btn btn--inverse" target="_blank" rel="noopener noreferrer">Book Your Visit</a>
+      <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="btn-ghost">Learn About Services</a>
     </div>
   </div>
 </section>
-
-</main>
 
 <?php get_footer(); ?>

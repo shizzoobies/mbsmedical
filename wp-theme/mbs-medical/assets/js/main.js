@@ -1,6 +1,6 @@
-// Splash screen — shows on first visit AND every reload; skips on internal page nav
+// Splash screen -- shows on first visit AND every reload; skips on internal page nav
 (function () {
-  var splash = document.getElementById('mbsSplash');
+  var splash = document.getElementById('splash');
   if (!splash) return;
 
   // Detect hard reload vs internal page navigation
@@ -24,9 +24,11 @@
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Year in footer
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
+  // Smooth scroll for in-page anchor links
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       const id = link.getAttribute('href');
@@ -40,59 +42,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.menu');
-  if (toggle && menu) {
-    const closeMenu = () => {
-      menu.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
-      toggle.focus();
+  // Mobile navigation drawer
+  const hamburger   = document.getElementById('hamburger');
+  const mobileNav   = document.getElementById('mobile-nav');
+  const closeBtn    = document.getElementById('mobile-nav-close');
+
+  if (hamburger && mobileNav) {
+    const openMenu = () => {
+      mobileNav.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      hamburger.setAttribute('aria-label', 'Close navigation menu');
+      // Move focus to the close button
+      if (closeBtn) closeBtn.focus();
     };
 
-    // Open / close menu
-    toggle.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('open');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen);
-      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-      // Move focus to first menu link when opening
-      if (isOpen) {
-        const firstLink = menu.querySelector('a');
-        if (firstLink) firstLink.focus();
-      }
+    const closeMenu = () => {
+      mobileNav.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+      hamburger.focus();
+    };
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.contains('is-open');
+      isOpen ? closeMenu() : openMenu();
     });
 
-    // Close menu when a link is clicked; return focus to toggle
-    menu.querySelectorAll('a').forEach(link => {
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeMenu);
+    }
+
+    // Close when any nav link is clicked
+    mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
 
-    // Focus trap — keep Tab/Shift+Tab inside menu while open
-    document.addEventListener('keydown', (e) => {
-      if (!menu.classList.contains('open')) return;
+    // Close on backdrop click (outside the panel)
+    mobileNav.addEventListener('click', e => {
+      if (e.target === mobileNav) closeMenu();
+    });
 
-      if (e.key === 'Escape') { closeMenu(); return; }
+    // Focus trap and Escape key
+    document.addEventListener('keydown', e => {
+      if (!mobileNav.classList.contains('is-open')) return;
+
+      if (e.key === 'Escape') {
+        closeMenu();
+        return;
+      }
 
       if (e.key === 'Tab') {
-        const focusable = Array.from(menu.querySelectorAll('a'));
+        const focusable = Array.from(
+          mobileNav.querySelectorAll('button, a[href]')
+        ).filter(el => !el.closest('[aria-hidden="true"]'));
         const first = focusable[0];
         const last  = focusable[focusable.length - 1];
+
         if (e.shiftKey) {
-          // Shift+Tab: wrap from first link back to toggle
           if (document.activeElement === first) {
             e.preventDefault();
-            toggle.focus();
+            last.focus();
           }
         } else {
-          // Tab: wrap from toggle forward to first link, or from last link back to toggle
-          if (document.activeElement === toggle) {
+          if (document.activeElement === last) {
             e.preventDefault();
             first.focus();
-          } else if (document.activeElement === last) {
-            e.preventDefault();
-            toggle.focus();
           }
         }
       }

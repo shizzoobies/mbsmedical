@@ -1,6 +1,6 @@
 <?php
 /**
- * MBS Medical Theme Functions — v2.0.0
+ * MBS Medical Theme Functions -- v3.0.0
  */
 
 // Theme support
@@ -14,7 +14,7 @@ function mbs_enqueue_assets() {
         'mbs-style',
         get_stylesheet_uri(),
         [],
-        '2.0.0'
+        '3.0.0'
     );
     wp_enqueue_style(
         'mbs-inter',
@@ -26,14 +26,14 @@ function mbs_enqueue_assets() {
         'mbs-main',
         get_template_directory_uri() . '/assets/js/main.js',
         [],
-        '2.0.0',
+        '3.0.0',
         true
     );
     wp_enqueue_script(
         'mbs-chat',
         get_template_directory_uri() . '/assets/js/chat.js',
         [],
-        '2.0.0',
+        '3.0.0',
         true
     );
     wp_localize_script( 'mbs-chat', 'mbsChatData', [
@@ -44,14 +44,21 @@ function mbs_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'mbs_enqueue_assets' );
 
-// Helper: active nav class + aria-current
+// Helper: active nav aria-current attribute
+// Returns aria-current="page" on the active nav item.
+// Usage: <a href="..." <?php mbs_nav_class( 'services' ); ?>>Services</a>
 function mbs_nav_class( $check ) {
-    if ( $check === 'home' && is_front_page() ) return ' style="color:var(--teal)" aria-current="page"';
-    if ( $check !== 'home' && is_page( $check ) ) return ' style="color:var(--teal)" aria-current="page"';
-    return '';
+    if ( $check === 'home' && is_front_page() ) {
+        echo 'aria-current="page"';
+        return;
+    }
+    if ( $check !== 'home' && is_page( $check ) ) {
+        echo 'aria-current="page"';
+        return;
+    }
 }
 
-// ── Claude API Chat Handler ──────────────────────────────────────────────────
+// -- Claude API Chat Handler --------------------------------------------------
 add_action( 'wp_ajax_mbs_chat_message',        'mbs_handle_chat_message' );
 add_action( 'wp_ajax_nopriv_mbs_chat_message', 'mbs_handle_chat_message' );
 
@@ -63,7 +70,7 @@ function mbs_handle_chat_message() {
         return;
     }
 
-    // 2. Rate limiting — 15 messages per IP per hour
+    // 2. Rate limiting -- 15 messages per IP per hour
     $ip       = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
     $rate_key = 'mbs_chat_rate_' . md5( $ip );
     $count    = (int) get_transient( $rate_key );
@@ -84,22 +91,22 @@ function mbs_handle_chat_message() {
         return;
     }
 
-    // 4. Get API key — from wp-config.php constant or admin settings
+    // 4. Get API key -- from wp-config.php constant or admin settings
     $api_key = defined( 'MBS_CLAUDE_API_KEY' ) ? MBS_CLAUDE_API_KEY : get_option( 'mbs_claude_api_key', '' );
     if ( empty( $api_key ) ) {
         wp_send_json_error( [ 'message' => 'Chat is temporarily unavailable. Please use our contact form and we\'ll get back to you.' ], 500 );
         return;
     }
 
-    // 5. System prompt — short answers + page links as structured JSON
+    // 5. System prompt -- short answers + page links as structured JSON
     $system_prompt = 'You are the MBS Medical chat assistant. Your job is to give a short, friendly answer and point the patient to the right page on the site for full details.
 
-EMERGENCY RULE: If anyone describes a medical emergency (chest pain, trouble breathing, severe pain, crisis, self-harm), respond with this exact message field: "⚠️ If this is a medical emergency, please call 911 or go to your nearest emergency room right away." Include no links. Stop there.
+EMERGENCY RULE: If anyone describes a medical emergency (chest pain, trouble breathing, severe pain, crisis, self-harm), respond with this exact message field: "If this is a medical emergency, please call 911 or go to your nearest emergency room right away." Include no links. Stop there.
 
 ABOUT MBS MEDICAL:
-Cash-pay telehealth practice. Three services: Primary Care, Medical Weight Loss, TRT Evaluation. No insurance accepted. All visits via secure video call. Same-week appointments typically available Mon–Fri 8am–6pm.
+Cash-pay telehealth practice. Three services: Primary Care, Medical Weight Loss, TRT Evaluation. No insurance accepted. All visits via secure video call. Same-week appointments typically available Mon-Fri 8am-6pm.
 
-SITE PAGES — use these URLs in your links array:
+SITE PAGES -- use these URLs in your links array:
 - Homepage: /
 - Pricing section: /#pricing
 - All Services: /services/
@@ -110,7 +117,7 @@ SITE PAGES — use these URLs in your links array:
 - Contact / General questions: /contact/
 - Book an appointment (external): #PRACTICE-BETTER-PORTAL-URL
 
-OUTPUT FORMAT — you must always respond with valid JSON only. No markdown, no code fences, just raw JSON:
+OUTPUT FORMAT -- you must always respond with valid JSON only. No markdown, no code fences, just raw JSON:
 {
   "message": "One or two sentence answer that gives the key point and tells them the page below has the full details.",
   "links": [
@@ -119,11 +126,11 @@ OUTPUT FORMAT — you must always respond with valid JSON only. No markdown, no 
 }
 
 RULES:
-- "message" must be 1–2 sentences maximum. Be warm and direct.
-- Always include 1–3 relevant links so the patient can go read the full details.
+- "message" must be 1-2 sentences maximum. Be warm and direct.
+- Always include 1-3 relevant links so the patient can go read the full details.
 - For booking links use external: true since it opens the portal.
 - Never give clinical advice, diagnoses, or treatment recommendations.
-- Never make up pricing numbers — say fees are confirmed at booking.
+- Never make up pricing numbers -- say fees are confirmed at booking.
 - If something is outside your knowledge, link to /contact/ with label "Send Us a Message".';
 
     // 6. Call Anthropic API
@@ -195,7 +202,7 @@ RULES:
     wp_send_json_success( [ 'message' => $message, 'links' => $links ] );
 }
 
-// ── Admin Settings Page — MBS Chat API Key ───────────────────────────────────
+// -- Admin Settings Page -- MBS Chat API Key ----------------------------------
 add_action( 'admin_menu', 'mbs_add_settings_page' );
 
 function mbs_add_settings_page() {
@@ -219,17 +226,17 @@ function mbs_register_settings() {
 function mbs_render_settings_page() {
     if ( ! current_user_can( 'manage_options' ) ) return;
     $saved_key = get_option( 'mbs_claude_api_key', '' );
-    $masked    = $saved_key ? substr( $saved_key, 0, 18 ) . str_repeat( '•', 20 ) : '';
+    $masked    = $saved_key ? substr( $saved_key, 0, 18 ) . str_repeat( '.', 20 ) : '';
     $email1    = get_option( 'mbs_partner_email_1', '' );
     $email2    = get_option( 'mbs_partner_email_2', '' );
     ?>
     <div class="wrap">
-        <h1>MBS Medical — Site Settings</h1>
+        <h1>MBS Medical -- Site Settings</h1>
 
         <form method="post" action="options.php">
             <?php settings_fields( 'mbs_chat_settings_group' ); ?>
 
-            <h2>Contact Form — Partner Emails</h2>
+            <h2>Contact Form -- Partner Emails</h2>
             <p>All contact form submissions will be emailed to both addresses below.</p>
             <table class="form-table">
                 <tr>
@@ -238,7 +245,7 @@ function mbs_render_settings_page() {
                         <input type="email" id="mbs_partner_email_1" name="mbs_partner_email_1"
                             value="<?php echo esc_attr( $email1 ); ?>" class="regular-text" placeholder="partner1@mbsmedical.com" />
                         <?php if ( $email1 ) : ?>
-                            <p class="description">✅ <?php echo esc_html( $email1 ); ?></p>
+                            <p class="description"><?php echo esc_html( $email1 ); ?></p>
                         <?php endif; ?>
                     </td>
                 </tr>
@@ -248,13 +255,13 @@ function mbs_render_settings_page() {
                         <input type="email" id="mbs_partner_email_2" name="mbs_partner_email_2"
                             value="<?php echo esc_attr( $email2 ); ?>" class="regular-text" placeholder="partner2@mbsmedical.com" />
                         <?php if ( $email2 ) : ?>
-                            <p class="description">✅ <?php echo esc_html( $email2 ); ?></p>
+                            <p class="description"><?php echo esc_html( $email2 ); ?></p>
                         <?php endif; ?>
                     </td>
                 </tr>
             </table>
 
-            <h2 style="margin-top:2rem">Chat Widget — Claude API Key</h2>
+            <h2 style="margin-top:2rem">Chat Widget -- Claude API Key</h2>
             <p>Enter your Anthropic API key. Get one at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>.</p>
             <table class="form-table">
                 <tr>
@@ -264,7 +271,7 @@ function mbs_render_settings_page() {
                             value="<?php echo esc_attr( $saved_key ); ?>" class="regular-text"
                             placeholder="sk-ant-api03-..." autocomplete="off" />
                         <?php if ( $saved_key ) : ?>
-                            <p class="description">✅ Key saved: <code><?php echo esc_html( $masked ); ?></code></p>
+                            <p class="description">Key saved: <code><?php echo esc_html( $masked ); ?></code></p>
                         <?php else : ?>
                             <p class="description">No key saved yet. The chat widget will show an error until a key is added.</p>
                         <?php endif; ?>
@@ -278,7 +285,7 @@ function mbs_render_settings_page() {
     <?php
 }
 
-// ── Contact Form Handler ─────────────────────────────────────────────────────
+// -- Contact Form Handler -----------------------------------------------------
 add_action( 'wp_ajax_mbs_contact_form',        'mbs_handle_contact_form' );
 add_action( 'wp_ajax_nopriv_mbs_contact_form', 'mbs_handle_contact_form' );
 
@@ -291,14 +298,14 @@ function mbs_handle_contact_form() {
         return;
     }
 
-    // 2. Honeypot check — bots fill this field, real users don't
+    // 2. Honeypot check -- bots fill this field, real users don't
     $honeypot = isset( $_POST['website'] ) ? sanitize_text_field( wp_unslash( $_POST['website'] ) ) : '';
     if ( ! empty( $honeypot ) ) {
         wp_send_json_success(); // Silently succeed so bots don't know they were caught
         return;
     }
 
-    // 3. Rate limit — 3 submissions per IP per hour
+    // 3. Rate limit -- 3 submissions per IP per hour
     $ip       = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
     $rate_key = 'mbs_contact_rate_' . md5( $ip );
     $count    = (int) get_transient( $rate_key );
@@ -335,7 +342,6 @@ function mbs_handle_contact_form() {
     $recipients = array_filter( [ $email1, $email2 ], 'is_email' );
 
     if ( empty( $recipients ) ) {
-        // Fallback if no partner emails are configured
         wp_send_json_error( [ 'message' => 'We\'re having trouble receiving messages right now. Please try again shortly.' ], 500 );
         return;
     }
