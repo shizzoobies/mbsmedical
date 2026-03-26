@@ -1,0 +1,81 @@
+---
+const serviceLinks = [
+  { href: '/services/', label: 'All Services' },
+  { href: '/primary-care/', label: 'Primary Care' },
+  { href: '/weight-loss/', label: 'Weight Loss' },
+  { href: '/trt/', label: 'TRT Evaluation' },
+];
+
+const practiceLinks = [
+  { href: '/about/', label: 'About Us' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<footer class="bg-primary-dark text-white/90">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">MBS</span>
+          </div>
+          <span class="font-heading text-xl text-white">MBS Medical</span>
+        </div>
+        <p class="text-white/60 text-sm leading-relaxed">
+          Telehealth medical care across Florida. Cash pay, no insurance needed. Same-week appointments with a provider who knows you.
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Services</h3>
+        <ul class="space-y-2.5">
+          {serviceLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-white/60 hover:text-white transition-colors text-sm">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Practice -->
+      <div>
+        <h3 class="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Practice</h3>
+        <ul class="space-y-2.5">
+          {practiceLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-white/60 hover:text-white transition-colors text-sm">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Hours & CTA -->
+      <div>
+        <h3 class="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Hours</h3>
+        <p class="text-white/60 text-sm mb-1">Monday &ndash; Friday</p>
+        <p class="text-white text-sm font-medium mb-6">8:00 AM &ndash; 6:00 PM</p>
+        <a
+          href="https://mbsmedical.practicebetter.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all"
+        >
+          Book a Visit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white/40 text-xs">
+        &copy; {new Date().getFullYear()} MBS Medical. All rights reserved.
+      </p>
+      <p class="text-white/40 text-xs">
+        For medical emergencies, call 911 or go to the nearest emergency room.
+      </p>
+    </div>
+  </div>
+</footer>

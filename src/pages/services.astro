@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<Layout title="Services" description="MBS Medical services: primary care, clinically supervised weight loss, and testosterone evaluation. Telehealth across Florida.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-warm-light to-bg py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-3">Our Services</span>
+      <h1 class="font-heading text-4xl sm:text-5xl text-primary-dark mb-6">Care that fits your life</h1>
+      <p class="text-text-light text-lg max-w-2xl mx-auto leading-relaxed">
+        Three focused services designed around continuity, honesty, and real access to your provider. All delivered via telehealth across Florida.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <ServiceCard
+          title="Primary Care"
+          description="Ongoing care from a provider who knows you. Routine visits, medication management, and chronic condition care — all in one place."
+          href="/primary-care/"
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>'
+        />
+        <ServiceCard
+          title="Weight Loss"
+          description="Clinically supervised weight management. Personalized approach with GLP-1 evaluation, real provider oversight, and ongoing monitoring."
+          href="/weight-loss/"
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>'
+        />
+        <ServiceCard
+          title="TRT Evaluation"
+          description="Lab-driven testosterone evaluation. Comprehensive symptom review and honest assessment — not a sales-driven TRT clinic."
+          href="/trt/"
+          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>'
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 sm:py-28 bg-warm-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="How It Works"
+        title="Getting started is simple"
+        subtitle="From booking to your first visit — here's what to expect."
+      />
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto bg-primary text-white rounded-2xl flex items-center justify-center mb-5 text-xl font-bold">1</div>
+          <h3 class="font-semibold text-primary-dark mb-2">Book online</h3>
+          <p class="text-text-light text-sm leading-relaxed">Schedule through our secure HIPAA-compliant patient portal. Same-week availability.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto bg-primary text-white rounded-2xl flex items-center justify-center mb-5 text-xl font-bold">2</div>
+          <h3 class="font-semibold text-primary-dark mb-2">Complete your intake</h3>
+          <p class="text-text-light text-sm leading-relaxed">Fill out a brief health history. Your provider reviews it before your visit so you spend time on care, not paperwork.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto bg-primary text-white rounded-2xl flex items-center justify-center mb-5 text-xl font-bold">3</div>
+          <h3 class="font-semibold text-primary-dark mb-2">Meet your provider</h3>
+          <p class="text-text-light text-sm leading-relaxed">Connect via telehealth and build a care plan together. Follow-ups, labs, and prescriptions managed through the portal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 sm:py-28 bg-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Not sure which service is right for you?</h2>
+      <p class="text-white/80 text-lg mb-10">
+        Book a visit or send us a question. We'll help you figure out the right path.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white text-primary-dark px-8 py-3.5 rounded-full text-base font-semibold hover:bg-warm-light transition-all hover:shadow-lg">
+          Book a Visit
+        </a>
+        <a href="/contact/" class="inline-flex items-center justify-center gap-2 bg-white/15 text-white px-8 py-3.5 rounded-full text-base font-semibold hover:bg-white/25 transition-all">
+          Ask a Question
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

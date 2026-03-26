@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:innerpeazb2d96092ef-akdem.wpcomstaging.com)",
+      "Bash(npm create:*)",
+      "Bash(npx create-astro@latest . --template minimal --no-install --no-git --typescript strict --yes)",
+      "Bash(cp -r apparent-apogee/* .)",
+      "Bash(cp apparent-apogee/.* .)",
+      "Bash(rm -rf apparent-apogee)",
+      "Bash(npm install:*)",
+      "Bash(npx astro:*)"
+    ]
+  }
+}
