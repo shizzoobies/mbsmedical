@@ -8,7 +8,8 @@
       "Bash(cp apparent-apogee/.* .)",
       "Bash(rm -rf apparent-apogee)",
       "Bash(npm install:*)",
-      "Bash(npx astro:*)"
+      "Bash(npx astro:*)",
+      "Bash(npm run:*)"
     ]
   }
 }

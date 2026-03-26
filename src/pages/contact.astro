@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Get in touch with MBS Medical. Send us a message or book a telehealth visit through our secure patient portal.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-warm-light to-bg py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-3">Contact</span>
+      <h1 class="font-heading text-4xl sm:text-5xl text-primary-dark mb-6">Get in touch</h1>
+      <p class="text-text-light text-lg max-w-2xl mx-auto leading-relaxed">
+        Have a question before booking? Send us a message and we'll get back to you within one business day.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-12">
+
+        <!-- Form -->
+        <div class="lg:col-span-3">
+          <h2 class="font-heading text-2xl text-primary-dark mb-6">Send us a message</h2>
+          <form class="space-y-5" id="contact-form">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-sm font-medium text-text mb-1.5">Full Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border border-warm-dark/20 bg-white text-text placeholder-text-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="Your name" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-text mb-1.5">Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-warm-dark/20 bg-white text-text placeholder-text-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="you@email.com" />
+              </div>
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-text mb-1.5">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl border border-warm-dark/20 bg-white text-text placeholder-text-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="(555) 123-4567" />
+            </div>
+            <div>
+              <label for="topic" class="block text-sm font-medium text-text mb-1.5">Topic</label>
+              <select id="topic" name="topic" class="w-full px-4 py-3 rounded-xl border border-warm-dark/20 bg-white text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors">
+                <option value="">Select a topic</option>
+                <option value="primary-care">Primary Care</option>
+                <option value="weight-loss">Weight Loss</option>
+                <option value="trt">TRT Evaluation</option>
+                <option value="billing">Billing Question</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-text mb-1.5">Message</label>
+              <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-warm-dark/20 bg-white text-text placeholder-text-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none" placeholder="How can we help?"></textarea>
+            </div>
+            <button type="submit" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-8 py-3.5 rounded-full text-base font-semibold transition-all hover:shadow-lg hover:shadow-primary/25">
+              Send Message
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-2 space-y-8">
+
+          <!-- Book -->
+          <div class="bg-primary rounded-2xl p-8 text-white">
+            <h3 class="font-heading text-xl mb-3">Ready to book?</h3>
+            <p class="text-white/80 text-sm leading-relaxed mb-5">Skip the form and schedule directly through our secure patient portal.</p>
+            <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-primary-dark px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-warm-light transition-all">
+              Book a Visit
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+
+          <!-- Info Cards -->
+          <div class="bg-warm-light rounded-2xl p-8">
+            <h3 class="font-heading text-lg text-primary-dark mb-4">Practice info</h3>
+            <div class="space-y-4">
+              <div class="flex gap-3">
+                <div class="shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-primary-dark">Hours</p>
+                  <p class="text-text-light text-sm">Mon &ndash; Fri, 8:00 AM &ndash; 6:00 PM</p>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <div class="shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-primary-dark">Delivery</p>
+                  <p class="text-text-light text-sm">Telehealth only &middot; Statewide Florida</p>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <div class="shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-primary-dark">Payment</p>
+                  <p class="text-text-light text-sm">Cash pay &middot; No insurance needed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency -->
+          <div class="bg-red-50 rounded-2xl p-6 border border-red-200/50">
+            <p class="text-red-800 text-sm font-medium mb-1">Medical Emergency?</p>
+            <p class="text-red-700/80 text-xs leading-relaxed">Call 911 or go to the nearest emergency room. This practice does not provide emergency services.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
