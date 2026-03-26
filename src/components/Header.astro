@@ -1,5 +1,6 @@
 ---
 const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -12,12 +13,25 @@ const navLinks = [
 ];
 ---
 
-<header class="bg-white/80 backdrop-blur-md border-b border-warm-dark/20 sticky top-0 z-50">
+<header
+  id="site-header"
+  class:list={[
+    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+    isHome ? 'header-transparent' : 'bg-white/90 backdrop-blur-md border-b border-warm-dark/20',
+  ]}
+>
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center group">
-        <img src="/logo.png" alt="MBS Medical" class="h-12 lg:h-14 w-auto" />
+        <img
+          src="/logo.png"
+          alt="MBS Medical"
+          class:list={[
+            'h-12 lg:h-14 w-auto transition-all duration-300',
+            isHome && 'header-logo-white',
+          ]}
+        />
       </a>
 
       <!-- Desktop Nav -->
@@ -26,10 +40,10 @@ const navLinks = [
           <a
             href={link.href}
             class:list={[
-              'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+              'nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300',
               currentPath === link.href
-                ? 'text-primary bg-primary/10'
-                : 'text-text-light hover:text-primary hover:bg-warm-light',
+                ? isHome ? 'text-white bg-white/20' : 'text-primary bg-primary/10'
+                : isHome ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-text-light hover:text-primary hover:bg-warm-light',
             ]}
           >
             {link.label}
@@ -43,7 +57,12 @@ const navLinks = [
           href="https://mbsmedical.practicebetter.io"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-primary/25"
+          class:list={[
+            'hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300',
+            isHome
+              ? 'header-cta-transparent bg-white/15 text-white hover:bg-white/25 border border-white/30'
+              : 'bg-primary hover:bg-primary-light text-white hover:shadow-lg hover:shadow-primary/25',
+          ]}
         >
           Book a Visit
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -52,7 +71,10 @@ const navLinks = [
         <!-- Mobile menu button -->
         <button
           id="mobile-menu-btn"
-          class="lg:hidden p-2 rounded-lg text-text-light hover:bg-warm-light transition-colors"
+          class:list={[
+            'lg:hidden p-2 rounded-lg transition-colors',
+            isHome ? 'text-white/80 hover:bg-white/10' : 'text-text-light hover:bg-warm-light',
+          ]}
           aria-label="Toggle menu"
         >
           <svg class="w-6 h-6" id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -62,7 +84,7 @@ const navLinks = [
     </div>
 
     <!-- Mobile Nav -->
-    <div id="mobile-menu" class="lg:hidden hidden pb-4 border-t border-warm-dark/10 mt-2 pt-3">
+    <div id="mobile-menu" class="lg:hidden hidden pb-4 border-t border-white/10 mt-2 pt-3">
       <div class="flex flex-col gap-1">
         {navLinks.map((link) => (
           <a
@@ -70,8 +92,8 @@ const navLinks = [
             class:list={[
               'px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
               currentPath === link.href
-                ? 'text-primary bg-primary/10'
-                : 'text-text-light hover:text-primary hover:bg-warm-light',
+                ? 'text-white bg-white/20'
+                : 'text-white/70 hover:text-white hover:bg-white/10',
             ]}
           >
             {link.label}
@@ -90,7 +112,59 @@ const navLinks = [
   </nav>
 </header>
 
+<style>
+  .header-transparent {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+  }
+  .header-scrolled {
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(12px);
+    border-bottom-color: rgba(217, 210, 207, 0.2) !important;
+  }
+  .header-scrolled .nav-link {
+    color: #6B6B6B !important;
+  }
+  .header-scrolled .nav-link:hover {
+    color: #3AABA5 !important;
+    background: rgba(248, 246, 245, 1) !important;
+  }
+  .header-scrolled .header-cta-transparent {
+    background: #3AABA5 !important;
+    color: white !important;
+    border-color: transparent !important;
+  }
+  .header-scrolled .header-cta-transparent:hover {
+    background: #4DC4BD !important;
+  }
+  .header-logo-white {
+    filter: brightness(0) invert(1);
+  }
+  .header-scrolled .header-logo-white {
+    filter: none !important;
+  }
+  .header-scrolled #mobile-menu-btn {
+    color: #6B6B6B !important;
+  }
+</style>
+
 <script>
+  const header = document.getElementById('site-header');
+  const isHome = header?.classList.contains('header-transparent');
+
+  if (isHome && header) {
+    const onScroll = () => {
+      if (window.scrollY > 80) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('menu-icon-open');

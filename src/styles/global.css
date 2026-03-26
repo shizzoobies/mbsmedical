@@ -23,6 +23,10 @@
   /* Background */
   --color-bg: #FDFCFB;
 
+  /* Dark surfaces */
+  --color-surface-dark: #1A1A1A;
+  --color-surface-darker: #111111;
+
   /* Fonts */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'DM Serif Display', Georgia, serif;
@@ -37,4 +41,42 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Hero scroll indicator bounce */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Video hero overlay */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.15) 40%,
+    rgba(0,0,0,0.5) 80%,
+    rgba(0,0,0,0.7) 100%
+  );
 }
