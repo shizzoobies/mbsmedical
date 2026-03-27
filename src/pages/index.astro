@@ -185,8 +185,9 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div class="flex items-center justify-between mt-6">
               <span class="text-accent text-xs font-bold uppercase tracking-widest group-hover:translate-x-1 transition-transform duration-300">Explore →</span>
-              <div class="w-16 h-16 rounded-2xl overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                <img src="/images/glp1.png" alt="" class="w-full h-full object-cover" />
+              <!-- PLACEHOLDER: medical/clipboard/vitals icon image -->
+              <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
               </div>
             </div>
           </div>
@@ -574,12 +575,18 @@ import Layout from '../layouts/Layout.astro';
     top: 0;
     width: 55%;
     height: 100%;
-    opacity: 0.4;
+    opacity: 0.3;
     transition: opacity 0.5s ease;
-    mask-image: linear-gradient(to right, transparent 0%, black 40%);
+    mask-image: linear-gradient(to right, transparent 0%, black 50%);
   }
   .hims-card:hover .hims-card-img-wrap {
-    opacity: 0.6;
+    opacity: 0.45;
+  }
+  /* Ensure text on cards has a subtle shadow for readability */
+  .hims-card-tall h3,
+  .hims-card-tall p,
+  .hims-card-tall span {
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
   }
   .hims-card-img {
     width: 100%;
