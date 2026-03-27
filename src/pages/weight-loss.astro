@@ -1,120 +1,107 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 ---
 
 <Layout title="Weight Loss" description="Clinically supervised weight loss with GLP-1 evaluation, personalized plans, and ongoing monitoring. Telehealth across Florida.">
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-warm-light to-bg py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <span class="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-3">Weight Loss</span>
-        <h1 class="font-heading text-4xl sm:text-5xl text-primary-dark mb-6">Clinically supervised weight management</h1>
-        <p class="text-text-light text-lg leading-relaxed mb-8">
-          A personalized approach to weight loss built around your health history, realistic goals, and real provider oversight — including GLP-1 receptor agonist evaluation for eligible patients.
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal max-w-3xl">
+        <span class="label text-primary block mb-5">Weight Loss</span>
+        <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Clinically supervised<br />weight <em class="text-primary italic">management</em>
+        </h1>
+        <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
+          A personalized approach built around your health history, realistic goals, and real provider oversight — including GLP-1 receptor agonist evaluation for eligible patients.
         </p>
-        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-8 py-3.5 rounded-full text-base font-semibold transition-all hover:shadow-lg hover:shadow-primary/25">
-          Book a Visit
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
+        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">Book a Visit</a>
       </div>
     </div>
   </section>
 
   <!-- Three Phases -->
-  <section class="py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading eyebrow="Our Approach" title="A structured path to your goals" subtitle="Three phases designed to evaluate, treat, and monitor your progress with clinical oversight at every step." />
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-16">
+        <span class="label text-primary block mb-5">Our Approach</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">A structured path to<br />your <em class="text-primary italic">goals</em></h2>
+      </div>
       <div class="grid md:grid-cols-3 gap-8">
-
-        <div class="relative bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm">
-          <div class="absolute -top-4 left-8 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">1</div>
-          <h3 class="font-heading text-xl text-primary-dark mb-3 mt-2">Initial Evaluation</h3>
-          <ul class="space-y-3 text-text-light text-sm">
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Comprehensive health history review including conditions, medications, and labs</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Realistic goal-setting based on your individual health profile</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Provider consultation discussing clinical options</li>
+        <div class="reveal reveal-delay-1 border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-5xl text-primary mb-5 block">01</span>
+          <h3 class="font-display font-light text-2xl text-text mb-4">Initial Evaluation</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Comprehensive health history review</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Realistic goal-setting based on your profile</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Provider consultation discussing clinical options</li>
           </ul>
         </div>
-
-        <div class="relative bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm">
-          <div class="absolute -top-4 left-8 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">2</div>
-          <h3 class="font-heading text-xl text-primary-dark mb-3 mt-2">Medication-Assisted Weight Loss</h3>
-          <ul class="space-y-3 text-text-light text-sm">
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> GLP-1 receptor agonist evaluation for eligible patients</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Prescription management with dosing oversight and adjustments</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Ongoing provider review for effectiveness and side effects</li>
+        <div class="reveal reveal-delay-2 border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-5xl text-primary mb-5 block">02</span>
+          <h3 class="font-display font-light text-2xl text-text mb-4">Medication-Assisted</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> GLP-1 receptor agonist evaluation</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Prescription management with dosing oversight</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Ongoing review for effectiveness and side effects</li>
           </ul>
         </div>
-
-        <div class="relative bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm">
-          <div class="absolute -top-4 left-8 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">3</div>
-          <h3 class="font-heading text-xl text-primary-dark mb-3 mt-2">Ongoing Monitoring</h3>
-          <ul class="space-y-3 text-text-light text-sm">
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Scheduled progress check-ins with your provider</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Plan adjustments based on your response and goals</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Periodic lab monitoring of metabolic markers</li>
+        <div class="reveal reveal-delay-3 border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-5xl text-primary mb-5 block">03</span>
+          <h3 class="font-display font-light text-2xl text-text mb-4">Ongoing Monitoring</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Scheduled progress check-ins</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Plan adjustments based on your response</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Periodic lab monitoring of metabolic markers</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="py-20 sm:py-28 bg-warm-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading eyebrow="Common Questions" title="What to expect" />
-      <div class="max-w-3xl mx-auto space-y-6">
-        <details class="group bg-white rounded-xl border border-warm-dark/10 shadow-sm">
-          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-primary-dark font-medium">
-            Am I eligible for GLP-1 medication?
-            <svg class="w-5 h-5 text-text-light group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-4 text-text-light text-sm leading-relaxed">Eligibility is determined on a case-by-case basis during your initial evaluation. Your provider will review your health history, current medications, and goals to determine if GLP-1 therapy is appropriate for you.</div>
-        </details>
-        <details class="group bg-white rounded-xl border border-warm-dark/10 shadow-sm">
-          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-primary-dark font-medium">
-            Do I need a referral?
-            <svg class="w-5 h-5 text-text-light group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-4 text-text-light text-sm leading-relaxed">No referral is needed. You can book directly through our patient portal.</div>
-        </details>
-        <details class="group bg-white rounded-xl border border-warm-dark/10 shadow-sm">
-          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-primary-dark font-medium">
-            How often are follow-up visits?
-            <svg class="w-5 h-5 text-text-light group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-4 text-text-light text-sm leading-relaxed">Follow-up frequency depends on your treatment type and how you're responding. Your provider will set a schedule that works for your plan.</div>
-        </details>
-        <details class="group bg-white rounded-xl border border-warm-dark/10 shadow-sm">
-          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-primary-dark font-medium">
-            Are lab costs included in the visit fee?
-            <svg class="w-5 h-5 text-text-light group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-4 text-text-light text-sm leading-relaxed">Lab costs are separate from visit fees. Your provider will discuss what labs are needed and approximate costs during your visit.</div>
-        </details>
-        <details class="group bg-white rounded-xl border border-warm-dark/10 shadow-sm">
-          <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-primary-dark font-medium">
-            Can this integrate with my primary care?
-            <svg class="w-5 h-5 text-text-light group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-4 text-text-light text-sm leading-relaxed">Absolutely. If you're also a primary care patient with MBS Medical, your weight loss program is managed alongside your other conditions by the same provider.</div>
-        </details>
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-16">
+        <span class="label text-primary block mb-5">Common Questions</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">What to <em class="text-primary italic">expect</em></h2>
+      </div>
+      <div class="max-w-3xl space-y-4">
+        {[
+          { q: 'Am I eligible for GLP-1 medication?', a: 'Eligibility is determined on a case-by-case basis during your initial evaluation. Your provider will review your health history, current medications, and goals.' },
+          { q: 'Do I need a referral?', a: 'No referral is needed. You can book directly through our patient portal.' },
+          { q: 'How often are follow-up visits?', a: 'Follow-up frequency depends on your treatment type and how you\'re responding. Your provider will set a schedule that works for your plan.' },
+          { q: 'Are lab costs included?', a: 'Lab costs are separate from visit fees. Your provider will discuss what labs are needed and approximate costs during your visit.' },
+          { q: 'Can this integrate with my primary care?', a: 'Absolutely. If you\'re also a primary care patient with MBS Medical, your weight loss program is managed alongside your other conditions by the same provider.' },
+        ].map((item) => (
+          <details class="reveal group border border-border rounded-xl">
+            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-text font-display font-light text-xl">
+              {item.q}
+              <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-text/50 text-base leading-relaxed">{item.a}</div>
+          </details>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-20 sm:py-28 bg-primary">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Take the first step</h2>
-      <p class="text-white/80 text-lg mb-10">Book your initial evaluation and start working with a provider who builds a plan around your goals.</p>
-      <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white text-primary-dark px-8 py-3.5 rounded-full text-base font-semibold hover:bg-warm-light transition-all hover:shadow-lg">
-        Book a Visit
-      </a>
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="border-l-[3px] border-primary pl-8 sm:pl-10">
+          <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">Take the <em class="text-primary italic">first</em> step</h2>
+        </div>
+        <div>
+          <p class="text-text/50 text-base leading-relaxed mb-8 max-w-[480px]">Book your initial evaluation and start working with a provider who builds a plan around your goals.</p>
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">Book a Visit</a>
+        </div>
+      </div>
     </div>
   </section>
 
 </Layout>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

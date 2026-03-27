@@ -1,107 +1,116 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 ---
 
 <Layout title="About" description="Meet the MBS Medical team — a military-trained PA-C and two supervising physicians with decades of clinical experience.">
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-warm-light to-bg py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-3">About Us</span>
-      <h1 class="font-heading text-4xl sm:text-5xl text-primary-dark mb-6">Built on relationships, not appointments</h1>
-      <p class="text-text-light text-lg max-w-2xl mx-auto leading-relaxed">
-        MBS Medical was founded on a simple idea: healthcare works better when your provider actually knows you. One consistent provider, comprehensive records, and a care plan that evolves with your life.
-      </p>
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal max-w-3xl">
+        <span class="label text-primary block mb-5">About Us</span>
+        <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Built on <em class="text-primary italic">relationships</em>,<br />not appointments
+        </h1>
+        <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px]">
+          MBS Medical was founded on a simple idea: healthcare works better when your provider actually knows you. One consistent provider, comprehensive records, and a care plan that evolves with your life.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Philosophy -->
-  <section class="py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto">
-        <div class="grid sm:grid-cols-2 gap-8">
-          <div class="bg-warm-light rounded-2xl p-8">
-            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-            </div>
-            <h3 class="font-heading text-xl text-primary-dark mb-3">Continuity of care</h3>
-            <p class="text-text-light text-sm leading-relaxed">You see the same provider every time. They know your history, your medications, and your goals — not just what's in the chart.</p>
-          </div>
-          <div class="bg-warm-light rounded-2xl p-8">
-            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-            </div>
-            <h3 class="font-heading text-xl text-primary-dark mb-3">Evolving care plans</h3>
-            <p class="text-text-light text-sm leading-relaxed">Your care plan isn't static. It grows and adapts as your health changes, your goals shift, and new information comes in.</p>
-          </div>
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
+        <div class="reveal border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-3xl text-primary block mb-4">Continuity of care</span>
+          <p class="text-text/50 text-base leading-relaxed">You see the same provider every time. They know your history, your medications, and your goals — not just what's in the chart.</p>
+        </div>
+        <div class="reveal reveal-delay-1 border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-3xl text-primary block mb-4">Evolving care plans</span>
+          <p class="text-text/50 text-base leading-relaxed">Your care plan isn't static. It grows and adapts as your health changes, your goals shift, and new information comes in.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Team -->
-  <section class="py-20 sm:py-28 bg-warm-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading eyebrow="The Team" title="Who's behind your care" />
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
 
-        <!-- David -->
-        <div class="bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm text-center">
-          <div class="w-28 h-28 mx-auto bg-warm rounded-full flex items-center justify-center mb-5">
-            <svg class="w-12 h-12 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl text-primary-dark">David, PA-C</h3>
-          <p class="text-accent text-sm font-medium mb-4">Physician Associate &middot; Founder</p>
-          <ul class="text-text-light text-sm space-y-2 text-left">
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> 12 years U.S. Army service</li>
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> PA-C, Licensed in Florida</li>
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> Primary care, weight loss, TRT evaluation</li>
-          </ul>
-          <p class="text-text-light text-xs mt-4 leading-relaxed">Founded MBS Medical to provide direct, consistent access to a provider who knows each patient's full health picture.</p>
-        </div>
-
-        <!-- Dr. Folkens -->
-        <div class="bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm text-center">
-          <div class="w-28 h-28 mx-auto bg-warm rounded-full flex items-center justify-center mb-5">
-            <svg class="w-12 h-12 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl text-primary-dark">Dr. Eric Folkens, MD</h3>
-          <p class="text-accent text-sm font-medium mb-4">Supervising Physician</p>
-          <ul class="text-text-light text-sm space-y-2 text-left">
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> American Board of Family Medicine certified</li>
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> 34+ years clinical practice</li>
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> Family medicine and primary care</li>
-          </ul>
-        </div>
-
-        <!-- Dr. Dawson -->
-        <div class="bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm text-center">
-          <div class="w-28 h-28 mx-auto bg-warm rounded-full flex items-center justify-center mb-5">
-            <svg class="w-12 h-12 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl text-primary-dark">Dr. Mark Dawson, MD</h3>
-          <p class="text-accent text-sm font-medium mb-4">Supervising Physician</p>
-          <ul class="text-text-light text-sm space-y-2 text-left">
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> 30+ years clinical practice</li>
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> Gastroenterology and metabolic health</li>
-            <li class="flex gap-2"><span class="text-primary">&#8226;</span> Oversight for GI health and complex cases</li>
-          </ul>
-        </div>
-
+      <div class="reveal mb-16">
+        <span class="label text-primary block mb-5">The Team</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">Who's behind your <em class="text-primary italic">care</em></h2>
       </div>
+
+      <!-- David -->
+      <div class="reveal grid lg:grid-cols-2 gap-12 mb-16 pb-16 border-b border-border">
+        <div class="aspect-[3/4] max-h-[600px] rounded-2xl bg-surface-light border border-border flex items-center justify-center relative overflow-hidden">
+          <svg class="w-20 h-20 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-bg/90 to-transparent">
+            <div class="border-l-[3px] border-primary pl-5">
+              <p class="label text-primary mb-2">Founder & Primary Provider</p>
+              <h3 class="font-display font-light text-4xl text-text">David, PA-C</h3>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p class="text-text/50 text-base leading-relaxed mb-6">
+            Physician Associate with 12 years of U.S. Army service. Licensed in Florida. Specializes in primary care, weight loss, and TRT evaluation.
+          </p>
+          <p class="text-text/50 text-base leading-relaxed mb-8">
+            Founded MBS Medical to provide direct, consistent access to a provider who knows each patient's full health picture — not just what's on a chart for today's visit.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-[4px] border border-border text-text/50">PA-C, Licensed FL</span>
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-[4px] border border-border text-text/50">12 Years U.S. Army</span>
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-[4px] border border-border text-text/50">Primary Care</span>
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-[4px] border border-border text-text/50">Weight Loss</span>
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-[4px] border border-border text-text/50">TRT Evaluation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supervising physicians -->
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="reveal">
+          <div class="aspect-[4/3] rounded-2xl bg-surface-light border border-border flex items-center justify-center mb-6">
+            <svg class="w-14 h-14 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <p class="label text-accent mb-2">Supervising Physician</p>
+          <h3 class="font-display font-light text-3xl text-text mb-3">Dr. Eric Folkens, MD</h3>
+          <p class="text-text/40 text-sm leading-relaxed mb-4">American Board of Family Medicine certified. 34+ years clinical practice in family medicine and primary care.</p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="aspect-[4/3] rounded-2xl bg-surface-light border border-border flex items-center justify-center mb-6">
+            <svg class="w-14 h-14 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <p class="label text-accent mb-2">Supervising Physician</p>
+          <h3 class="font-display font-light text-3xl text-text mb-3">Dr. Mark Dawson, MD</h3>
+          <p class="text-text/40 text-sm leading-relaxed mb-4">30+ years clinical practice. Specialization in gastroenterology, metabolic health, and GI expertise. Provides oversight for cases involving GI health and complex comorbidities.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-20 sm:py-28 bg-primary">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Ready to meet your provider?</h2>
-      <p class="text-white/80 text-lg mb-10">Book a visit and start building a care relationship that lasts.</p>
-      <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white text-primary-dark px-8 py-3.5 rounded-full text-base font-semibold hover:bg-warm-light transition-all hover:shadow-lg">
-        Book a Visit
-      </a>
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="border-l-[3px] border-primary pl-8 sm:pl-10">
+          <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">Ready to meet<br />your <em class="text-primary italic">provider</em>?</h2>
+        </div>
+        <div>
+          <p class="text-text/50 text-base leading-relaxed mb-8 max-w-[480px]">Book a visit and start building a care relationship that lasts.</p>
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">Book a Visit</a>
+        </div>
+      </div>
     </div>
   </section>
 
 </Layout>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

@@ -1,144 +1,90 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 ---
 
 <Layout title="Primary Care" description="Routine visits, chronic condition management, and medication oversight from a provider who knows your history. Telehealth across Florida.">
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-warm-light to-bg py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <span class="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-3">Primary Care</span>
-        <h1 class="font-heading text-4xl sm:text-5xl text-primary-dark mb-6">Ongoing care from a provider who knows you</h1>
-        <p class="text-text-light text-lg leading-relaxed mb-8">
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal max-w-3xl">
+        <span class="label text-primary block mb-5">Primary Care</span>
+        <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Ongoing care from a<br />provider who <em class="text-primary italic">knows</em> you
+        </h1>
+        <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
           Routine visits, chronic condition management, and medication oversight — all from one consistent provider who reviews your history before every appointment.
         </p>
-        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-8 py-3.5 rounded-full text-base font-semibold transition-all hover:shadow-lg hover:shadow-primary/25">
-          Book a Visit
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
+        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">Book a Visit</a>
       </div>
     </div>
   </section>
 
   <!-- Services Breakdown -->
-  <section class="py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
       <div class="grid md:grid-cols-3 gap-8">
-
-        <!-- Routine & Preventive -->
-        <div class="bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm">
-          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl text-primary-dark mb-3">Routine & Preventive Care</h3>
-          <ul class="space-y-3 text-text-light text-sm">
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Annual wellness visits with comprehensive health reviews</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Same-week sick and acute visit appointments</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Age-appropriate screening lab orders and referrals</li>
+        <div class="reveal reveal-delay-1 border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-5xl text-primary mb-5 block">01</span>
+          <h3 class="font-display font-light text-2xl text-text mb-4">Routine & Preventive</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Annual wellness visits with comprehensive health reviews</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Same-week sick and acute visit appointments</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Age-appropriate screening lab orders and referrals</li>
           </ul>
         </div>
-
-        <!-- Chronic Condition -->
-        <div class="bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm">
-          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl text-primary-dark mb-3">Chronic Condition Management</h3>
-          <ul class="space-y-3 text-text-light text-sm">
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Hypertension monitoring and medication management</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Type 2 diabetes and pre-diabetes care with A1C monitoring</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Multi-condition ongoing monitoring with lab reviews</li>
+        <div class="reveal reveal-delay-2 border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-5xl text-primary mb-5 block">02</span>
+          <h3 class="font-display font-light text-2xl text-text mb-4">Chronic Conditions</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Hypertension monitoring and medication management</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Type 2 diabetes and pre-diabetes care with A1C monitoring</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Multi-condition ongoing monitoring with lab reviews</li>
           </ul>
         </div>
-
-        <!-- Medication Management -->
-        <div class="bg-white rounded-2xl p-8 border border-warm-dark/10 shadow-sm">
-          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl text-primary-dark mb-3">Medication Management</h3>
-          <ul class="space-y-3 text-text-light text-sm">
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> New prescription evaluation within full health context</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Periodic reviews for interactions or redundant medications</li>
-            <li class="flex gap-2"><span class="text-accent mt-1">&#9679;</span> Refill management and dose adjustments based on labs</li>
+        <div class="reveal reveal-delay-3 border border-border rounded-2xl p-8">
+          <span class="font-display font-light text-5xl text-primary mb-5 block">03</span>
+          <h3 class="font-display font-light text-2xl text-text mb-4">Medication Management</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> New prescription evaluation within full health context</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Periodic reviews for interactions or redundant medications</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Refill management and dose adjustments based on labs</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- Conditions -->
-  <section class="py-20 sm:py-28 bg-warm-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        eyebrow="Conditions We Manage"
-        title="Comprehensive primary care"
-        subtitle="Ongoing management for the conditions that matter most to your daily health."
-      />
-      <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-        {['Hypertension', 'Type 2 Diabetes', 'High Cholesterol', 'Hypothyroidism', 'GERD', 'Pre-Diabetes', 'Acute Illness', 'Preventive Screening'].map((condition) => (
-          <span class="bg-white px-5 py-2.5 rounded-full text-sm font-medium text-primary-dark border border-warm-dark/10 shadow-sm">{condition}</span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="flex gap-4">
-          <div class="shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-primary-dark mb-1.5">HIPAA-compliant portal</h3>
-            <p class="text-text-light text-sm leading-relaxed">All records, labs, and prescriptions managed through a secure online portal.</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-primary-dark mb-1.5">Provider reviews intake first</h3>
-            <p class="text-text-light text-sm leading-relaxed">Your provider reviews your health history before every visit so you spend time on care, not repeating yourself.</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-primary-dark mb-1.5">Labs and prescriptions</h3>
-            <p class="text-text-light text-sm leading-relaxed">Lab orders and prescription management handled directly through the practice.</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-primary-dark mb-1.5">Telehealth-based care</h3>
-            <p class="text-text-light text-sm leading-relaxed">Available statewide across Florida. In-person evaluation recommended when clinically appropriate.</p>
-          </div>
+  <section class="py-20 sm:py-28 border-t border-b border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <span class="label text-primary block mb-5">Conditions We Manage</span>
+        <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+          {['Hypertension', 'Type 2 Diabetes', 'High Cholesterol', 'Hypothyroidism', 'GERD', 'Pre-Diabetes', 'Acute Illness', 'Preventive Screening'].map((c) => (
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-5 py-2.5 rounded-[4px] border border-border text-text/60 hover:border-accent hover:text-accent transition-all duration-300">{c}</span>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-20 sm:py-28 bg-primary">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Ready for a provider who knows you?</h2>
-      <p class="text-white/80 text-lg mb-10">Book your first visit and start building a real relationship with your care team.</p>
-      <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white text-primary-dark px-8 py-3.5 rounded-full text-base font-semibold hover:bg-warm-light transition-all hover:shadow-lg">
-        Book a Visit
-      </a>
+  <section class="py-28 sm:py-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="border-l-[3px] border-primary pl-8 sm:pl-10">
+          <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">Ready for a provider<br />who <em class="text-primary italic">knows</em> you?</h2>
+        </div>
+        <div>
+          <p class="text-text/50 text-base leading-relaxed mb-8 max-w-[480px]">Book your first visit and start building a real relationship with your care team.</p>
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">Book a Visit</a>
+        </div>
+      </div>
     </div>
   </section>
 
 </Layout>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

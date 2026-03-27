@@ -1,92 +1,144 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 ---
 
 <Layout title="Services" description="MBS Medical services: primary care, clinically supervised weight loss, and testosterone evaluation. Telehealth across Florida.">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-warm-light to-bg py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-3">Our Services</span>
-      <h1 class="font-heading text-4xl sm:text-5xl text-primary-dark mb-6">Care that fits your life</h1>
-      <p class="text-text-light text-lg max-w-2xl mx-auto leading-relaxed">
-        Three focused services designed around continuity, honesty, and real access to your provider. All delivered via telehealth across Florida.
-      </p>
-    </div>
-  </section>
-
-  <!-- Services Grid -->
-  <section class="py-20 sm:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-6">
-        <ServiceCard
-          title="Primary Care"
-          description="Ongoing care from a provider who knows you. Routine visits, medication management, and chronic condition care — all in one place."
-          href="/primary-care/"
-          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>'
-        />
-        <ServiceCard
-          title="Weight Loss"
-          description="Clinically supervised weight management. Personalized approach with GLP-1 evaluation, real provider oversight, and ongoing monitoring."
-          href="/weight-loss/"
-          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>'
-        />
-        <ServiceCard
-          title="TRT Evaluation"
-          description="Lab-driven testosterone evaluation. Comprehensive symptom review and honest assessment — not a sales-driven TRT clinic."
-          href="/trt/"
-          icon='<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>'
-        />
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal max-w-3xl">
+        <span class="label text-primary block mb-5">Our Services</span>
+        <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Care that fits<br />your <em class="text-primary italic">life</em>
+        </h1>
+        <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px]">
+          Three focused services designed around continuity, honesty, and real access to your provider. All delivered via telehealth across Florida.
+        </p>
       </div>
     </div>
   </section>
 
+  <!-- Services List -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+
+      <a href="/primary-care/" class="reveal group block py-12 lg:py-16 border-t border-border">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-1">
+            <span class="font-display font-light text-6xl lg:text-7xl text-text-muted group-hover:text-accent/40 transition-colors duration-500">01</span>
+          </div>
+          <div class="lg:col-span-6">
+            <h2 class="font-display font-light text-[clamp(2rem,4vw,3.25rem)] leading-[1.1] text-text group-hover:text-accent transition-colors duration-300 mb-4">Primary Care</h2>
+            <p class="text-text/50 text-base leading-relaxed mb-4 max-w-[520px]">Routine visits, medication management, chronic condition care — all from a provider who knows your full history. Hypertension, diabetes, cholesterol, hypothyroidism, GERD, and more.</p>
+            <span class="inline-flex items-center gap-3 label text-accent group-hover:gap-5 transition-all duration-300">
+              Learn More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="aspect-[16/10] rounded-2xl bg-surface-light border border-border flex items-center justify-center group-hover:border-accent/20 transition-all duration-500">
+              <svg class="w-16 h-16 text-text-muted group-hover:text-accent/30 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/weight-loss/" class="reveal group block py-12 lg:py-16 border-t border-border">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-5 lg:order-1">
+            <div class="aspect-[16/10] rounded-2xl bg-surface-light border border-border flex items-center justify-center group-hover:border-accent/20 transition-all duration-500">
+              <svg class="w-16 h-16 text-text-muted group-hover:text-accent/30 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+          </div>
+          <div class="lg:col-span-1 lg:order-2 lg:text-right">
+            <span class="font-display font-light text-6xl lg:text-7xl text-text-muted group-hover:text-accent/40 transition-colors duration-500">02</span>
+          </div>
+          <div class="lg:col-span-6 lg:order-3">
+            <h2 class="font-display font-light text-[clamp(2rem,4vw,3.25rem)] leading-[1.1] text-text group-hover:text-accent transition-colors duration-300 mb-4">Weight Loss</h2>
+            <p class="text-text/50 text-base leading-relaxed mb-4 max-w-[520px]">Clinically supervised weight management with GLP-1 evaluation. Initial consultation, medication-assisted options, and ongoing monitoring with real provider oversight.</p>
+            <span class="inline-flex items-center gap-3 label text-accent group-hover:gap-5 transition-all duration-300">
+              Learn More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/trt/" class="reveal group block py-12 lg:py-16 border-t border-b border-border">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-1">
+            <span class="font-display font-light text-6xl lg:text-7xl text-text-muted group-hover:text-accent/40 transition-colors duration-500">03</span>
+          </div>
+          <div class="lg:col-span-6">
+            <h2 class="font-display font-light text-[clamp(2rem,4vw,3.25rem)] leading-[1.1] text-text group-hover:text-accent transition-colors duration-300 mb-4">TRT Evaluation</h2>
+            <p class="text-text/50 text-base leading-relaxed mb-4 max-w-[520px]">Lab-driven testosterone assessment with honest evaluation. Comprehensive symptom review, bloodwork panels, and ongoing monitoring if treatment is appropriate.</p>
+            <span class="inline-flex items-center gap-3 label text-accent group-hover:gap-5 transition-all duration-300">
+              Learn More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="aspect-[16/10] rounded-2xl bg-surface-light border border-border flex items-center justify-center group-hover:border-accent/20 transition-all duration-500">
+              <svg class="w-16 h-16 text-text-muted group-hover:text-accent/30 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
   <!-- How It Works -->
-  <section class="py-20 sm:py-28 bg-warm-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        eyebrow="How It Works"
-        title="Getting started is simple"
-        subtitle="From booking to your first visit — here's what to expect."
-      />
-      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        <div class="text-center">
-          <div class="w-14 h-14 mx-auto bg-primary text-white rounded-2xl flex items-center justify-center mb-5 text-xl font-bold">1</div>
-          <h3 class="font-semibold text-primary-dark mb-2">Book online</h3>
-          <p class="text-text-light text-sm leading-relaxed">Schedule through our secure HIPAA-compliant patient portal. Same-week availability.</p>
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-16">
+        <span class="label text-primary block mb-5">How It Works</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.02em] text-text">Getting started is <em class="text-primary italic">simple</em></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
+        <div class="reveal reveal-delay-1">
+          <span class="font-display font-light text-5xl text-primary mb-4 block">01</span>
+          <h3 class="font-display font-light text-2xl text-text mb-3">Book online</h3>
+          <p class="text-text/40 text-base leading-relaxed">Schedule through our secure HIPAA-compliant patient portal. Same-week availability.</p>
         </div>
-        <div class="text-center">
-          <div class="w-14 h-14 mx-auto bg-primary text-white rounded-2xl flex items-center justify-center mb-5 text-xl font-bold">2</div>
-          <h3 class="font-semibold text-primary-dark mb-2">Complete your intake</h3>
-          <p class="text-text-light text-sm leading-relaxed">Fill out a brief health history. Your provider reviews it before your visit so you spend time on care, not paperwork.</p>
+        <div class="reveal reveal-delay-2">
+          <span class="font-display font-light text-5xl text-primary mb-4 block">02</span>
+          <h3 class="font-display font-light text-2xl text-text mb-3">Complete your intake</h3>
+          <p class="text-text/40 text-base leading-relaxed">Brief health history — your provider reviews it before your visit so you spend time on care, not paperwork.</p>
         </div>
-        <div class="text-center">
-          <div class="w-14 h-14 mx-auto bg-primary text-white rounded-2xl flex items-center justify-center mb-5 text-xl font-bold">3</div>
-          <h3 class="font-semibold text-primary-dark mb-2">Meet your provider</h3>
-          <p class="text-text-light text-sm leading-relaxed">Connect via telehealth and build a care plan together. Follow-ups, labs, and prescriptions managed through the portal.</p>
+        <div class="reveal reveal-delay-3">
+          <span class="font-display font-light text-5xl text-primary mb-4 block">03</span>
+          <h3 class="font-display font-light text-2xl text-text mb-3">Meet your provider</h3>
+          <p class="text-text/40 text-base leading-relaxed">Connect via telehealth and build a care plan together. Follow-ups, labs, and prescriptions managed through the portal.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-20 sm:py-28 bg-primary">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Not sure which service is right for you?</h2>
-      <p class="text-white/80 text-lg mb-10">
-        Book a visit or send us a question. We'll help you figure out the right path.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white text-primary-dark px-8 py-3.5 rounded-full text-base font-semibold hover:bg-warm-light transition-all hover:shadow-lg">
-          Book a Visit
-        </a>
-        <a href="/contact/" class="inline-flex items-center justify-center gap-2 bg-white/15 text-white px-8 py-3.5 rounded-full text-base font-semibold hover:bg-white/25 transition-all">
-          Ask a Question
-        </a>
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="border-l-[3px] border-primary pl-8 sm:pl-10">
+          <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.02em] text-text">
+            Not sure where<br />to <em class="text-primary italic">start</em>?
+          </h2>
+        </div>
+        <div>
+          <p class="text-text/50 text-base leading-relaxed mb-8 max-w-[480px]">Book a visit or send us a question. We'll help you figure out the right path forward.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">Book a Visit</a>
+            <a href="/contact/" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-transparent text-text border border-text/30 px-7 py-3 rounded-[4px] hover:border-accent hover:text-accent transition-all duration-300">Ask a Question</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
 </Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
