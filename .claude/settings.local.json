@@ -14,7 +14,8 @@
       "Bash(python3 -c \"from PIL import Image; print\\(''Pillow OK''\\)\")",
       "WebFetch(domain:mbsdoc.com)",
       "mcp__plugin_playwright_playwright__browser_navigate",
-      "mcp__plugin_playwright_playwright__browser_take_screenshot"
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "WebFetch(domain:www.kandadesigners.com)"
     ]
   }
 }
