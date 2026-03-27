@@ -10,13 +10,14 @@ const navLinks = [
       { href: '/primary-care/', label: 'Primary Care' },
       { href: '/weight-loss/', label: 'Weight Loss' },
       { href: '/trt/', label: 'TRT Evaluation' },
+      { href: '/sleep/', label: 'Sleep Issues' },
     ],
   },
   { href: '/about/', label: 'About' },
   { href: '/contact/', label: 'Contact' },
 ];
 
-const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/'].includes(currentPath);
+const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/', '/sleep/'].includes(currentPath);
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
@@ -114,6 +115,7 @@ const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/']
         <a href="/primary-care/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/primary-care/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>Primary Care</a>
         <a href="/weight-loss/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/weight-loss/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>Weight Loss</a>
         <a href="/trt/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/trt/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>TRT Evaluation</a>
+        <a href="/sleep/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/sleep/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>Sleep Issues</a>
         <a href="/about/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/about/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>About</a>
         <a href="/contact/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/contact/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>Contact</a>
         <a

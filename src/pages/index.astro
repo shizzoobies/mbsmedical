@@ -94,6 +94,10 @@ import Layout from '../layouts/Layout.astro';
               <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
               <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">Lab-Driven Assessment</span>
             </a>
+            <a href="/sleep/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">Sleep Issues</span>
+            </a>
           </Fragment>
         ))}
       </div>
@@ -179,11 +183,83 @@ import Layout from '../layouts/Layout.astro';
             </span>
           </div>
           <div class="aspect-[16/10] rounded-2xl overflow-hidden">
-            <img src="/images/trt.png" alt="TRT Evaluation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="/images/trt-photo.jpg" alt="TRT Evaluation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </a>
 
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- TRT — Featured callout                       -->
+  <!-- ============================================ -->
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div>
+          <span class="label text-primary block mb-5">TRT Evaluation</span>
+          <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.02em] text-text mb-6">
+            Can't push it like<br />
+            you <em class="text-primary italic">used to</em>?
+          </h2>
+          <p class="text-text/50 text-base leading-relaxed mb-6 max-w-[480px]">
+            It's not just in your head. Most men start to see testosterone decline after 30 — less energy, slower recovery, lower drive, and a general feeling that something's off.
+          </p>
+          <p class="text-text/50 text-base leading-relaxed mb-8 max-w-[480px]">
+            We start with your symptoms and labs to get a clear, honest picture. If TRT is the right fit, we'll build a plan around you. If it's not, we'll tell you that too.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/trt/" class="inline-flex items-center gap-3 label text-primary hover:text-accent hover:gap-5 transition-all duration-300">
+              Learn More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">
+              Book a Visit
+            </a>
+          </div>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden">
+          <img src="/images/trt-photo.jpg" alt="TRT Evaluation" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SLEEP ISSUES — Featured callout              -->
+  <!-- ============================================ -->
+  <section class="py-28 sm:py-36 border-t border-border">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden">
+          <img src="/images/sleep.jpg" alt="Struggling with sleep" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="label text-accent block mb-5">Sleep Issues</span>
+          <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.02em] text-text mb-6">
+            Struggling to sleep?<br />
+            Crashing through <em class="text-accent italic">your day</em>?
+          </h2>
+          <p class="text-text/50 text-base leading-relaxed mb-6 max-w-[480px]">
+            When restless nights start running your days, it's more than just being tired — it affects your focus, your mood, and your health. You don't have to push through it alone.
+          </p>
+          <p class="text-text/50 text-base leading-relaxed mb-8 max-w-[480px]">
+            We'll work with you to understand what's behind your sleep issues and build a plan that actually helps — no cookie-cutter solutions, just real care from a provider who listens.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/sleep/" class="inline-flex items-center gap-3 label text-accent hover:gap-5 transition-all duration-300">
+              Learn More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">
+              Book a Visit
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
