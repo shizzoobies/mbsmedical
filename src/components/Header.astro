@@ -107,21 +107,22 @@ const isServicePage = allServicePaths.includes(currentPath);
         </a>
 
         <!-- Services Mega Menu -->
-        <div class="relative group/services">
-          <a
-            href="/services/"
+        <div class="relative" id="services-dropdown">
+          <button
+            type="button"
+            id="services-trigger"
             class:list={[
-              'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 flex items-center gap-1.5 py-2',
+              'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 flex items-center gap-1.5 py-2 bg-transparent border-none cursor-pointer',
               isServicePage
                 ? 'text-primary'
                 : 'text-text/80 hover:text-accent',
             ]}
           >
             Services
-            <svg class="w-3 h-3 opacity-50 group-hover/services:opacity-100 transition-all duration-300 group-hover/services:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </a>
-          <div class="absolute top-full right-0 pt-3 opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-all duration-300 translate-y-1 group-hover/services:translate-y-0">
-            <div class="bg-[#0F0F0F]/95 backdrop-blur-xl border border-border rounded-2xl py-5 px-6 shadow-2xl shadow-black/50 mega-menu-grid">
+            <svg class="w-3 h-3 opacity-50 transition-all duration-300 services-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="services-mega" class="absolute top-full pt-2 opacity-0 invisible transition-all duration-300 translate-y-1 services-mega-panel" style="right: -200px;">
+            <div class="bg-[#0F0F0F]/95 backdrop-blur-xl border border-border rounded-2xl py-5 px-6 shadow-2xl shadow-black/50">
               <div class="mb-4 pb-3 border-b border-border">
                 <a href="/services/" class="font-ui text-[10px] font-bold uppercase tracking-[0.15em] text-primary hover:text-accent transition-colors duration-300">
                   View All Services →
@@ -136,7 +137,7 @@ const isServicePage = allServicePaths.includes(currentPath);
                         <a
                           href={item.href}
                           class:list={[
-                            'font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-1.5 px-2 rounded-md transition-colors duration-300',
+                            'font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-1.5 px-2 rounded-md transition-colors duration-300 whitespace-nowrap',
                             currentPath === item.href
                               ? 'text-primary bg-primary/10'
                               : 'text-text/60 hover:text-accent hover:bg-accent/5',
@@ -253,6 +254,15 @@ const isServicePage = allServicePaths.includes(currentPath);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(237, 233, 224, 0.06);
   }
+  .services-mega-panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .services-chevron.is-open {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
 </style>
 
 <script>
@@ -266,6 +276,54 @@ const isServicePage = allServicePaths.includes(currentPath);
     onScroll();
   }
 
+  // Desktop mega-menu: click + hover hybrid
+  const servicesTrigger = document.getElementById('services-trigger');
+  const servicesMega = document.getElementById('services-mega');
+  const servicesChevron = servicesTrigger?.querySelector('.services-chevron');
+  const servicesDropdown = document.getElementById('services-dropdown');
+
+  function openMega() {
+    servicesMega?.classList.add('is-open');
+    servicesChevron?.classList.add('is-open');
+  }
+  function closeMega() {
+    servicesMega?.classList.remove('is-open');
+    servicesChevron?.classList.remove('is-open');
+  }
+
+  // Click toggles
+  servicesTrigger?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (servicesMega?.classList.contains('is-open')) {
+      closeMega();
+    } else {
+      openMega();
+    }
+  });
+
+  // Hover open/close on the whole dropdown container (desktop)
+  let hoverTimeout: ReturnType<typeof setTimeout>;
+  servicesDropdown?.addEventListener('mouseenter', () => {
+    clearTimeout(hoverTimeout);
+    openMega();
+  });
+  servicesDropdown?.addEventListener('mouseleave', () => {
+    hoverTimeout = setTimeout(closeMega, 200);
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!servicesDropdown?.contains(e.target as Node)) {
+      closeMega();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMega();
+  });
+
+  // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('menu-icon-open');
