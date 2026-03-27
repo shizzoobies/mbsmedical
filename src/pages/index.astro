@@ -363,13 +363,12 @@ import Layout from '../layouts/Layout.astro';
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
   // Pause video after 10 seconds and darken overlay
-  const video = document.getElementById('hero-video') as HTMLVideoElement;
+  const video = document.getElementById('hero-video');
   const overlay = document.getElementById('hero-overlay');
 
   if (video) {
     setTimeout(() => {
       video.pause();
-      // Darken the overlay for readability
       if (overlay) {
         overlay.style.background = 'rgba(8, 8, 8, 0.55)';
       }
