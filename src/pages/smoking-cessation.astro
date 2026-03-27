@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AsciiHover from '../components/AsciiHover.astro';
+---
+
+<Layout title="Smoking Cessation" description="Evidence-based smoking cessation support via telehealth. Prescription options, behavioral strategies, and ongoing provider support across Florida.">
+
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36" style="background: linear-gradient(160deg, #1a0f0a 0%, #080808 50%, #0a0f1a 100%);">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal max-w-3xl">
+        <span class="label text-accent block mb-5">Smoking Cessation</span>
+        <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Ready to quit?<br />We'll help you <em class="text-accent italic">get there</em>
+        </h1>
+        <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
+          Evidence-based smoking cessation support via telehealth. Prescription options, behavioral strategies, and a provider who sticks with you through the process.
+        </p>
+        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Book a Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-16">
+        <span class="label text-accent block mb-5">Our Approach</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">A structured path to<br /><em class="text-accent italic">quitting</em></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="reveal reveal-delay-1 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#C06E9F]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Clinical Evaluation</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Detailed smoking history review</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Previous quit attempts assessment</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Readiness and motivation evaluation</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#C06E9F]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Medication Support</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Varenicline (Chantix) evaluation</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Bupropion prescription management</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Nicotine replacement therapy (NRT) guidance</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-3 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#C06E9F]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Ongoing Coaching</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Scheduled follow-up visits</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Relapse prevention strategies</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Milestone tracking and encouragement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Placeholder -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal">
+        <div class="rounded-2xl overflow-hidden bg-surface-light aspect-[16/10] flex items-center justify-center">
+          <span class="text-text-muted text-sm">Image Placeholder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-28 sm:py-36 relative overflow-hidden" style="background: linear-gradient(160deg, #14101e 0%, #0c0c0c 50%, #0a1410 100%);">
+    <AsciiHover charset="01" cellSize={24} radius={120} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-16">
+        <span class="label text-accent block mb-5">Common Questions</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">What to <em class="text-accent italic">expect</em></h2>
+      </div>
+      <div class="max-w-3xl space-y-4">
+        {[
+          { q: 'What medications help with quitting?', a: 'Several FDA-approved options exist, including varenicline (Chantix), bupropion (Wellbutrin/Zyban), and various forms of nicotine replacement therapy. Your provider will evaluate which option is best suited for your history and health profile.' },
+          { q: 'How does telehealth smoking cessation work?', a: 'You\'ll meet with your provider via a secure video visit to discuss your smoking history, set a quit date, and develop a personalized plan. Follow-up visits are scheduled to monitor progress, adjust medications, and provide ongoing support.' },
+          { q: 'What if I\'ve tried before and failed?', a: 'Most successful quitters have made multiple attempts before. Previous experience actually helps us tailor a better plan. Your provider will review what worked and what didn\'t to build a more effective strategy this time.' },
+        ].map((item) => (
+          <details class="reveal group bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[20px]">
+            <summary class="flex items-center justify-between px-5 sm:px-6 py-5 cursor-pointer text-text font-display font-light text-lg sm:text-xl">
+              {item.q}
+              <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-5 sm:px-6 pb-5 text-text/50 text-sm sm:text-base leading-relaxed">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-36 sm:py-44 relative overflow-hidden" style="background: linear-gradient(160deg, #0f1a14 0%, #0c0c0c 50%, #1a0f14 100%);">
+    <AsciiHover charset="·+×∘⊹" radius={200} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <h2 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Take the first step to <em class="text-accent italic">quit</em>
+        </h2>
+        <p class="text-text/50 text-lg leading-relaxed mb-12 max-w-[580px] mx-auto">
+          Book your initial evaluation and start working with a provider who will support you through every step of quitting.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-accent">Book a Visit</a>
+          <a href="/contact/" class="btn-pill btn-outline">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+<style>
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui, 'Inter', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 48px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .btn-accent {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border: 1px solid var(--color-accent);
+  }
+  .btn-accent:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(232, 228, 224, 0.2);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

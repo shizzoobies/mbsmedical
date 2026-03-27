@@ -1,23 +1,82 @@
 ---
 const currentPath = Astro.url.pathname;
 
-const navLinks = [
-  { href: '/', label: 'Home' },
+const serviceCategories = [
   {
-    href: '/services/',
-    label: 'Services',
-    children: [
+    label: 'Core Services',
+    items: [
       { href: '/primary-care/', label: 'Primary Care' },
       { href: '/weight-loss/', label: 'Weight Loss' },
-      { href: '/trt/', label: 'TRT Evaluation' },
       { href: '/sleep/', label: 'Sleep Issues' },
     ],
   },
-  { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Contact' },
+  {
+    label: "Men's Health",
+    items: [
+      { href: '/trt/', label: 'TRT Evaluation' },
+      { href: '/erectile-dysfunction/', label: 'Erectile Dysfunction' },
+      { href: '/hair-loss/', label: 'Hair Loss' },
+    ],
+  },
+  {
+    label: "Women's Health",
+    items: [
+      { href: '/birth-control/', label: 'Birth Control' },
+      { href: '/uti-treatment/', label: 'UTI Treatment' },
+      { href: '/menopause/', label: 'Menopause' },
+    ],
+  },
+  {
+    label: 'Mental Health',
+    items: [
+      { href: '/anxiety/', label: 'Anxiety' },
+      { href: '/depression/', label: 'Depression' },
+      { href: '/adhd/', label: 'ADHD' },
+    ],
+  },
+  {
+    label: 'Skin Care',
+    items: [
+      { href: '/acne/', label: 'Acne' },
+      { href: '/eczema/', label: 'Eczema' },
+      { href: '/rosacea/', label: 'Rosacea' },
+    ],
+  },
+  {
+    label: 'Acute Care',
+    items: [
+      { href: '/cold-flu/', label: 'Cold & Flu' },
+      { href: '/sinus-infections/', label: 'Sinus Infections' },
+      { href: '/allergies/', label: 'Allergies' },
+      { href: '/pink-eye/', label: 'Pink Eye' },
+    ],
+  },
+  {
+    label: 'Chronic Conditions',
+    items: [
+      { href: '/diabetes/', label: 'Diabetes' },
+      { href: '/cholesterol/', label: 'Cholesterol' },
+      { href: '/thyroid/', label: 'Thyroid' },
+    ],
+  },
+  {
+    label: 'Lifestyle',
+    items: [
+      { href: '/smoking-cessation/', label: 'Smoking Cessation' },
+      { href: '/sexual-health/', label: 'Sexual Health' },
+    ],
+  },
+  {
+    label: 'GI Health',
+    items: [
+      { href: '/gerd/', label: 'GERD' },
+      { href: '/ibs/', label: 'IBS' },
+    ],
+  },
 ];
 
-const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/', '/sleep/'].includes(currentPath);
+const allServicePaths = ['/services/', ...serviceCategories.flatMap(c => c.items.map(i => i.href))];
+const isServicePage = allServicePaths.includes(currentPath);
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
@@ -35,54 +94,87 @@ const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/',
 
       <!-- Desktop Nav -->
       <div class="hidden lg:flex items-center gap-8">
-        {navLinks.map((link) => (
-          link.children ? (
-            <!-- Dropdown -->
-            <div class="relative group">
-              <a
-                href={link.href}
-                class:list={[
-                  'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 flex items-center gap-1.5 py-2',
-                  isServicePage
-                    ? 'text-primary'
-                    : 'text-text/80 hover:text-accent',
-                ]}
-              >
-                {link.label}
-                <svg class="w-3 h-3 opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </a>
-              <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-                <div class="bg-surface-light/95 backdrop-blur-xl border border-border rounded-lg py-3 px-2 min-w-[200px] shadow-2xl shadow-black/40">
-                  {link.children.map((child) => (
-                    <a
-                      href={child.href}
-                      class:list={[
-                        'block px-4 py-2.5 rounded-md font-ui text-[10px] font-semibold uppercase tracking-[0.12em] transition-colors duration-300',
-                        currentPath === child.href
-                          ? 'text-primary bg-primary/10'
-                          : 'text-text/70 hover:text-accent hover:bg-accent/5',
-                      ]}
-                    >
-                      {child.label}
-                    </a>
-                  ))}
-                </div>
+        <a
+          href="/"
+          class:list={[
+            'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 py-2',
+            currentPath === '/'
+              ? 'text-primary underline underline-offset-4 decoration-primary'
+              : 'text-text/80 hover:text-accent',
+          ]}
+        >
+          Home
+        </a>
+
+        <!-- Services Mega Menu -->
+        <div class="relative group/services">
+          <a
+            href="/services/"
+            class:list={[
+              'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 flex items-center gap-1.5 py-2',
+              isServicePage
+                ? 'text-primary'
+                : 'text-text/80 hover:text-accent',
+            ]}
+          >
+            Services
+            <svg class="w-3 h-3 opacity-50 group-hover/services:opacity-100 transition-all duration-300 group-hover/services:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="absolute top-full right-0 pt-3 opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-all duration-300 translate-y-1 group-hover/services:translate-y-0">
+            <div class="bg-[#0F0F0F]/95 backdrop-blur-xl border border-border rounded-2xl py-5 px-6 shadow-2xl shadow-black/50 mega-menu-grid">
+              <div class="mb-4 pb-3 border-b border-border">
+                <a href="/services/" class="font-ui text-[10px] font-bold uppercase tracking-[0.15em] text-primary hover:text-accent transition-colors duration-300">
+                  View All Services →
+                </a>
+              </div>
+              <div class="grid grid-cols-3 gap-x-8 gap-y-5" style="min-width: 560px;">
+                {serviceCategories.map((cat) => (
+                  <div>
+                    <p class="font-ui text-[9px] font-bold uppercase tracking-[0.18em] text-text/30 mb-2">{cat.label}</p>
+                    <div class="flex flex-col gap-1">
+                      {cat.items.map((item) => (
+                        <a
+                          href={item.href}
+                          class:list={[
+                            'font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-1.5 px-2 rounded-md transition-colors duration-300',
+                            currentPath === item.href
+                              ? 'text-primary bg-primary/10'
+                              : 'text-text/60 hover:text-accent hover:bg-accent/5',
+                          ]}
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ) : (
-            <a
-              href={link.href}
-              class:list={[
-                'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 py-2',
-                currentPath === link.href
-                  ? 'text-primary underline underline-offset-4 decoration-primary'
-                  : 'text-text/80 hover:text-accent',
-              ]}
-            >
-              {link.label}
-            </a>
-          )
-        ))}
+          </div>
+        </div>
+
+        <a
+          href="/about/"
+          class:list={[
+            'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 py-2',
+            currentPath === '/about/'
+              ? 'text-primary underline underline-offset-4 decoration-primary'
+              : 'text-text/80 hover:text-accent',
+          ]}
+        >
+          About
+        </a>
+        <a
+          href="/contact/"
+          class:list={[
+            'nav-link font-ui text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 py-2',
+            currentPath === '/contact/'
+              ? 'text-primary underline underline-offset-4 decoration-primary'
+              : 'text-text/80 hover:text-accent',
+          ]}
+        >
+          Contact
+        </a>
       </div>
 
       <!-- CTA + Mobile -->
@@ -108,15 +200,39 @@ const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/',
     </div>
 
     <!-- Mobile Nav -->
-    <div id="mobile-menu" class="lg:hidden hidden pb-6 pt-4 border-t border-border bg-bg/95 backdrop-blur-xl">
+    <div id="mobile-menu" class="lg:hidden hidden pb-6 pt-4 border-t border-border bg-bg/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto">
       <div class="flex flex-col gap-1">
         <a href="/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>Home</a>
-        <a href="/services/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/services/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>Services</a>
-        <a href="/primary-care/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/primary-care/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>Primary Care</a>
-        <a href="/weight-loss/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/weight-loss/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>Weight Loss</a>
-        <a href="/trt/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/trt/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>TRT Evaluation</a>
-        <a href="/sleep/" class:list={['font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300', currentPath === '/sleep/' ? 'text-primary border-primary' : 'text-text/40 hover:text-accent hover:border-accent']}>Sleep Issues</a>
-        <a href="/about/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/about/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>About</a>
+        <a href="/services/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/services/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>All Services</a>
+
+        {serviceCategories.map((cat) => (
+          <div class="mobile-cat">
+            <button
+              class="mobile-cat-toggle w-full flex items-center justify-between font-ui text-[10px] font-bold uppercase tracking-[0.15em] py-2.5 text-text/40 hover:text-accent transition-colors duration-300"
+              aria-expanded="false"
+            >
+              {cat.label}
+              <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="mobile-cat-items hidden flex-col gap-0.5 pb-2">
+              {cat.items.map((item) => (
+                <a
+                  href={item.href}
+                  class:list={[
+                    'font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300',
+                    currentPath === item.href
+                      ? 'text-primary border-primary'
+                      : 'text-text/40 hover:text-accent hover:border-accent',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <a href="/about/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300 mt-1', currentPath === '/about/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>About</a>
         <a href="/contact/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/contact/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>Contact</a>
         <a
           href="https://mbsmedical.practicebetter.io"
@@ -137,15 +253,14 @@ const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/',
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(237, 233, 224, 0.06);
   }
-  /* Make dark parts of the logo (caduceus, "MEDICAL" text) visible on dark bg.
-     Stacked drop-shadows create a white halo around dark-colored pixels only. */
 </style>
 
 <script>
   const header = document.getElementById('site-header');
   if (header) {
     const onScroll = () => {
-      header.classList.toggle('header-scrolled', window.scrollY > 60);
+      const menuOpen = !document.getElementById('mobile-menu')?.classList.contains('hidden');
+      header.classList.toggle('header-scrolled', window.scrollY > 60 || menuOpen);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -160,11 +275,47 @@ const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/',
     menu?.classList.toggle('hidden');
     iconOpen?.classList.toggle('hidden');
     iconClose?.classList.toggle('hidden');
-    // Force header background when menu is open
     if (isOpening) {
       header?.classList.add('header-scrolled');
     } else if (window.scrollY <= 60) {
       header?.classList.remove('header-scrolled');
     }
   });
+
+  // Mobile category accordion toggles
+  document.querySelectorAll('.mobile-cat-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const items = toggle.nextElementSibling as HTMLElement;
+      const isOpen = !items.classList.contains('hidden');
+      // Close all
+      document.querySelectorAll('.mobile-cat-items').forEach((el) => {
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+      });
+      document.querySelectorAll('.mobile-cat-toggle').forEach((el) => {
+        el.setAttribute('aria-expanded', 'false');
+        el.querySelector('svg')?.classList.remove('rotate-180');
+      });
+      // Open clicked if was closed
+      if (!isOpen) {
+        items.classList.remove('hidden');
+        items.classList.add('flex');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.querySelector('svg')?.classList.add('rotate-180');
+      }
+    });
+  });
+
+  // Auto-expand the category containing the current page
+  const currentCat = document.querySelector('.mobile-cat-items a[class*="text-primary"]')?.closest('.mobile-cat');
+  if (currentCat) {
+    const items = currentCat.querySelector('.mobile-cat-items') as HTMLElement;
+    const toggle = currentCat.querySelector('.mobile-cat-toggle') as HTMLElement;
+    if (items && toggle) {
+      items.classList.remove('hidden');
+      items.classList.add('flex');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.querySelector('svg')?.classList.add('rotate-180');
+    }
+  }
 </script>

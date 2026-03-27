@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AsciiHover from '../components/AsciiHover.astro';
+---
+
+<Layout title="GERD Treatment" description="Clinical management of GERD and chronic acid reflux via telehealth. Medication optimization, lifestyle modification, and ongoing monitoring across Florida.">
+
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36" style="background: linear-gradient(160deg, #1a0f0a 0%, #080808 50%, #0a0f1a 100%);">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal max-w-3xl">
+        <span class="label text-accent block mb-5">GERD Treatment</span>
+        <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Acid reflux<br />under <em class="text-accent italic">control</em>
+        </h1>
+        <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
+          Clinical management of GERD and chronic acid reflux via telehealth. Medication optimization, lifestyle modification, and ongoing monitoring.
+        </p>
+        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Book a Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-16">
+        <span class="label text-accent block mb-5">Our Approach</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">A structured path to<br /><em class="text-accent italic">relief</em></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="reveal reveal-delay-1 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#C06E9F]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Symptom Evaluation</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Frequency and severity assessment</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Trigger identification and pattern review</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Red flag screening for serious conditions</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#C06E9F]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Medication Management</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> PPI optimization and dosing review</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> H2 blocker evaluation</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Step-down strategies to minimize long-term use</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-3 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#C06E9F]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Lifestyle Modification</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Dietary trigger identification and guidance</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Meal timing and positional strategies</li>
+            <li class="flex gap-3"><span class="text-accent mt-0.5">&#8226;</span> Weight management connection and support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Placeholder -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal">
+        <div class="rounded-2xl overflow-hidden bg-surface-light aspect-[16/10] flex items-center justify-center">
+          <span class="text-text-muted text-sm">Image Placeholder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-28 sm:py-36 relative overflow-hidden" style="background: linear-gradient(160deg, #14101e 0%, #0c0c0c 50%, #0a1410 100%);">
+    <AsciiHover charset="01" cellSize={24} radius={120} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-16">
+        <span class="label text-accent block mb-5">Common Questions</span>
+        <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-text">What to <em class="text-accent italic">expect</em></h2>
+      </div>
+      <div class="max-w-3xl space-y-4">
+        {[
+          { q: 'Can GERD be managed via telehealth?', a: 'Yes. Most GERD management involves symptom evaluation, medication adjustment, and lifestyle counseling — all of which can be done effectively through a telehealth visit. Your provider will refer you for in-person testing if needed.' },
+          { q: 'Will I need to take medication long-term?', a: 'Not necessarily. Many patients can step down from daily medication once symptoms are controlled. Your provider will work with you on a plan that minimizes long-term medication use while keeping symptoms managed.' },
+          { q: 'When should I be concerned about reflux?', a: 'If you experience difficulty swallowing, unintended weight loss, persistent vomiting, or symptoms that don\'t respond to treatment, your provider will evaluate whether further testing or referral is warranted.' },
+        ].map((item) => (
+          <details class="reveal group bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[20px]">
+            <summary class="flex items-center justify-between px-5 sm:px-6 py-5 cursor-pointer text-text font-display font-light text-lg sm:text-xl">
+              {item.q}
+              <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-5 sm:px-6 pb-5 text-text/50 text-sm sm:text-base leading-relaxed">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-36 sm:py-44 relative overflow-hidden" style="background: linear-gradient(160deg, #0f1a14 0%, #0c0c0c 50%, #1a0f14 100%);">
+    <AsciiHover charset="·+×∘⊹" radius={200} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <h2 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Get your reflux <em class="text-accent italic">under control</em>
+        </h2>
+        <p class="text-text/50 text-lg leading-relaxed mb-12 max-w-[580px] mx-auto">
+          Book your evaluation and start working with a provider who will build a plan around lasting relief.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-accent">Book a Visit</a>
+          <a href="/contact/" class="btn-pill btn-outline">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+<style>
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui, 'Inter', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 48px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .btn-accent {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border: 1px solid var(--color-accent);
+  }
+  .btn-accent:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(232, 228, 224, 0.2);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AsciiHover from '../components/AsciiHover.astro';
+---
+
+<Layout title="Cholesterol Management" description="Lipid panel monitoring and cholesterol management via telehealth. Statins, lifestyle modification, and ongoing cardiovascular risk assessment.">
+
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36" style="background: linear-gradient(160deg, #0a1a14 0%, #080808 50%, #0f0a1a 100%);">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal max-w-3xl">
+        <span class="label text-primary block mb-5">Cholesterol Management</span>
+        <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Know your numbers,<br /><em class="text-primary italic">protect</em> your health
+        </h1>
+        <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
+          Lipid panel monitoring and cholesterol management via telehealth. Statins, lifestyle modification, and ongoing cardiovascular risk assessment.
+        </p>
+        <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Book a Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Breakdown -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="reveal reveal-delay-1 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Lipid Panel Review</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Total cholesterol tracking and trend analysis</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> LDL and HDL ratio evaluation for risk stratification</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Triglyceride monitoring and management</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Treatment Options</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Statin therapy selection and dose optimization</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Alternative medications for statin-intolerant patients</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Lifestyle modifications including diet and exercise guidance</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-3 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 sm:p-10 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Risk Assessment</h3>
+          <ul class="space-y-3 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Cardiovascular risk scoring and 10-year risk calculation</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Family history evaluation and hereditary risk factors</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Comorbidity evaluation including diabetes and hypertension</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Placeholder -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal">
+        <div class="rounded-2xl overflow-hidden bg-surface-light aspect-[16/10] flex items-center justify-center">
+          <span class="text-text-muted text-sm">Image Placeholder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-36 sm:py-44 relative overflow-hidden" style="background: linear-gradient(160deg, #0f1a14 0%, #0c0c0c 50%, #1a0f14 100%);">
+    <AsciiHover charset="·+×∘⊹" radius={200} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <h2 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Get your cholesterol<br /><em class="text-primary italic">checked</em>
+        </h2>
+        <p class="text-text/50 text-lg leading-relaxed mb-12 max-w-[580px] mx-auto">
+          Book your first visit and get a clear picture of your cardiovascular health.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Book a Visit</a>
+          <a href="/contact/" class="btn-pill btn-outline">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+<style>
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui, 'Inter', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 48px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(232, 228, 224, 0.2);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
