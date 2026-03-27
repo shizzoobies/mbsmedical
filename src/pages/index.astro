@@ -10,18 +10,18 @@ import Layout from '../layouts/Layout.astro';
   <section class="relative h-screen min-h-[700px] flex items-end overflow-hidden">
     <!-- Video Background -->
     <video
+      id="hero-video"
       autoplay
       muted
-      loop
       playsinline
-      class="absolute inset-0 w-full h-full object-cover"
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3000ms]"
       style="object-position: 70% 60%;"
     >
       <source src="/images/flag-intro.mp4" type="video/mp4" />
     </video>
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 hero-overlay"></div>
+    <!-- Overlay — darkens after video pauses -->
+    <div id="hero-overlay" class="absolute inset-0 hero-overlay transition-all duration-[3000ms]"></div>
 
     <!-- Content — left aligned, bottom portion -->
     <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pb-28 sm:pb-36 w-full">
@@ -56,6 +56,75 @@ import Layout from '../layouts/Layout.astro';
       <svg class="w-5 h-5 text-text/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
     </div>
   </section>
+
+
+  <!-- ============================================ -->
+  <!-- SCROLLING SERVICES MARQUEE                   -->
+  <!-- ============================================ -->
+  <section class="py-6 border-t border-b border-border overflow-hidden">
+    <div class="marquee-container">
+      <div class="marquee-track">
+        {[1,2].map(() => (
+          <Fragment>
+            <a href="/primary-care/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">Primary Care</span>
+            </a>
+            <a href="/weight-loss/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">Weight Loss</span>
+            </a>
+            <a href="/trt/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">TRT Evaluation</span>
+            </a>
+            <a href="/primary-care/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">Chronic Conditions</span>
+            </a>
+            <a href="/weight-loss/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">GLP-1 Evaluation</span>
+            </a>
+            <a href="/primary-care/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">Medication Management</span>
+            </a>
+            <a href="/trt/" class="marquee-item group">
+              <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+              <span class="font-display font-light text-2xl sm:text-3xl text-text/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">Lab-Driven Assessment</span>
+            </a>
+          </Fragment>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 35s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 32px;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
 
 
   <!-- ============================================ -->
@@ -278,8 +347,9 @@ import Layout from '../layouts/Layout.astro';
 
 </Layout>
 
-<!-- Scroll reveal observer -->
+<!-- Scroll reveal + video pause -->
 <script>
+  // Scroll reveals
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -291,4 +361,18 @@ import Layout from '../layouts/Layout.astro';
     { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
   );
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Pause video after 10 seconds and darken overlay
+  const video = document.getElementById('hero-video') as HTMLVideoElement;
+  const overlay = document.getElementById('hero-overlay');
+
+  if (video) {
+    setTimeout(() => {
+      video.pause();
+      // Darken the overlay for readability
+      if (overlay) {
+        overlay.style.background = 'rgba(8, 8, 8, 0.55)';
+      }
+    }, 10000);
+  }
 </script>
