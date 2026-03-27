@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AsciiHover from '../components/AsciiHover.astro';
 ---
 
 <Layout title="Contact" description="Get in touch with MBS Medical. Send us a message or book a telehealth visit through our secure patient portal.">
 
-  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36">
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36" style="background: linear-gradient(160deg, #0a0f1a 0%, #080808 50%, #0f1a14 100%);">
     <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
       <div class="reveal max-w-3xl">
         <span class="label text-primary block mb-5">Contact</span>
@@ -18,8 +19,9 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <section class="pb-28 sm:pb-36">
-    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+  <section class="relative pb-28 sm:pb-36">
+    <AsciiHover charset="·+" cellSize={32} radius={140} baseOpacity={0.02} />
+    <div class="relative z-2 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
       <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
 
         <!-- Form -->
@@ -30,20 +32,20 @@ import Layout from '../layouts/Layout.astro';
               <div class="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label for="name" class="label text-text-muted block mb-2">Full Name</label>
-                  <input type="text" id="name" name="name" required class="w-full px-4 py-3.5 rounded-lg bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="Your name" />
+                  <input type="text" id="name" name="name" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="Your name" />
                 </div>
                 <div>
                   <label for="email" class="label text-text-muted block mb-2">Email</label>
-                  <input type="email" id="email" name="email" required class="w-full px-4 py-3.5 rounded-lg bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="you@email.com" />
+                  <input type="email" id="email" name="email" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="you@email.com" />
                 </div>
               </div>
               <div>
                 <label for="phone" class="label text-text-muted block mb-2">Phone Number</label>
-                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3.5 rounded-lg bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="(555) 123-4567" />
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="(555) 123-4567" />
               </div>
               <div>
                 <label for="topic" class="label text-text-muted block mb-2">Topic</label>
-                <select id="topic" name="topic" class="w-full px-4 py-3.5 rounded-lg bg-surface-light border border-border text-text focus:outline-none focus:border-primary transition-colors">
+                <select id="topic" name="topic" class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text focus:outline-none focus:border-primary transition-colors">
                   <option value="">Select a topic</option>
                   <option value="primary-care">Primary Care</option>
                   <option value="weight-loss">Weight Loss</option>
@@ -54,9 +56,9 @@ import Layout from '../layouts/Layout.astro';
               </div>
               <div>
                 <label for="message" class="label text-text-muted block mb-2">Message</label>
-                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3.5 rounded-lg bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="How can we help?"></textarea>
+                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="How can we help?"></textarea>
               </div>
-              <button type="submit" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-7 py-3 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">
+              <button type="submit" class="btn-pill btn-primary">
                 Send Message
               </button>
             </form>
@@ -67,16 +69,16 @@ import Layout from '../layouts/Layout.astro';
         <div class="lg:col-span-2 space-y-8">
 
           <!-- Book -->
-          <div class="reveal border border-primary/30 rounded-2xl p-8">
+          <div class="reveal bg-[#0F0F0F] border border-[#3AABA5]/30 rounded-[24px] p-8 hover:border-[#3AABA5]/60 transition-all duration-300">
             <h3 class="font-display font-light text-2xl text-text mb-3">Ready to book?</h3>
             <p class="text-text/40 text-sm leading-relaxed mb-6">Skip the form and schedule directly through our secure patient portal.</p>
-            <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-5 py-2.5 rounded-[4px] hover:bg-accent hover:border-accent transition-all duration-300">
+            <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">
               Book a Visit
             </a>
           </div>
 
           <!-- Info -->
-          <div class="reveal reveal-delay-1 border border-border rounded-2xl p-8">
+          <div class="reveal reveal-delay-1 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8">
             <h3 class="font-display font-light text-2xl text-text mb-6">Practice info</h3>
             <div class="space-y-5">
               <div>
@@ -95,7 +97,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <!-- Emergency -->
-          <div class="reveal reveal-delay-2 border border-red-500/20 rounded-2xl p-6">
+          <div class="reveal reveal-delay-2 bg-[#0F0F0F] border border-red-500/20 rounded-[24px] p-6">
             <p class="text-red-400 text-sm font-medium mb-1">Medical Emergency?</p>
             <p class="text-red-400/60 text-xs leading-relaxed">Call 911 or go to the nearest emergency room. This practice does not provide emergency services.</p>
           </div>
@@ -106,6 +108,40 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
 </Layout>
+<style>
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui, 'Inter', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 48px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(232, 228, 224, 0.2);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>
 <script>
   const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
