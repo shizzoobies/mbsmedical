@@ -9,7 +9,9 @@
       "Bash(rm -rf apparent-apogee)",
       "Bash(npm install:*)",
       "Bash(npx astro:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(node -e \":*)",
+      "Bash(python3 -c \"from PIL import Image; print\\(''Pillow OK''\\)\")"
     ]
   }
 }

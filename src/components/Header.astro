@@ -26,9 +26,9 @@ const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/']
       <!-- Logo -->
       <a href="/" class="flex items-center">
         <img
-          src="/logo.png"
+          src="/logo-dark.png"
           alt="MBS Medical"
-          class="h-28 lg:h-36 w-auto transition-all duration-500 logo-dark-bg"
+          class="h-28 lg:h-36 w-auto transition-all duration-500"
         />
       </a>
 
@@ -137,11 +137,6 @@ const isServicePage = ['/services/', '/primary-care/', '/weight-loss/', '/trt/']
   }
   /* Make dark parts of the logo (caduceus, "MEDICAL" text) visible on dark bg.
      Stacked drop-shadows create a white halo around dark-colored pixels only. */
-  .logo-dark-bg {
-    filter:
-      drop-shadow(0 0 0.5px rgba(255,255,255,0.5))
-      drop-shadow(0 0 1px rgba(255,255,255,0.3));
-  }
 </style>
 
 <script>
