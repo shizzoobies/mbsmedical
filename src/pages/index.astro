@@ -23,14 +23,14 @@ import Layout from '../layouts/Layout.astro';
     <!-- Overlay — darkens after video pauses -->
     <div id="hero-overlay" class="absolute inset-0 hero-overlay transition-all duration-[3000ms]"></div>
 
-    <!-- Content — left aligned, bottom portion -->
-    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pb-28 sm:pb-36 w-full">
+    <!-- Content — right aligned, bottom portion -->
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pb-28 sm:pb-36 w-full flex flex-col items-end text-right">
       <h1 class="font-display font-light text-[clamp(3rem,8vw,6.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8 max-w-4xl">
         Medical care<br />
         that <em class="text-primary italic">starts</em><br />
         with you
       </h1>
-      <p class="text-text/70 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
+      <p class="text-text/70 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10 ml-auto">
         Direct access to a licensed provider who knows your history, your goals, and your health. Cash pay, no insurance, same-week appointments across Florida.
       </p>
       <div class="flex flex-wrap gap-4">
