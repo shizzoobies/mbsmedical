@@ -73,11 +73,11 @@ import AsciiHover from '../components/AsciiHover.astro';
           { q: 'Can this integrate with my primary care?', a: 'Absolutely. If you\'re also a primary care patient with MBS Medical, your weight loss program is managed alongside your other conditions by the same provider.' },
         ].map((item) => (
           <details class="reveal group bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[20px]">
-            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-text font-display font-light text-xl">
+            <summary class="flex items-center justify-between px-5 sm:px-6 py-5 cursor-pointer text-text font-display font-light text-lg sm:text-xl">
               {item.q}
               <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
             </summary>
-            <div class="px-6 pb-5 text-text/50 text-base leading-relaxed">{item.a}</div>
+            <div class="px-5 sm:px-6 pb-5 text-text/50 text-sm sm:text-base leading-relaxed">{item.a}</div>
           </details>
         ))}
       </div>
