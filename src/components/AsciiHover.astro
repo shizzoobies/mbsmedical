@@ -1,0 +1,182 @@
+---
+interface Props {
+  /** Characters to randomly pick from */
+  charset?: string;
+  /** Base opacity of characters when not hovered (0-1) */
+  baseOpacity?: number;
+  /** Radius in pixels for the glow effect */
+  radius?: number;
+  /** Grid cell size in pixels */
+  cellSize?: number;
+}
+
+const {
+  charset = '+·×•○◦∘⊹⋅',
+  baseOpacity = 0.04,
+  radius = 160,
+  cellSize = 28,
+} = Astro.props;
+---
+
+<div
+  class="ascii-hover-wrap"
+  data-charset={charset}
+  data-base-opacity={baseOpacity}
+  data-radius={radius}
+  data-cell-size={cellSize}
+>
+  <canvas class="ascii-hover-canvas"></canvas>
+</div>
+
+<style>
+  .ascii-hover-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .ascii-hover-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+
+<script>
+  function initAsciiHover(wrap: HTMLElement) {
+    const canvas = wrap.querySelector('.ascii-hover-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const charset = wrap.dataset.charset || '+·×•';
+    const baseOpacity = parseFloat(wrap.dataset.baseOpacity || '0.04');
+    const radius = parseInt(wrap.dataset.radius || '160');
+    const cellSize = parseInt(wrap.dataset.cellSize || '28');
+
+    const primary = { r: 58, g: 171, b: 165 };   // #3AABA5
+    const accent = { r: 192, g: 110, b: 159 };    // #C06E9F
+
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let targetX = -9999;
+    let targetY = -9999;
+    let animId: number;
+    let chars: string[] = [];
+    let cols = 0;
+    let rows = 0;
+
+    function resize() {
+      const rect = wrap.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      cols = Math.ceil(rect.width / cellSize) + 1;
+      rows = Math.ceil(rect.height / cellSize) + 1;
+
+      // Assign random characters to each cell (stable until resize)
+      const total = cols * rows;
+      chars = [];
+      const charArr = [...charset];
+      for (let i = 0; i < total; i++) {
+        chars.push(charArr[Math.floor(Math.random() * charArr.length)]);
+      }
+    }
+
+    function draw() {
+      const rect = wrap.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+
+      // Smooth follow
+      mouseX += (targetX - mouseX) * 0.15;
+      mouseY += (targetY - mouseY) * 0.15;
+
+      ctx!.clearRect(0, 0, w, h);
+      ctx!.font = `${cellSize * 0.55}px "Inter", monospace`;
+      ctx!.textAlign = 'center';
+      ctx!.textBaseline = 'middle';
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const x = col * cellSize + cellSize / 2;
+          const y = row * cellSize + cellSize / 2;
+
+          const dx = x - mouseX;
+          const dy = y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          let opacity = baseOpacity;
+          let r = 237, g = 233, b = 224; // text color #EDE9E0
+
+          if (dist < radius) {
+            const t = 1 - dist / radius;
+            const ease = t * t * t; // cubic ease for tight glow
+            opacity = baseOpacity + ease * 0.55;
+
+            // Blend between primary and accent based on angle
+            const angle = Math.atan2(dy, dx);
+            const blend = (Math.sin(angle * 2) + 1) / 2;
+
+            r = Math.round(primary.r + (accent.r - primary.r) * blend);
+            g = Math.round(primary.g + (accent.g - primary.g) * blend);
+            b = Math.round(primary.b + (accent.b - primary.b) * blend);
+          }
+
+          ctx!.fillStyle = `rgba(${r},${g},${b},${opacity})`;
+          ctx!.fillText(chars[row * cols + col], x, y);
+        }
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    // Listen on parent section (pointer-events: none on wrap, so events come from parent)
+    const parent = wrap.parentElement;
+    if (!parent) return;
+
+    // Ensure parent is positioned
+    const parentPos = getComputedStyle(parent).position;
+    if (parentPos === 'static') parent.style.position = 'relative';
+
+    function onMove(e: MouseEvent) {
+      const rect = wrap.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+    }
+
+    function onLeave() {
+      targetX = -9999;
+      targetY = -9999;
+    }
+
+    parent.addEventListener('mousemove', onMove);
+    parent.addEventListener('mouseleave', onLeave);
+
+    resize();
+    draw();
+
+    // Debounced resize
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const ro = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 150);
+    });
+    ro.observe(wrap);
+
+    // Cleanup
+    return () => {
+      cancelAnimationFrame(animId);
+      parent.removeEventListener('mousemove', onMove);
+      parent.removeEventListener('mouseleave', onLeave);
+      ro.disconnect();
+    };
+  }
+
+  // Init all instances
+  document.querySelectorAll<HTMLElement>('.ascii-hover-wrap').forEach(initAsciiHover);
+</script>

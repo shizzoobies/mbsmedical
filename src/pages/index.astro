@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AsciiHover from '../components/AsciiHover.astro';
 ---
 
 <Layout title="Home" description="MBS Medical — Telehealth primary care, weight loss, and TRT evaluation across Florida. Cash pay, same-week appointments, one consistent provider.">
@@ -308,8 +309,9 @@ import Layout from '../layouts/Layout.astro';
   <!-- ============================================ -->
   <!-- HOW IT WORKS — Clean 3-column, no numbers    -->
   <!-- ============================================ -->
-  <section class="py-28 sm:py-36">
-    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+  <section class="py-28 sm:py-36 relative">
+    <AsciiHover />
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 relative z-2">
       <div class="reveal mb-16 text-center">
         <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.02em] text-text">
           Three steps to <em class="text-accent italic">better</em> care
@@ -346,8 +348,9 @@ import Layout from '../layouts/Layout.astro';
   <!-- ============================================ -->
   <!-- STATS — Animated counters                    -->
   <!-- ============================================ -->
-  <section class="py-24 sm:py-32 border-t border-b border-border">
-    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+  <section class="py-24 sm:py-32 border-t border-b border-border relative">
+    <AsciiHover charset="01" cellSize={24} radius={120} baseOpacity={0.03} />
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 relative z-2">
       <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x lg:divide-border">
         <div class="text-center lg:px-8">
           <p class="font-display font-light text-5xl sm:text-6xl text-primary mb-2"><span class="counter" data-target="12">0</span>+</p>
@@ -458,6 +461,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- CTA — Clean, centered, confident             -->
   <!-- ============================================ -->
   <section class="py-36 sm:py-44 relative overflow-hidden" style="background: linear-gradient(160deg, #0f1a14 0%, #0c0c0c 50%, #1a0f14 100%);">
+    <AsciiHover charset="·+×∘⊹" radius={200} baseOpacity={0.03} />
     <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
       <div class="reveal">
         <h2 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
