@@ -15,7 +15,10 @@
       "WebFetch(domain:mbsdoc.com)",
       "mcp__plugin_playwright_playwright__browser_navigate",
       "mcp__plugin_playwright_playwright__browser_take_screenshot",
-      "WebFetch(domain:www.kandadesigners.com)"
+      "WebFetch(domain:www.kandadesigners.com)",
+      "WebFetch(domain:www.hims.com)",
+      "mcp__plugin_playwright_playwright__browser_run_code",
+      "mcp__plugin_playwright_playwright__browser_evaluate"
     ]
   }
 }
