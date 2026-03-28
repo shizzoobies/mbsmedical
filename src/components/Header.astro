@@ -207,28 +207,36 @@ const isServicePage = allServicePaths.includes(currentPath);
 
     <!-- Mobile Nav -->
     <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" class="lg:hidden hidden pb-6 pt-4 border-t border-border bg-bg/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto">
-      <div class="flex flex-col gap-1">
-        <a href="/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>Home</a>
-        <a href="/services/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/services/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>All Services</a>
+      <div class="flex flex-col gap-0.5">
+        <a href="/" class:list={['font-ui text-[12px] font-semibold uppercase tracking-[0.12em] py-3 px-3 rounded-lg transition-colors duration-300', currentPath === '/' ? 'text-primary bg-primary/10' : 'text-text/70 hover:text-accent hover:bg-accent/5']}>Home</a>
 
-        {serviceCategories.map((cat) => (
+        <!-- Services section with accordion categories -->
+        <div class="mt-2 mb-1">
+          <a href="/services/" class:list={['font-ui text-[12px] font-semibold uppercase tracking-[0.12em] py-3 px-3 rounded-lg transition-colors duration-300 block', currentPath === '/services/' ? 'text-primary bg-primary/10' : 'text-text/70 hover:text-accent hover:bg-accent/5']}>All Services</a>
+        </div>
+
+        {serviceCategories.map((cat, catIdx) => (
           <div class="mobile-cat">
             <button
-              class="mobile-cat-toggle w-full flex items-center justify-between font-ui text-[10px] font-bold uppercase tracking-[0.15em] py-2.5 text-text/40 hover:text-accent transition-colors duration-300"
+              class="mobile-cat-toggle w-full flex items-center justify-between font-ui text-[11px] font-bold uppercase tracking-[0.12em] py-3 px-3 rounded-lg text-text/60 hover:text-accent hover:bg-accent/5 transition-colors duration-300"
               aria-expanded="false"
+              type="button"
             >
-              {cat.label}
-              <svg class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              <span class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>
+                {cat.label}
+              </span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-300 shrink-0" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div class="mobile-cat-items hidden flex-col gap-0.5 pb-2">
+            <div class="mobile-cat-items hidden flex-col gap-0.5 pl-3 pb-1">
               {cat.items.map((item) => (
                 <a
                   href={item.href}
                   class:list={[
-                    'font-ui text-[10px] font-semibold uppercase tracking-[0.12em] py-2 pl-4 border-l border-border transition-colors duration-300',
+                    'font-ui text-[11px] font-semibold uppercase tracking-[0.1em] py-2.5 pl-5 border-l-2 transition-colors duration-300 rounded-r-lg',
                     currentPath === item.href
-                      ? 'text-primary border-primary'
-                      : 'text-text/40 hover:text-accent hover:border-accent',
+                      ? 'text-primary border-primary bg-primary/5'
+                      : 'text-text/50 border-border hover:text-accent hover:border-accent hover:bg-accent/5',
                   ]}
                 >
                   {item.label}
@@ -238,13 +246,15 @@ const isServicePage = allServicePaths.includes(currentPath);
           </div>
         ))}
 
-        <a href="/about/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300 mt-1', currentPath === '/about/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>About</a>
-        <a href="/contact/" class:list={['font-ui text-[11px] font-semibold uppercase tracking-[0.15em] py-2.5 transition-colors duration-300', currentPath === '/contact/' ? 'text-primary' : 'text-text/60 hover:text-accent']}>Contact</a>
+        <div class="border-t border-border mt-3 pt-3 flex flex-col gap-0.5">
+          <a href="/about/" class:list={['font-ui text-[12px] font-semibold uppercase tracking-[0.12em] py-3 px-3 rounded-lg transition-colors duration-300', currentPath === '/about/' ? 'text-primary bg-primary/10' : 'text-text/70 hover:text-accent hover:bg-accent/5']}>About</a>
+          <a href="/contact/" class:list={['font-ui text-[12px] font-semibold uppercase tracking-[0.12em] py-3 px-3 rounded-lg transition-colors duration-300', currentPath === '/contact/' ? 'text-primary bg-primary/10' : 'text-text/70 hover:text-accent hover:bg-accent/5']}>Contact</a>
+        </div>
         <a
           href="https://mbsmedical.practicebetter.io"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-3 text-center font-ui text-[10px] font-bold uppercase tracking-[0.15em] bg-primary text-bg border border-primary px-5 py-2.5 rounded-full"
+          class="mt-4 text-center font-ui text-[11px] font-bold uppercase tracking-[0.12em] bg-primary text-bg border border-primary px-5 py-3 rounded-full hover:bg-accent hover:border-accent transition-all duration-300"
         >
           Book a Visit
         </a>
