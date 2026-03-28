@@ -111,7 +111,7 @@ const categories = [
     >
       <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         <div class="reveal mb-10">
-          <span class:list={['label block mb-3', cat.color === 'accent' ? 'text-accent' : 'text-primary']}>{cat.label}</span>
+          <h2 class:list={['label block mb-3', cat.color === 'accent' ? 'text-accent' : 'text-primary']}>{cat.label}</h2>
         </div>
         <div class:list={['grid gap-5', cat.items.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : cat.items.length === 2 ? 'sm:grid-cols-2 lg:grid-cols-2 max-w-4xl' : 'sm:grid-cols-2 lg:grid-cols-3']}>
           {cat.items.map((item, i) => (

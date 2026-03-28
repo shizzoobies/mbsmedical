@@ -2,12 +2,12 @@
 
 @theme {
   /* MBS brand colors */
-  --color-primary: #3AABA5;
-  --color-primary-light: #4DC4BD;
+  --color-primary: #44BDB7;
+  --color-primary-light: #5DD4CE;
   --color-primary-dark: #2A8A85;
 
-  --color-accent: #C06E9F;
-  --color-accent-light: #D48AB6;
+  --color-accent: #D17DB0;
+  --color-accent-light: #E094C4;
   --color-accent-dark: #A85A88;
 
   /* Dark editorial palette (Kanda-inspired) */
@@ -90,4 +90,28 @@ h1, h2, h3 {
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.1;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

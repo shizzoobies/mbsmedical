@@ -28,24 +28,24 @@ import AsciiHover from '../components/AsciiHover.astro';
         <div class="lg:col-span-3">
           <div class="reveal">
             <h2 class="font-display font-light text-3xl text-text mb-8">Send us a message</h2>
-            <form class="space-y-6" id="contact-form">
+            <form class="space-y-6" id="contact-form" aria-label="Contact MBS Medical">
               <div class="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label for="name" class="label text-text-muted block mb-2">Full Name</label>
-                  <input type="text" id="name" name="name" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="Your name" />
+                  <input type="text" id="name" name="name" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none transition-colors" placeholder="Your name" />
                 </div>
                 <div>
                   <label for="email" class="label text-text-muted block mb-2">Email</label>
-                  <input type="email" id="email" name="email" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="you@email.com" />
+                  <input type="email" id="email" name="email" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none transition-colors" placeholder="you@email.com" />
                 </div>
               </div>
               <div>
                 <label for="phone" class="label text-text-muted block mb-2">Phone Number</label>
-                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder="(555) 123-4567" />
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none transition-colors" placeholder="(555) 123-4567" />
               </div>
               <div>
                 <label for="topic" class="label text-text-muted block mb-2">Topic</label>
-                <select id="topic" name="topic" class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text focus:outline-none focus:border-primary transition-colors">
+                <select id="topic" name="topic" class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none transition-colors">
                   <option value="">Select a topic</option>
                   <option value="primary-care">Primary Care</option>
                   <option value="weight-loss">Weight Loss</option>
@@ -64,7 +64,7 @@ import AsciiHover from '../components/AsciiHover.astro';
               </div>
               <div>
                 <label for="message" class="label text-text-muted block mb-2">Message</label>
-                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="How can we help?"></textarea>
+                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3.5 rounded-xl bg-surface-light border border-border text-text placeholder-text-muted/50 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none transition-colors resize-none" placeholder="How can we help?"></textarea>
               </div>
               <button type="submit" class="btn-pill btn-primary">
                 Send Message
