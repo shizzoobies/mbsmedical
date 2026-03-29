@@ -63,8 +63,12 @@ import Layout from '../layouts/Layout.astro';
   <!-- ============================================ -->
   <div id="calorie-calculator" class="modal-overlay fixed inset-0 z-[200] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="calorie-title">
     <div class="modal-content bg-surface border border-border rounded-[24px] w-full max-w-xl mx-auto my-8 p-8 sm:p-10 relative">
-      <button type="button" class="modal-close absolute top-5 right-5 text-text/40 hover:text-text transition-colors" aria-label="Close">
+      <button type="button" class="modal-close absolute top-5 right-5 text-text/40 hover:text-text transition-colors hidden sm:block" aria-label="Close">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <button type="button" class="modal-close-mobile sm:hidden w-full flex items-center justify-center gap-2 py-3 mb-4 -mt-2 rounded-xl bg-bg border border-border text-text/50 text-sm font-ui font-semibold uppercase tracking-wider active:bg-surface">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        Close
       </button>
       <h2 id="calorie-title" class="font-display font-light text-3xl text-text mb-2">Daily Calorie Estimator</h2>
       <p class="text-text/40 text-sm mb-8">Uses the Mifflin-St Jeor equation to estimate your Total Daily Energy Expenditure (TDEE).</p>
@@ -89,8 +93,13 @@ import Layout from '../layouts/Layout.astro';
             <input type="number" name="weight" min="50" max="700" step="0.1" required class="tool-input" placeholder="170" />
           </div>
           <div>
-            <label class="label text-text/50 block mb-2">Height (inches)</label>
-            <input type="number" name="height" min="36" max="96" step="0.1" required class="tool-input" placeholder="68" />
+            <label class="label text-text/50 block mb-2">Height</label>
+            <div class="flex gap-2">
+              <input type="number" name="feet" min="3" max="7" required class="tool-input" placeholder="5" />
+              <span class="text-text/30 self-center text-sm shrink-0">ft</span>
+              <input type="number" name="inches" min="0" max="11" required class="tool-input" placeholder="8" />
+              <span class="text-text/30 self-center text-sm shrink-0">in</span>
+            </div>
           </div>
         </div>
         <div>
@@ -139,8 +148,12 @@ import Layout from '../layouts/Layout.astro';
   <!-- ============================================ -->
   <div id="weight-loss" class="modal-overlay fixed inset-0 z-[200] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="weightloss-title">
     <div class="modal-content bg-surface border border-border rounded-[24px] w-full max-w-xl mx-auto my-8 p-8 sm:p-10 relative">
-      <button type="button" class="modal-close absolute top-5 right-5 text-text/40 hover:text-text transition-colors" aria-label="Close">
+      <button type="button" class="modal-close absolute top-5 right-5 text-text/40 hover:text-text transition-colors hidden sm:block" aria-label="Close">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <button type="button" class="modal-close-mobile sm:hidden w-full flex items-center justify-center gap-2 py-3 mb-4 -mt-2 rounded-xl bg-bg border border-border text-text/50 text-sm font-ui font-semibold uppercase tracking-wider active:bg-surface">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        Close
       </button>
       <h2 id="weightloss-title" class="font-display font-light text-3xl text-text mb-2">Weight Loss Projector</h2>
       <p class="text-text/40 text-sm mb-8">Estimate weekly weight change based on your TDEE and planned daily calorie intake.</p>
@@ -165,8 +178,13 @@ import Layout from '../layouts/Layout.astro';
             <input type="number" name="weight" min="50" max="700" step="0.1" required class="tool-input" placeholder="170" />
           </div>
           <div>
-            <label class="label text-text/50 block mb-2">Height (inches)</label>
-            <input type="number" name="height" min="36" max="96" step="0.1" required class="tool-input" placeholder="68" />
+            <label class="label text-text/50 block mb-2">Height</label>
+            <div class="flex gap-2">
+              <input type="number" name="feet" min="3" max="7" required class="tool-input" placeholder="5" />
+              <span class="text-text/30 self-center text-sm shrink-0">ft</span>
+              <input type="number" name="inches" min="0" max="11" required class="tool-input" placeholder="8" />
+              <span class="text-text/30 self-center text-sm shrink-0">in</span>
+            </div>
           </div>
         </div>
         <div>
@@ -219,8 +237,12 @@ import Layout from '../layouts/Layout.astro';
   <!-- ============================================ -->
   <div id="calories-burned" class="modal-overlay fixed inset-0 z-[200] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="activity-title">
     <div class="modal-content bg-surface border border-border rounded-[24px] w-full max-w-xl mx-auto my-8 p-8 sm:p-10 relative">
-      <button type="button" class="modal-close absolute top-5 right-5 text-text/40 hover:text-text transition-colors" aria-label="Close">
+      <button type="button" class="modal-close absolute top-5 right-5 text-text/40 hover:text-text transition-colors hidden sm:block" aria-label="Close">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <button type="button" class="modal-close-mobile sm:hidden w-full flex items-center justify-center gap-2 py-3 mb-4 -mt-2 rounded-xl bg-bg border border-border text-text/50 text-sm font-ui font-semibold uppercase tracking-wider active:bg-surface">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        Close
       </button>
       <h2 id="activity-title" class="font-display font-light text-3xl text-text mb-2">Activity Calorie Burner</h2>
       <p class="text-text/40 text-sm mb-8">Estimate calories burned during different activities using MET (Metabolic Equivalent of Task) values.</p>
@@ -362,8 +384,8 @@ import Layout from '../layouts/Layout.astro';
     });
   });
 
-  // Close on X button
-  document.querySelectorAll('.modal-close').forEach((btn) => {
+  // Close on X button (desktop) and Close bar (mobile)
+  document.querySelectorAll('.modal-close, .modal-close-mobile').forEach((btn) => {
     btn.addEventListener('click', () => {
       const overlay = btn.closest('.modal-overlay');
       if (overlay) closeModal(overlay);
@@ -402,7 +424,7 @@ import Layout from '../layouts/Layout.astro';
     const age = Number(data.get('age'));
     const sex = data.get('sex') as string;
     const weight = Number(data.get('weight'));
-    const height = Number(data.get('height'));
+    const height = Number(data.get('feet')) * 12 + Number(data.get('inches'));
     const activity = Number(data.get('activity'));
 
     const bmr = calcBMR(weight, height, age, sex);
@@ -423,7 +445,7 @@ import Layout from '../layouts/Layout.astro';
     const age = Number(data.get('age'));
     const sex = data.get('sex') as string;
     const weight = Number(data.get('weight'));
-    const height = Number(data.get('height'));
+    const height = Number(data.get('feet')) * 12 + Number(data.get('inches'));
     const activity = Number(data.get('activity'));
     const intake = Number(data.get('intake'));
 
