@@ -245,27 +245,39 @@ import Layout from '../layouts/Layout.astro';
         Close
       </button>
       <h2 id="activity-title" class="font-display font-light text-3xl text-text mb-2">Activity Calorie Burner</h2>
-      <p class="text-text/40 text-sm mb-8">Estimate calories burned during different activities using MET (Metabolic Equivalent of Task) values.</p>
+      <p class="text-text/40 text-sm mb-8">Select an activity, enter your weight and duration to estimate calories burned.</p>
 
       <form id="activity-form" class="space-y-5">
         <div>
-          <label class="label text-text/50 block mb-2">Weight (lbs)</label>
-          <input type="number" name="weight" min="50" max="700" step="0.1" required class="tool-input" placeholder="170" />
+          <label class="label text-text/50 block mb-2">Search &amp; Select Activity</label>
+          <input type="text" id="activity-search" class="tool-input mb-2" placeholder="Type to search (e.g. swimming, yoga, sauna...)" autocomplete="off" />
+          <div id="activity-picker" class="bg-bg border border-border rounded-2xl max-h-52 overflow-y-auto overscroll-contain" style="-webkit-overflow-scrolling: touch;"></div>
+          <input type="hidden" name="activity-met" id="activity-met-input" required />
+          <div id="activity-selected" class="mt-2 hidden">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 text-primary text-sm">
+              <span id="activity-selected-name"></span>
+              <button type="button" id="activity-clear" class="hover:text-accent transition-colors" aria-label="Clear selection">&times;</button>
+            </span>
+          </div>
         </div>
-        <div>
-          <label class="label text-text/50 block mb-2">Duration (minutes)</label>
-          <input type="number" name="duration" min="1" max="600" required class="tool-input" placeholder="30" />
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="label text-text/50 block mb-2">Weight (lbs)</label>
+            <input type="number" name="weight" min="50" max="700" step="0.1" required class="tool-input" placeholder="170" />
+          </div>
+          <div>
+            <label class="label text-text/50 block mb-2">Duration (min)</label>
+            <input type="number" name="duration" min="1" max="600" required class="tool-input" placeholder="30" />
+          </div>
         </div>
-        <button type="submit" class="w-full py-3 rounded-full bg-primary text-bg font-ui font-semibold text-sm uppercase tracking-wider hover:bg-accent transition-colors duration-300 cursor-pointer">Calculate All Activities</button>
+        <button type="submit" class="w-full py-3 rounded-full bg-primary text-bg font-ui font-semibold text-sm uppercase tracking-wider hover:bg-accent transition-colors duration-300 cursor-pointer">Calculate</button>
       </form>
 
       <div id="activity-result" class="mt-8 hidden">
-        <div class="bg-bg border border-border rounded-2xl p-5">
-          <div class="flex items-center justify-between mb-4">
-            <span class="label text-primary">Estimated Calories Burned</span>
-            <span id="activity-meta" class="text-text/30 text-xs"></span>
-          </div>
-          <div id="activity-list" class="space-y-2"></div>
+        <div class="bg-bg border border-border rounded-2xl p-6 text-center">
+          <span class="label text-primary block mb-1" id="activity-result-name"></span>
+          <p id="activity-result-cal" class="font-display text-5xl text-text mb-1"></p>
+          <p id="activity-result-meta" class="text-text/40 text-sm"></p>
         </div>
       </div>
 
@@ -332,26 +344,19 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
-  /* Activity row styling */
-  :global(.activity-row) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 0.75rem;
-    border-radius: 10px;
-    transition: background 0.2s;
+  /* Activity picker scrollbar */
+  #activity-picker::-webkit-scrollbar {
+    width: 6px;
   }
-  :global(.activity-row:hover) {
-    background: rgba(237, 233, 224, 0.03);
+  #activity-picker::-webkit-scrollbar-track {
+    background: transparent;
   }
-  :global(.activity-name) {
-    color: rgba(237, 233, 224, 0.6);
-    font-size: 0.85rem;
+  #activity-picker::-webkit-scrollbar-thumb {
+    background: rgba(237, 233, 224, 0.1);
+    border-radius: 3px;
   }
-  :global(.activity-cal) {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    color: #EDE9E0;
+  #activity-picker.hidden {
+    display: none;
   }
 </style>
 
@@ -495,54 +500,298 @@ import Layout from '../layouts/Layout.astro';
 
   // --- Activity Calorie Burner ---
   const activities = [
-    { name: 'Walking (3 mph)', met: 3.5 },
-    { name: 'Brisk Walking (4 mph)', met: 5.0 },
-    { name: 'Jogging (5 mph)', met: 7.0 },
-    { name: 'Running (6 mph)', met: 9.8 },
-    { name: 'Running (8 mph)', met: 11.8 },
-    { name: 'Cycling (moderate)', met: 6.8 },
-    { name: 'Cycling (vigorous)', met: 10.0 },
-    { name: 'Swimming (moderate)', met: 6.0 },
-    { name: 'Swimming (vigorous)', met: 9.8 },
-    { name: 'Jump Rope', met: 11.0 },
-    { name: 'Rowing Machine', met: 7.0 },
-    { name: 'Elliptical Trainer', met: 5.0 },
-    { name: 'Weight Lifting (general)', met: 3.5 },
-    { name: 'Weight Lifting (vigorous)', met: 6.0 },
-    { name: 'Yoga', met: 3.0 },
-    { name: 'Pilates', met: 3.0 },
-    { name: 'HIIT / CrossFit', met: 8.0 },
+    { name: 'Aerobics (general)', met: 6.5 },
+    { name: 'Aerobics (high impact)', met: 7.3 },
+    { name: 'Aerobics (low impact)', met: 5.0 },
+    { name: 'Aerobics (step, moderate)', met: 7.0 },
+    { name: 'Aerobics (water / aqua)', met: 5.3 },
+    { name: 'Archery', met: 4.3 },
+    { name: 'Backpacking', met: 7.0 },
+    { name: 'Badminton (casual)', met: 4.5 },
+    { name: 'Badminton (competitive)', met: 7.0 },
+    { name: 'Ballet', met: 5.0 },
+    { name: 'Baseball / Softball', met: 5.0 },
+    { name: 'Basketball (game)', met: 8.0 },
+    { name: 'Basketball (shooting around)', met: 4.5 },
+    { name: 'Batting Cages', met: 5.0 },
+    { name: 'Bicycle (< 10 mph, leisure)', met: 4.0 },
+    { name: 'Bicycle (10–12 mph, light)', met: 6.8 },
+    { name: 'Bicycle (12–14 mph, moderate)', met: 8.0 },
+    { name: 'Bicycle (14–16 mph, vigorous)', met: 10.0 },
+    { name: 'Bicycle (16–19 mph, racing)', met: 12.0 },
+    { name: 'Bicycle (stationary, light)', met: 5.5 },
+    { name: 'Bicycle (stationary, moderate)', met: 7.0 },
+    { name: 'Bicycle (stationary, vigorous)', met: 10.5 },
+    { name: 'Billiards / Pool', met: 2.5 },
+    { name: 'Body Weight Exercises (moderate)', met: 3.8 },
+    { name: 'Body Weight Exercises (vigorous)', met: 8.0 },
+    { name: 'Bowling', met: 3.0 },
+    { name: 'Boxing (punching bag)', met: 5.5 },
+    { name: 'Boxing (sparring)', met: 7.8 },
+    { name: 'Boxing (in ring)', met: 12.8 },
+    { name: 'Calisthenics (light)', met: 3.5 },
+    { name: 'Calisthenics (vigorous)', met: 8.0 },
+    { name: 'Canoeing (leisure)', met: 3.5 },
+    { name: 'Canoeing (competitive)', met: 12.0 },
+    { name: 'Car Washing', met: 2.0 },
+    { name: 'Child Care (active play)', met: 3.5 },
+    { name: 'Circuit Training (general)', met: 8.0 },
+    { name: 'Cleaning (house, general)', met: 2.5 },
+    { name: 'Cleaning (heavy, scrubbing)', met: 3.5 },
+    { name: 'Climbing (rock, ascending)', met: 8.0 },
+    { name: 'Climbing (rock, rappelling)', met: 5.0 },
+    { name: 'Cold Plunge / Ice Bath', met: 1.5 },
+    { name: 'Cricket', met: 5.0 },
+    { name: 'Croquet', met: 3.3 },
+    { name: 'Cross-Country Skiing (light)', met: 7.0 },
+    { name: 'Cross-Country Skiing (vigorous)', met: 12.5 },
+    { name: 'CrossFit / WOD', met: 8.0 },
+    { name: 'Curling', met: 4.0 },
+    { name: 'Dancing (ballroom, slow)', met: 3.0 },
+    { name: 'Dancing (ballroom, fast)', met: 5.5 },
     { name: 'Dancing (general)', met: 4.8 },
-    { name: 'Hiking (moderate)', met: 5.3 },
-    { name: 'Hiking (steep/uphill)', met: 7.5 },
-    { name: 'Basketball', met: 6.5 },
-    { name: 'Soccer', met: 7.0 },
+    { name: 'Dancing (hip hop / club)', met: 7.3 },
+    { name: 'Dancing (line / square)', met: 5.5 },
+    { name: 'Dancing (Zumba)', met: 6.5 },
+    { name: 'Darts', met: 2.5 },
+    { name: 'Disc Golf', met: 3.5 },
+    { name: 'Diving (springboard)', met: 3.0 },
+    { name: 'Dog Walking', met: 3.0 },
+    { name: 'Downhill Skiing (light)', met: 5.3 },
+    { name: 'Downhill Skiing (moderate)', met: 6.8 },
+    { name: 'Elliptical Trainer (general)', met: 5.0 },
+    { name: 'Elliptical Trainer (vigorous)', met: 8.0 },
+    { name: 'Fencing', met: 6.0 },
+    { name: 'Field Hockey', met: 7.8 },
+    { name: 'Figure Skating', met: 7.0 },
+    { name: 'Fishing (standing / casting)', met: 3.5 },
+    { name: 'Fishing (sitting)', met: 2.0 },
+    { name: 'Flag Football', met: 8.0 },
+    { name: 'Football (touch / flag)', met: 8.0 },
+    { name: 'Football (tackle)', met: 9.0 },
+    { name: 'Frisbee (casual)', met: 3.0 },
+    { name: 'Frisbee (ultimate)', met: 8.0 },
+    { name: 'Gardening (general)', met: 3.8 },
+    { name: 'Gardening (digging, heavy)', met: 5.0 },
+    { name: 'Gardening (mowing, push mower)', met: 5.5 },
+    { name: 'Gardening (raking)', met: 4.0 },
+    { name: 'Gardening (weeding)', met: 3.5 },
+    { name: 'Golf (driving range)', met: 3.0 },
+    { name: 'Golf (riding cart)', met: 3.5 },
+    { name: 'Golf (walking, carrying clubs)', met: 4.3 },
+    { name: 'Golf (walking, pull cart)', met: 4.3 },
+    { name: 'Gymnastics', met: 4.0 },
+    { name: 'Hacky Sack', met: 4.0 },
+    { name: 'Handball', met: 12.0 },
+    { name: 'HIIT (general)', met: 8.0 },
+    { name: 'HIIT (intense / Tabata)', met: 12.0 },
+    { name: 'Hiking (cross-country)', met: 6.0 },
+    { name: 'Hiking (moderate trail)', met: 5.3 },
+    { name: 'Hiking (steep / uphill)', met: 7.5 },
+    { name: 'Horseback Riding (walking)', met: 3.8 },
+    { name: 'Horseback Riding (trotting)', met: 5.8 },
+    { name: 'Horseback Riding (galloping)', met: 7.3 },
+    { name: 'Hot Tub / Jacuzzi (sitting)', met: 1.3 },
+    { name: 'Hula Hooping', met: 4.5 },
+    { name: 'Hunting (general)', met: 5.0 },
+    { name: 'Ice Hockey', met: 8.0 },
+    { name: 'Ice Skating (leisure)', met: 5.5 },
+    { name: 'Ice Skating (fast / competitive)', met: 9.0 },
+    { name: 'Inline Skating / Rollerblading', met: 7.5 },
+    { name: 'Jazzercise', met: 6.0 },
+    { name: 'Jet Skiing', met: 7.0 },
+    { name: 'Jogging (5 mph)', met: 7.0 },
+    { name: 'Jogging (general)', met: 7.0 },
+    { name: 'Judo / Jiu-Jitsu', met: 10.3 },
+    { name: 'Jump Rope (moderate)', met: 10.0 },
+    { name: 'Jump Rope (fast)', met: 12.3 },
+    { name: 'Karate / Taekwondo', met: 10.3 },
+    { name: 'Kayaking (leisure)', met: 3.5 },
+    { name: 'Kayaking (moderate)', met: 5.0 },
+    { name: 'Kayaking (vigorous)', met: 7.0 },
+    { name: 'Kettlebell Training', met: 6.0 },
+    { name: 'Kickball', met: 7.0 },
+    { name: 'Kickboxing', met: 10.3 },
+    { name: 'Lacrosse', met: 8.0 },
+    { name: 'Martial Arts (general)', met: 10.3 },
+    { name: 'Meditation (seated)', met: 1.0 },
+    { name: 'Mini Golf', met: 3.0 },
+    { name: 'Mountain Biking', met: 8.5 },
+    { name: 'Moving Furniture / Boxes', met: 5.8 },
+    { name: 'Mowing Lawn (riding mower)', met: 2.5 },
+    { name: 'Netball', met: 7.0 },
+    { name: 'Paddleboarding (SUP)', met: 6.0 },
+    { name: 'Paddleboarding (casual)', met: 3.8 },
+    { name: 'Paintball', met: 5.3 },
+    { name: 'Parkour / Freerunning', met: 8.0 },
+    { name: 'Pickleball', met: 4.5 },
+    { name: 'Pilates (beginner)', met: 3.0 },
+    { name: 'Pilates (advanced)', met: 4.5 },
+    { name: 'Ping Pong / Table Tennis', met: 4.0 },
+    { name: 'Pole Dancing (fitness)', met: 5.5 },
+    { name: 'Polo (horseback)', met: 8.0 },
+    { name: 'Power Walking (4.5+ mph)', met: 6.5 },
+    { name: 'Punching Bag', met: 5.5 },
+    { name: 'Push-ups / Pull-ups (vigorous)', met: 8.0 },
+    { name: 'Racquetball (casual)', met: 7.0 },
+    { name: 'Racquetball (competitive)', met: 10.0 },
+    { name: 'Resistance Band Training', met: 3.8 },
+    { name: 'Rock Climbing (indoor wall)', met: 5.8 },
+    { name: 'Roller Skating', met: 7.0 },
+    { name: 'Rowing (leisure)', met: 3.5 },
+    { name: 'Rowing Machine (light)', met: 4.8 },
+    { name: 'Rowing Machine (moderate)', met: 7.0 },
+    { name: 'Rowing Machine (vigorous)', met: 8.5 },
+    { name: 'Rugby', met: 8.3 },
+    { name: 'Running (5 mph / 12 min mile)', met: 8.3 },
+    { name: 'Running (6 mph / 10 min mile)', met: 9.8 },
+    { name: 'Running (7 mph / 8.5 min mile)', met: 11.0 },
+    { name: 'Running (8 mph / 7.5 min mile)', met: 11.8 },
+    { name: 'Running (9 mph / 6.5 min mile)', met: 12.8 },
+    { name: 'Running (10 mph / 6 min mile)', met: 14.5 },
+    { name: 'Running (on a track, training)', met: 10.0 },
+    { name: 'Running (trail)', met: 10.0 },
+    { name: 'Running (treadmill)', met: 9.8 },
+    { name: 'Sailing (casual)', met: 3.0 },
+    { name: 'Sailing (competitive)', met: 5.0 },
+    { name: 'Sauna (dry)', met: 1.5 },
+    { name: 'Sauna (infrared)', met: 1.8 },
+    { name: 'Sauna (steam room)', met: 1.5 },
+    { name: 'Scuba Diving', met: 7.0 },
+    { name: 'Shoveling Snow', met: 6.0 },
+    { name: 'Shuffleboard', met: 3.0 },
+    { name: 'Skateboarding', met: 5.0 },
+    { name: 'Ski Machine (general)', met: 6.8 },
+    { name: 'Snowboarding', met: 5.3 },
+    { name: 'Snowshoeing', met: 8.0 },
+    { name: 'Soccer (casual)', met: 7.0 },
+    { name: 'Soccer (competitive)', met: 10.0 },
+    { name: 'Softball (pitching)', met: 6.0 },
+    { name: 'Spinning / Indoor Cycling', met: 8.5 },
+    { name: 'Squash', met: 12.0 },
+    { name: 'Stair Climbing (machine)', met: 9.0 },
+    { name: 'Stair Climbing (real stairs)', met: 8.8 },
+    { name: 'Standing (desk work)', met: 1.8 },
+    { name: 'Stretching (general)', met: 2.3 },
+    { name: 'Surfing', met: 3.0 },
+    { name: 'Swimming (backstroke)', met: 7.0 },
+    { name: 'Swimming (breaststroke)', met: 10.3 },
+    { name: 'Swimming (butterfly)', met: 13.8 },
+    { name: 'Swimming (freestyle, fast)', met: 9.8 },
+    { name: 'Swimming (freestyle, moderate)', met: 5.8 },
+    { name: 'Swimming (laps, general)', met: 6.0 },
+    { name: 'Swimming (leisure / treading)', met: 3.5 },
+    { name: 'Tai Chi', met: 3.0 },
+    { name: 'Tennis (doubles)', met: 6.0 },
     { name: 'Tennis (singles)', met: 8.0 },
-    { name: 'Golf (walking w/ clubs)', met: 4.3 },
-    { name: 'Gardening', met: 3.8 },
-    { name: 'Housework (general)', met: 2.5 },
-    { name: 'Stair Climbing', met: 9.0 },
-    { name: 'Martial Arts', met: 10.3 },
-  ];
+    { name: 'Trampoline', met: 3.5 },
+    { name: 'Treadmill Walking (3 mph)', met: 3.5 },
+    { name: 'Treadmill Walking (3.5 mph, incline)', met: 6.0 },
+    { name: 'Volleyball (beach)', met: 8.0 },
+    { name: 'Volleyball (casual)', met: 3.5 },
+    { name: 'Volleyball (competitive)', met: 6.0 },
+    { name: 'Walking (2 mph, slow)', met: 2.5 },
+    { name: 'Walking (3 mph, moderate)', met: 3.5 },
+    { name: 'Walking (3.5 mph, brisk)', met: 4.3 },
+    { name: 'Walking (4 mph, very brisk)', met: 5.0 },
+    { name: 'Walking (4.5 mph, power walk)', met: 6.5 },
+    { name: 'Walking (uphill)', met: 5.3 },
+    { name: 'Walking the Dog', met: 3.0 },
+    { name: 'Wall Climbing (bouldering)', met: 5.8 },
+    { name: 'Water Aerobics', met: 5.3 },
+    { name: 'Water Polo', met: 10.0 },
+    { name: 'Water Skiing', met: 6.0 },
+    { name: 'Weight Lifting (general)', met: 3.5 },
+    { name: 'Weight Lifting (moderate)', met: 5.0 },
+    { name: 'Weight Lifting (vigorous)', met: 6.0 },
+    { name: 'Wrestling', met: 6.0 },
+    { name: 'Yard Work (general)', met: 4.0 },
+    { name: 'Yoga (Hatha / gentle)', met: 2.5 },
+    { name: 'Yoga (Power / Vinyasa)', met: 4.0 },
+    { name: 'Yoga (Bikram / hot)', met: 4.5 },
+    { name: 'Yoga (general)', met: 3.0 },
+  ].sort((a, b) => a.name.localeCompare(b.name));
+
+  // Activity picker state
+  let selectedActivity: { name: string; met: number } | null = null;
+  const searchInput = document.getElementById('activity-search') as HTMLInputElement;
+  const pickerEl = document.getElementById('activity-picker') as HTMLElement;
+  const metInput = document.getElementById('activity-met-input') as HTMLInputElement;
+  const selectedEl = document.getElementById('activity-selected') as HTMLElement;
+  const selectedNameEl = document.getElementById('activity-selected-name') as HTMLElement;
+  const clearBtn = document.getElementById('activity-clear') as HTMLElement;
+
+  function renderPicker(filter: string) {
+    const query = filter.toLowerCase().trim();
+    const filtered = query
+      ? activities.filter((a) => a.name.toLowerCase().includes(query))
+      : activities;
+
+    if (filtered.length === 0) {
+      pickerEl.innerHTML = '<div class="px-4 py-3 text-text/30 text-sm">No matching activities</div>';
+      return;
+    }
+
+    pickerEl.innerHTML = filtered
+      .map((a) =>
+        `<button type="button" data-met="${a.met}" data-name="${a.name}" class="activity-option w-full text-left px-4 py-2.5 text-sm text-text/60 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer flex justify-between items-center border-b border-border/50 last:border-b-0">
+          <span>${a.name}</span>
+          <span class="text-text/20 text-xs">MET ${a.met}</span>
+        </button>`
+      )
+      .join('');
+
+    pickerEl.querySelectorAll('.activity-option').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-name')!;
+        const met = Number(btn.getAttribute('data-met'));
+        selectedActivity = { name, met };
+        metInput.value = String(met);
+        selectedNameEl.textContent = name;
+        selectedEl.classList.remove('hidden');
+        searchInput.value = '';
+        pickerEl.classList.add('hidden');
+      });
+    });
+  }
+
+  // Initial render
+  renderPicker('');
+
+  searchInput.addEventListener('input', () => {
+    pickerEl.classList.remove('hidden');
+    renderPicker(searchInput.value);
+  });
+
+  searchInput.addEventListener('focus', () => {
+    pickerEl.classList.remove('hidden');
+  });
+
+  clearBtn.addEventListener('click', () => {
+    selectedActivity = null;
+    metInput.value = '';
+    selectedEl.classList.add('hidden');
+    pickerEl.classList.remove('hidden');
+    searchInput.focus();
+  });
 
   const activityForm = document.getElementById('activity-form') as HTMLFormElement;
   activityForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!selectedActivity) {
+      searchInput.focus();
+      pickerEl.classList.remove('hidden');
+      return;
+    }
     const data = new FormData(activityForm);
     const weight = Number(data.get('weight'));
     const duration = Number(data.get('duration'));
     const weightKg = weight * 0.453592;
+    const cal = Math.round((selectedActivity.met * weightKg * duration) / 60);
 
-    const listEl = document.getElementById('activity-list') as HTMLElement;
-    const metaEl = document.getElementById('activity-meta') as HTMLElement;
-    metaEl.textContent = `${weight} lbs · ${duration} min`;
-
-    listEl.innerHTML = activities
-      .map((a) => {
-        const cal = Math.round((a.met * weightKg * duration) / 60);
-        return `<div class="activity-row"><span class="activity-name">${a.name}</span><span class="activity-cal">${cal.toLocaleString()}</span></div>`;
-      })
-      .join('');
+    (document.getElementById('activity-result-name') as HTMLElement).textContent = selectedActivity.name;
+    (document.getElementById('activity-result-cal') as HTMLElement).textContent = cal.toLocaleString();
+    (document.getElementById('activity-result-meta') as HTMLElement).textContent = `calories burned · ${weight} lbs · ${duration} min`;
 
     const activityResult = document.getElementById('activity-result') as HTMLElement;
     activityResult.classList.remove('hidden');
