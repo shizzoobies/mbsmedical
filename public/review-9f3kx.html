@@ -550,6 +550,7 @@
         <button class="btn btn-ghost btn-sm" onclick="reloadFrame()" title="Reload">&#8635;</button>
         <input class="iframe-url-bar" id="iframe-url-bar" readonly>
         <a class="btn btn-ghost btn-sm" id="open-in-tab-btn" href="#" target="_blank" rel="noopener">&#8599; Open tab</a>
+        <button class="btn btn-ghost btn-sm" id="print-btn" onclick="printPage()" disabled>&#128438; Print PDF</button>
       </div>
       <div class="iframe-wrap">
         <iframe class="page-iframe" id="page-iframe" sandbox="allow-scripts allow-same-origin allow-forms" title="Page preview"></iframe>
@@ -808,6 +809,7 @@ function selectPage(path) {
   document.getElementById('iframe-blocked').classList.remove('visible');
   document.getElementById('iframe-url-bar').value = url;
   document.getElementById('open-in-tab-btn').href = url;
+  document.getElementById('print-btn').disabled = false;
   iframe.src = url;
 
   // Detect if iframe is blocked
@@ -932,6 +934,17 @@ function reloadFrame() {
   const iframe = document.getElementById('page-iframe');
   document.getElementById('iframe-blocked').classList.remove('visible');
   iframe.src = iframe.src;
+}
+
+// ── Print page as PDF ──────────────────────────────────────────────────────
+function printPage() {
+  const url = BASE + activePath;
+  const win = window.open(url, '_blank');
+  if (!win) { showToast('Allow pop-ups to use Print PDF.'); return; }
+  win.addEventListener('load', () => {
+    win.focus();
+    win.print();
+  });
 }
 
 // ── Navigation ─────────────────────────────────────────────────────────────
