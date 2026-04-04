@@ -480,6 +480,45 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* ── General sidebar button ── */
+  .sidebar-general {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-top: 1px solid var(--gray-200);
+    border-left: 3px solid transparent;
+    background: var(--gray-50);
+    transition: background 0.1s, border-color 0.1s;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  .sidebar-general:hover { background: var(--gray-100); }
+  .sidebar-general.active {
+    background: #eff8ff;
+    border-left-color: var(--teal);
+  }
+  .general-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gray-300);
+    flex-shrink: 0;
+  }
+
+  /* ── General panel ── */
+  .general-panel-inner {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .general-panel-inner::-webkit-scrollbar { width: 4px; }
+  .general-panel-inner::-webkit-scrollbar-track { background: transparent; }
+  .general-panel-inner::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
+
   /* ── Reference URL slots ── */
   .ref-slots { display: flex; flex-direction: column; gap: 6px; }
   .ref-slot-row { display: flex; gap: 6px; align-items: center; }
@@ -608,6 +647,10 @@
   <!-- Sidebar -->
   <nav class="sidebar">
     <div class="sidebar-inner" id="sidebar"></div>
+    <div class="sidebar-general" id="sidebar-general" onclick="selectGeneral()">
+      <div class="item-dot general-dot"></div>
+      <div class="item-name">📋 General Notes</div>
+    </div>
   </nav>
 
   <!-- Iframe pane -->
@@ -713,6 +756,44 @@
       <button class="nav-btn" id="prev-btn" onclick="navigatePage(-1)" disabled>&#8592; Prev</button>
       <button class="nav-btn next-btn" id="next-btn" onclick="navigatePage(1)">Next &#8594;</button>
     </div>
+
+    <!-- General panel -->
+    <div class="general-panel-inner" id="general-panel" style="display:none;">
+      <div>
+        <div class="panel-page-name">General Notes</div>
+        <div style="font-size:11px;color:var(--gray-400);margin-top:3px;">Shared across all reviewers · not tied to a specific page</div>
+      </div>
+
+      <div>
+        <div class="panel-section-label">Notes</div>
+        <textarea
+          class="notes-textarea"
+          id="general-notes-textarea"
+          placeholder="General feedback, questions, overall impressions…"
+          style="min-height:160px;"
+        ></textarea>
+        <div class="save-indicator" id="general-save-indicator">Saved ✓</div>
+      </div>
+
+      <div>
+        <div class="panel-section-label">Attachments</div>
+        <div class="drop-zone" id="general-drop-zone"
+          ondragover="handleDragOver(event,'general-drop-zone')"
+          ondragleave="handleDragLeave(event,'general-drop-zone')"
+          ondrop="handleDropGeneral(event)"
+          onclick="document.getElementById('general-file-input').click()"
+        >
+          <div class="drop-zone-icon">📎</div>
+          <div class="drop-zone-text">
+            Drop files here or <strong>browse</strong><br>
+            PDFs, images, Word docs, etc.
+          </div>
+          <input type="file" id="general-file-input" multiple onchange="handleFileSelectGeneral(event)">
+        </div>
+        <div class="upload-progress" id="general-upload-progress">Uploading…</div>
+        <div class="attachments-list" id="general-attachments-list"></div>
+      </div>
+    </div>
   </aside>
 
 </div>
@@ -738,6 +819,7 @@ firebase.initializeApp({
 const db = firebase.database();
 const storage = firebase.storage();
 const PAGES_REF = db.ref('review/pages');
+const GENERAL_REF = db.ref('review/general');
 
 // ── Page data ──────────────────────────────────────────────────────────────
 const BASE = 'https://mbsdoc.com';
@@ -876,6 +958,8 @@ function selectPage(path) {
   document.querySelectorAll('.sidebar-item').forEach(i => {
     i.classList.toggle('active', i.dataset.path === path);
   });
+  document.getElementById('sidebar-general').classList.remove('active');
+  document.getElementById('general-panel').style.display = 'none';
 
   const page = ALL_PAGES.find(p => p.path === path);
   const url = BASE + path;
@@ -1034,14 +1118,117 @@ function escapeAttr(str) {
   return (str || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
-// ── Drag and drop / file upload ────────────────────────────────────────────
-function handleDragOver(e) {
-  e.preventDefault();
-  document.getElementById('drop-zone').classList.add('drag-over');
+// ── General section ────────────────────────────────────────────────────────
+let generalNotesSaveTimer = null;
+let generalData = {};
+
+GENERAL_REF.on('value', snap => {
+  generalData = snap.val() || {};
+  // If general panel is visible, sync it
+  if (document.getElementById('general-panel').style.display !== 'none') {
+    const ta = document.getElementById('general-notes-textarea');
+    if (document.activeElement !== ta) ta.value = generalData.notes || '';
+    renderGeneralAttachments(generalData.attachments || {});
+  }
+});
+
+function selectGeneral() {
+  activePath = null;
+
+  // Sidebar state
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  document.getElementById('sidebar-general').classList.add('active');
+
+  // Show placeholder iframe
+  document.getElementById('placeholder-pane').style.display = 'flex';
+  document.getElementById('iframe-container').style.display = 'none';
+
+  // Show general panel, hide others
+  document.getElementById('panel-empty').style.display = 'none';
+  document.getElementById('panel-inner').style.display = 'none';
+  document.getElementById('panel-nav').style.display = 'none';
+  document.getElementById('general-panel').style.display = 'flex';
+  document.getElementById('general-panel').style.flexDirection = 'column';
+
+  // Fill notes
+  const ta = document.getElementById('general-notes-textarea');
+  ta.value = generalData.notes || '';
+  document.getElementById('general-save-indicator').classList.remove('visible');
+  renderGeneralAttachments(generalData.attachments || {});
+
+  // Attach notes event
+  const newTa = ta.cloneNode(true);
+  ta.parentNode.replaceChild(newTa, ta);
+  newTa.addEventListener('input', () => {
+    clearTimeout(generalNotesSaveTimer);
+    generalNotesSaveTimer = setTimeout(() => {
+      GENERAL_REF.update({ notes: newTa.value });
+      const ind = document.getElementById('general-save-indicator');
+      ind.classList.add('visible');
+      setTimeout(() => ind.classList.remove('visible'), 1800);
+    }, 600);
+  });
 }
 
-function handleDragLeave(e) {
-  document.getElementById('drop-zone').classList.remove('drag-over');
+function renderGeneralAttachments(attachments) {
+  const list = document.getElementById('general-attachments-list');
+  if (!list) return;
+  list.innerHTML = '';
+  Object.entries(attachments).forEach(([key, att]) => {
+    const item = document.createElement('div');
+    item.className = 'attachment-item';
+    item.innerHTML = `
+      <span class="attachment-icon">${fileIcon(att.name)}</span>
+      <a class="attachment-name" href="${att.url}" target="_blank" rel="noopener" title="${escapeAttr(att.name)}">${att.name}</a>
+      <button class="attachment-delete" title="Remove" onclick="deleteGeneralAttachment('${key}','${escapeAttr(att.storageRef)}')">×</button>
+    `;
+    list.appendChild(item);
+  });
+}
+
+async function deleteGeneralAttachment(key, storageRef) {
+  if (!confirm('Remove this attachment?')) return;
+  try { await storage.ref(storageRef).delete(); } catch(e) {}
+  await GENERAL_REF.child('attachments').child(key).remove();
+}
+
+function handleDropGeneral(e) {
+  e.preventDefault();
+  document.getElementById('general-drop-zone').classList.remove('drag-over');
+  uploadFilesGeneral([...e.dataTransfer.files]);
+}
+
+function handleFileSelectGeneral(e) {
+  uploadFilesGeneral([...e.target.files]);
+  e.target.value = '';
+}
+
+async function uploadFilesGeneral(files) {
+  if (!files.length) return;
+  const prog = document.getElementById('general-upload-progress');
+  prog.textContent = `Uploading ${files.length} file${files.length > 1 ? 's' : ''}…`;
+  prog.classList.add('visible');
+  for (const file of files) {
+    const safeName = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const ref = storage.ref(`review/general/${safeName}`);
+    try {
+      await ref.put(file);
+      const url = await ref.getDownloadURL();
+      await GENERAL_REF.child('attachments').push({ name: file.name, url, storageRef: `review/general/${safeName}` });
+    } catch(err) { showToast('Upload failed: ' + file.name); }
+  }
+  prog.classList.remove('visible');
+  showToast('Upload complete.');
+}
+
+// ── Drag and drop / file upload ────────────────────────────────────────────
+function handleDragOver(e, zoneId) {
+  e.preventDefault();
+  document.getElementById(zoneId || 'drop-zone').classList.add('drag-over');
+}
+
+function handleDragLeave(e, zoneId) {
+  document.getElementById(zoneId || 'drop-zone').classList.remove('drag-over');
 }
 
 function handleDrop(e) {
