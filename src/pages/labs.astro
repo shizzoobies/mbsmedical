@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AsciiHover from '../components/AsciiHover.astro';
+
+const panels = [
+  {
+    title: 'Comprehensive Health Panel',
+    desc: 'A full-spectrum baseline — CBC, CMP, lipids, A1C, and thyroid markers reviewed together for a complete picture of your health.',
+    items: ['Complete Blood Count (CBC)', 'Comprehensive Metabolic Panel (CMP)', 'Lipid Panel', 'Hemoglobin A1C', 'Thyroid (TSH, Free T3, Free T4)'],
+  },
+  {
+    title: 'Hormone Panel',
+    desc: 'Complete hormone workup covering testosterone, estrogen, cortisol, DHEA, and IGF-1 — with provider interpretation, not just a PDF.',
+    items: ['Total & Free Testosterone', 'Estradiol & Progesterone', 'Cortisol (AM)', 'DHEA-S', 'IGF-1'],
+  },
+  {
+    title: 'Metabolic & Lipid Panel',
+    desc: 'Detailed metabolic picture including fasting glucose, insulin resistance markers, and advanced cholesterol fractions.',
+    items: ['Fasting Glucose & Insulin', 'HOMA-IR (Insulin Resistance)', 'LDL, HDL, Total Cholesterol', 'Triglycerides', 'Non-HDL Cholesterol'],
+  },
+  {
+    title: 'STI / Sexual Health Panel',
+    desc: 'Full discreet STI screening ordered and interpreted by your provider. Results delivered privately through the patient portal.',
+    items: ['HIV (4th Gen)', 'Syphilis', 'Gonorrhea & Chlamydia', 'Hepatitis B & C', 'Herpes HSV-1 & HSV-2 IgG'],
+  },
+  {
+    title: 'Vitamin & Nutrient Testing',
+    desc: 'Identify deficiencies before they become symptoms. Vitamin D, B12, iron studies, magnesium, and zinc measured directly.',
+    items: ['Vitamin D (25-OH)', 'Vitamin B12 & Folate', 'Iron & TIBC & Ferritin', 'Magnesium (RBC)', 'Zinc'],
+  },
+  {
+    title: 'Cardiac Risk Panel',
+    desc: 'Advanced cardiovascular risk markers that go beyond standard cholesterol — critical for anyone with family history or elevated concern.',
+    items: ['hsCRP (High-Sensitivity CRP)', 'Homocysteine', 'Lipoprotein(a) — Lp(a)', 'ApoB', 'Fibrinogen'],
+  },
+];
+---
+
+<Layout title="Lab Testing" description="Comprehensive lab panels ordered and interpreted by your provider. No referral needed. Results reviewed in context, not just flagged normal or abnormal.">
+
+  <!-- Hero: split layout -->
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36" style="background: linear-gradient(160deg, #0a1a14 0%, #080808 50%, #0a0f1a 100%);">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <span class="label text-primary block mb-5">Lab Testing</span>
+          <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+            Labs with<br /><em class="text-primary italic">real context</em>
+          </h1>
+          <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
+            Comprehensive panels ordered directly by your provider and interpreted in the context of your full health picture — not just flagged normal or abnormal and left in a portal.
+          </p>
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Order Labs</a>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="img-placeholder">[ Image Placeholder ]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel Cards -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-12">
+        <span class="label text-primary block mb-4">Available Panels</span>
+        <h2 class="font-display font-light text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.02em] text-text">
+          Panels built for <em class="text-primary italic">complete answers</em>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {panels.map((panel, i) => (
+          <div class:list={['reveal bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-7 sm:p-8 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300', i > 0 && `reveal-delay-${Math.min(i, 3)}`]}>
+            <h3 class="font-display font-light text-xl text-text mb-3">{panel.title}</h3>
+            <p class="text-text/50 text-sm leading-relaxed mb-5">{panel.desc}</p>
+            <ul class="space-y-2">
+              {panel.items.map((item) => (
+                <li class="flex gap-3 text-text/40 text-xs"><span class="text-primary mt-0.5">&#8226;</span> {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 sm:py-28 relative" style="background: linear-gradient(160deg, #14101e 0%, #0c0c0c 50%, #0a1410 100%);">
+    <AsciiHover charset="+" cellSize={24} radius={120} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-12 text-center">
+        <span class="label text-primary block mb-5">How It Works</span>
+        <h2 class="font-display font-light text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.02em] text-text">
+          No referral. No waiting. <em class="text-primary italic">Just answers.</em>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="reveal reveal-delay-1 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Book a visit</h3>
+          <p class="text-text/50 text-sm leading-relaxed">Discuss what you want tested and why. Your provider selects the right panel for your clinical picture.</p>
+        </div>
+        <div class="reveal reveal-delay-2 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Visit a lab near you</h3>
+          <p class="text-text/50 text-sm leading-relaxed">Labs are ordered to a Quest or LabCorp near you. Walk in at your convenience — no appointment needed at most locations.</p>
+        </div>
+        <div class="reveal reveal-delay-3 bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-8 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300">
+          <h3 class="font-display font-light text-2xl text-text mb-4">Review results together</h3>
+          <p class="text-text/50 text-sm leading-relaxed">Results land in your portal. Your provider reviews them with you in context — patterns, trends, and next steps included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tags -->
+  <section class="py-20 sm:py-28 relative" style="background: linear-gradient(160deg, #0a0f1a 0%, #080808 50%, #0f1a14 100%);">
+    <AsciiHover charset="·" cellSize={28} radius={100} baseOpacity={0.025} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <span class="label text-primary block mb-5">What We Test</span>
+        <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+          {['CBC', 'CMP', 'Lipids', 'A1C', 'Thyroid', 'Testosterone', 'Estrogen', 'Cortisol', 'DHEA', 'IGF-1', 'hsCRP', 'Lp(a)', 'ApoB', 'Vitamin D', 'B12', 'Ferritin', 'HIV', 'STI Panel'].map((c) => (
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-5 py-2.5 rounded-full border border-border text-text/60 hover:border-primary hover:text-primary transition-all duration-300">{c}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-36 sm:py-44 relative overflow-hidden" style="background: linear-gradient(160deg, #0f1a14 0%, #0c0c0c 50%, #1a0f14 100%);">
+    <AsciiHover charset="·+×∘⊹" radius={200} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <h2 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Know your numbers.<br /><em class="text-primary italic">Understand</em> them.
+        </h2>
+        <p class="text-text/50 text-lg leading-relaxed mb-12 max-w-[580px] mx-auto">
+          Order a panel and get results reviewed by a provider who can actually explain what they mean.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Order Labs</a>
+          <a href="/contact/" class="btn-pill btn-outline">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui, 'Inter', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 48px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(232, 228, 224, 0.2);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  .img-placeholder {
+    aspect-ratio: 16/9;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.15);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

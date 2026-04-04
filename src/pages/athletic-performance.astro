@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AsciiHover from '../components/AsciiHover.astro';
+
+const services = [
+  {
+    title: 'Performance Lab Work',
+    desc: 'Comprehensive lab assessment including hormone, metabolic, and inflammatory markers — the data that actually explains why performance plateaus or recovery stalls.',
+    items: ['Testosterone & Growth Hormone axis', 'Cortisol & adrenal markers', 'Inflammatory markers (CRP, IL-6)', 'Thyroid & metabolic panel', 'Iron, ferritin & oxygen-carrying capacity'],
+  },
+  {
+    title: 'Body Composition Analysis',
+    desc: 'DEXA-equivalent composition metrics with clinical interpretation. Track lean mass, fat mass, and visceral fat with context — not just a number on a scale.',
+    items: ['Lean mass vs. fat mass assessment', 'Visceral fat estimation', 'Baseline and progress tracking', 'Clinical context for training adjustments', 'Goal-aligned body composition targets'],
+  },
+  {
+    title: 'Recovery Optimization',
+    desc: 'Evidence-based recovery protocols built around your biology — sleep quality, HRV trends, and inflammation management that actually moves the needle.',
+    items: ['Sleep quality evaluation & optimization', 'HRV-informed recovery planning', 'Anti-inflammatory protocol guidance', 'Supplement stack review', 'Stress hormone management'],
+  },
+  {
+    title: 'Sports Nutrition Guidance',
+    desc: 'Clinical nutrition guidance tailored to your training load, goals, and lab results. Macro targets, fueling strategies, and supplementation grounded in evidence.',
+    items: ['Macronutrient targets by training phase', 'Pre- and post-workout fueling', 'Evidence-based supplement review', 'Micronutrient deficiency identification', 'Competition or event nutrition planning'],
+  },
+  {
+    title: 'VO2 & Endurance Assessment',
+    desc: 'Aerobic capacity evaluation with training zone prescription. Know your actual zones, not estimated ones — and train in the ranges that produce results.',
+    items: ['Aerobic capacity assessment', 'Lactate threshold estimation', 'Training zone prescription (Z1–Z5)', 'Endurance protocol design', 'Cardiorespiratory baseline tracking'],
+  },
+  {
+    title: 'Injury Prevention',
+    desc: 'Musculoskeletal evaluation and movement screen to identify vulnerability before it becomes an injury. Keep training with a plan built to last.',
+    items: ['Movement screen & imbalance identification', 'Musculoskeletal evaluation', 'Injury history review & risk stratification', 'Prehab protocol recommendations', 'Sport-specific load management guidance'],
+  },
+];
+---
+
+<Layout title="Athletic Performance" description="Lab-driven performance optimization for serious athletes and active adults. Hormones, body composition, recovery, nutrition, endurance, and injury prevention — all in one place.">
+
+  <!-- Hero: split layout -->
+  <section class="pt-40 pb-28 sm:pt-48 sm:pb-36" style="background: linear-gradient(160deg, #0a1a14 0%, #080808 50%, #0a0f1a 100%);">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <span class="label text-primary block mb-5">Athletic Performance</span>
+          <h1 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+            Train smarter.<br /><em class="text-primary italic">Recover faster.</em>
+          </h1>
+          <p class="text-text/50 text-base sm:text-lg leading-relaxed max-w-[540px] mb-10">
+            Performance optimization grounded in lab data and clinical expertise. Whether you're chasing a PR or just want to feel better in your body, we build protocols around your biology — not generic templates.
+          </p>
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Start Your Assessment</a>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="img-placeholder">[ Image Placeholder ]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="pb-28 sm:pb-36">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal mb-12">
+        <span class="label text-primary block mb-4">What We Offer</span>
+        <h2 class="font-display font-light text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.02em] text-text">
+          Every variable. <em class="text-primary italic">Optimized.</em>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((svc, i) => (
+          <div class:list={['reveal bg-[#0F0F0F] border border-[rgba(237,233,224,0.1)] rounded-[24px] p-7 sm:p-8 hover:border-[#3AABA5]/40 hover:-translate-y-1 transition-all duration-300', i > 0 && `reveal-delay-${Math.min(i, 3)}`]}>
+            <h3 class="font-display font-light text-xl text-text mb-3">{svc.title}</h3>
+            <p class="text-text/50 text-sm leading-relaxed mb-5">{svc.desc}</p>
+            <ul class="space-y-2">
+              {svc.items.map((item) => (
+                <li class="flex gap-3 text-text/40 text-xs"><span class="text-primary mt-0.5">&#8226;</span> {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="py-20 sm:py-28 relative" style="background: linear-gradient(160deg, #14101e 0%, #0c0c0c 50%, #0a1410 100%);">
+    <AsciiHover charset="+" cellSize={24} radius={120} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="reveal grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <span class="label text-primary block mb-5">Who This Is For</span>
+          <h2 class="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.02em] text-text mb-8">
+            Built for people who<br />take their <em class="text-primary italic">performance seriously</em>
+          </h2>
+          <ul class="space-y-4 text-text/50 text-sm">
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Competitive athletes looking for a clinical edge</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Active adults hitting a plateau they can't explain</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> People experiencing poor recovery despite doing everything right</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Anyone who wants data-driven answers, not generic advice</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Endurance athletes managing training load and fatigue</li>
+            <li class="flex gap-3"><span class="text-primary mt-0.5">&#8226;</span> Strength athletes optimizing hormones and body composition</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="img-placeholder">[ Image Placeholder ]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Tags -->
+  <section class="py-20 sm:py-28 relative" style="background: linear-gradient(160deg, #0a0f1a 0%, #080808 50%, #0f1a14 100%);">
+    <AsciiHover charset="·" cellSize={28} radius={100} baseOpacity={0.025} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <span class="label text-primary block mb-5">Areas We Optimize</span>
+        <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+          {['Hormones', 'Body Composition', 'Recovery', 'Endurance', 'Strength', 'Sleep Quality', 'HRV', 'Inflammation', 'Nutrition', 'Injury Prevention', 'VO2 Max', 'Training Zones'].map((c) => (
+            <span class="font-ui text-[10px] font-semibold uppercase tracking-[0.12em] px-5 py-2.5 rounded-full border border-border text-text/60 hover:border-primary hover:text-primary transition-all duration-300">{c}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-36 sm:py-44 relative overflow-hidden" style="background: linear-gradient(160deg, #0f1a14 0%, #0c0c0c 50%, #1a0f14 100%);">
+    <AsciiHover charset="·+×∘⊹" radius={200} baseOpacity={0.03} />
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="reveal">
+        <h2 class="font-display font-light text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.03em] text-text mb-8">
+          Your biology<br />is the <em class="text-primary italic">starting point</em>
+        </h2>
+        <p class="text-text/50 text-lg leading-relaxed mb-12 max-w-[580px] mx-auto">
+          Start with a performance assessment and build a protocol grounded in your actual lab data.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://mbsmedical.practicebetter.io" target="_blank" rel="noopener noreferrer" class="btn-pill btn-primary">Start Your Assessment</a>
+          <a href="/contact/" class="btn-pill btn-outline">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui, 'Inter', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 48px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(232, 228, 224, 0.2);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  .img-placeholder {
+    aspect-ratio: 16/9;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.15);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
