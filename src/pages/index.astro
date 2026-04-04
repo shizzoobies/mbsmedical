@@ -15,8 +15,7 @@ import AsciiHover from '../components/AsciiHover.astro';
       muted
       playsinline
       aria-hidden="true"
-      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3000ms]"
-      style="object-position: 70% 60%;"
+      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3000ms] hero-video"
     >
       <source src="/images/flag-intro.mp4" type="video/mp4" />
     </video>
@@ -562,6 +561,10 @@ import AsciiHover from '../components/AsciiHover.astro';
 <!-- STYLES                                       -->
 <!-- ============================================ -->
 <style>
+  /* Hero video — keep flag visible on all screen sizes */
+  .hero-video { object-position: 70% 60%; }
+  @media (max-width: 640px) { .hero-video { object-position: 35% 60%; } }
+
   /* Marquee */
   .marquee-container {
     width: 100%;
