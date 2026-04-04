@@ -480,6 +480,80 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* ── Reference URL slots ── */
+  .ref-slots { display: flex; flex-direction: column; gap: 6px; }
+  .ref-slot-row { display: flex; gap: 6px; align-items: center; }
+  .ref-slot-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gray-400);
+    width: 14px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  /* ── Drop zone ── */
+  .drop-zone {
+    border: 2px dashed var(--gray-300);
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    background: var(--gray-50);
+  }
+  .drop-zone:hover, .drop-zone.drag-over {
+    border-color: var(--teal);
+    background: #f0f9fb;
+  }
+  .drop-zone-icon { font-size: 22px; opacity: 0.45; margin-bottom: 4px; }
+  .drop-zone-text { font-size: 11px; color: var(--gray-500); line-height: 1.5; }
+  .drop-zone-text strong { color: var(--teal); cursor: pointer; }
+  .drop-zone input[type="file"] { display: none; }
+
+  /* ── Attachments list ── */
+  .attachments-list { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+  .attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 8px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+  }
+  .attachment-icon { font-size: 14px; flex-shrink: 0; }
+  .attachment-name {
+    flex: 1;
+    font-size: 11px;
+    color: var(--teal);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .attachment-name:hover { text-decoration: underline; }
+  .attachment-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-400);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 2px;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+  .attachment-delete:hover { color: #dc2626; }
+  .upload-progress {
+    font-size: 10px;
+    color: var(--gray-500);
+    text-align: center;
+    padding: 4px 0;
+    display: none;
+  }
+  .upload-progress.visible { display: block; }
+
   /* Toast */
   .toast {
     position: fixed;
@@ -586,23 +660,32 @@
         </a>
       </div>
 
-      <!-- Reference URL -->
+      <!-- Reference URLs (4 slots) -->
       <div>
-        <div class="panel-section-label">Reference / Comparison Site</div>
-        <div class="ref-url-row">
-          <input
-            class="ref-url-input"
-            id="ref-url-input"
-            type="url"
-            placeholder="Paste a reference URL…"
-          >
-          <button class="open-ref-btn" id="open-ref-btn" title="Open reference in new tab" disabled onclick="openRef()">
-            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-              <path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-              <path d="M7.5 1h3.5m0 0v3.5m0-3.5L5.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+        <div class="panel-section-label">Reference / Comparison Sites</div>
+        <div class="ref-slots" id="ref-slots">
+          <!-- built by JS -->
         </div>
+      </div>
+
+      <!-- Attachments -->
+      <div>
+        <div class="panel-section-label">Attachments</div>
+        <div class="drop-zone" id="drop-zone"
+          ondragover="handleDragOver(event)"
+          ondragleave="handleDragLeave(event)"
+          ondrop="handleDrop(event)"
+          onclick="document.getElementById('file-input').click()"
+        >
+          <div class="drop-zone-icon">📎</div>
+          <div class="drop-zone-text">
+            Drop files here or <strong>browse</strong><br>
+            PDFs, images, Word docs, etc.
+          </div>
+          <input type="file" id="file-input" multiple onchange="handleFileSelect(event)">
+        </div>
+        <div class="upload-progress" id="upload-progress">Uploading…</div>
+        <div class="attachments-list" id="attachments-list"></div>
       </div>
 
       <!-- Notes -->
@@ -639,6 +722,7 @@
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
 
 <script>
 // ── Firebase ───────────────────────────────────────────────────────────────
@@ -652,6 +736,7 @@ firebase.initializeApp({
   appId: "1:891418924809:web:3c9dadee7a72eb4d4665d8"
 });
 const db = firebase.database();
+const storage = firebase.storage();
 const PAGES_REF = db.ref('review/pages');
 
 // ── Page data ──────────────────────────────────────────────────────────────
@@ -718,7 +803,7 @@ let dbData = {};
 let activePath = null;
 let rendered = false;
 let notesSaveTimer = null;
-let refSaveTimer = null;
+let refSaveTimers = [null, null, null, null];
 
 // ── Connection ─────────────────────────────────────────────────────────────
 db.ref('.info/connected').on('value', snap => {
@@ -834,8 +919,8 @@ function selectPage(path) {
   urlEl.href = url;
   document.getElementById('panel-url-text').textContent = url;
 
-  document.getElementById('ref-url-input').value = saved.refUrl || '';
-  updateRefBtn();
+  buildRefSlots(saved.refs || []);
+  renderAttachments(saved.attachments || {});
 
   document.getElementById('notes-textarea').value = saved.notes || '';
   document.getElementById('save-indicator').classList.remove('visible');
@@ -861,11 +946,12 @@ function syncPanel() {
   const notes = document.getElementById('notes-textarea');
   if (document.activeElement !== notes) notes.value = saved.notes || '';
 
-  const ref = document.getElementById('ref-url-input');
-  if (document.activeElement !== ref) {
-    ref.value = saved.refUrl || '';
-    updateRefBtn();
-  }
+  // sync ref slots only if none are focused
+  const slots = document.querySelectorAll('.ref-slot-input');
+  const anyFocused = [...slots].some(s => document.activeElement === s);
+  if (!anyFocused) buildRefSlots(saved.refs || []);
+
+  renderAttachments(saved.attachments || {});
 
   const approved = saved.approved || false;
   document.getElementById('approve-checkbox').checked = approved;
@@ -889,18 +975,6 @@ function attachPanelEvents() {
     }, 600);
   });
 
-  // Reference URL
-  const refEl = document.getElementById('ref-url-input');
-  const newRef = refEl.cloneNode(true);
-  refEl.parentNode.replaceChild(newRef, refEl);
-  newRef.addEventListener('input', () => {
-    updateRefBtn();
-    clearTimeout(refSaveTimer);
-    refSaveTimer = setTimeout(() => {
-      PAGES_REF.child(pageKey(activePath)).update({ refUrl: newRef.value });
-    }, 800);
-  });
-
   // Approve checkbox
   const cbEl = document.getElementById('approve-checkbox');
   const newCb = cbEl.cloneNode(true);
@@ -913,14 +987,127 @@ function attachPanelEvents() {
   });
 }
 
-function updateRefBtn() {
-  const val = document.getElementById('ref-url-input').value.trim();
-  document.getElementById('open-ref-btn').disabled = !val;
+// ── Reference URL slots (4) ────────────────────────────────────────────────
+function buildRefSlots(refs) {
+  const container = document.getElementById('ref-slots');
+  container.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const val = refs[i] || '';
+    const row = document.createElement('div');
+    row.className = 'ref-slot-row';
+    row.innerHTML = `
+      <span class="ref-slot-num">${i + 1}</span>
+      <input class="ref-url-input ref-slot-input" type="url" placeholder="Paste a reference URL…" value="${escapeAttr(val)}" data-idx="${i}">
+      <button class="open-ref-btn" title="Open in new tab" ${val ? '' : 'disabled'} onclick="openRefSlot(${i})">
+        <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+          <path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M7.5 1h3.5m0 0v3.5m0-3.5L5.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    `;
+    const input = row.querySelector('input');
+    input.addEventListener('input', () => {
+      const btn = row.querySelector('button');
+      btn.disabled = !input.value.trim();
+      clearTimeout(refSaveTimers[i]);
+      refSaveTimers[i] = setTimeout(() => saveRefSlot(i, input.value), 800);
+    });
+    container.appendChild(row);
+  }
 }
 
-function openRef() {
-  const val = document.getElementById('ref-url-input').value.trim();
+function saveRefSlot(idx, val) {
+  const saved = dbData[pageKey(activePath)] || {};
+  const refs = saved.refs ? [...saved.refs] : ['', '', '', ''];
+  while (refs.length < 4) refs.push('');
+  refs[idx] = val;
+  PAGES_REF.child(pageKey(activePath)).update({ refs });
+}
+
+function openRefSlot(idx) {
+  const inputs = document.querySelectorAll('.ref-slot-input');
+  const val = inputs[idx] ? inputs[idx].value.trim() : '';
   if (val) window.open(val, '_blank', 'noopener');
+}
+
+function escapeAttr(str) {
+  return (str || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// ── Drag and drop / file upload ────────────────────────────────────────────
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('drop-zone').classList.add('drag-over');
+}
+
+function handleDragLeave(e) {
+  document.getElementById('drop-zone').classList.remove('drag-over');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('drop-zone').classList.remove('drag-over');
+  uploadFiles([...e.dataTransfer.files]);
+}
+
+function handleFileSelect(e) {
+  uploadFiles([...e.target.files]);
+  e.target.value = '';
+}
+
+function fileIcon(name) {
+  const ext = name.split('.').pop().toLowerCase();
+  if (['jpg','jpeg','png','gif','webp','svg'].includes(ext)) return '🖼️';
+  if (ext === 'pdf') return '📄';
+  if (['doc','docx'].includes(ext)) return '📝';
+  if (['xls','xlsx'].includes(ext)) return '📊';
+  return '📎';
+}
+
+async function uploadFiles(files) {
+  if (!files.length || !activePath) return;
+  const prog = document.getElementById('upload-progress');
+  prog.textContent = `Uploading ${files.length} file${files.length > 1 ? 's' : ''}…`;
+  prog.classList.add('visible');
+
+  for (const file of files) {
+    const safeName = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const ref = storage.ref(`review/${pageKey(activePath)}/${safeName}`);
+    try {
+      await ref.put(file);
+      const url = await ref.getDownloadURL();
+      const attachRef = PAGES_REF.child(pageKey(activePath)).child('attachments').push();
+      await attachRef.set({ name: file.name, url, storageRef: `review/${pageKey(activePath)}/${safeName}` });
+    } catch (err) {
+      showToast('Upload failed: ' + file.name);
+    }
+  }
+  prog.classList.remove('visible');
+  showToast('Upload complete.');
+}
+
+async function deleteAttachment(attachKey, storageRef) {
+  if (!confirm('Remove this attachment?')) return;
+  try {
+    await storage.ref(storageRef).delete();
+  } catch(e) { /* already deleted */ }
+  await PAGES_REF.child(pageKey(activePath)).child('attachments').child(attachKey).remove();
+}
+
+function renderAttachments(attachments) {
+  const list = document.getElementById('attachments-list');
+  if (!list) return;
+  list.innerHTML = '';
+  Object.entries(attachments).forEach(([key, att]) => {
+    const item = document.createElement('div');
+    item.className = 'attachment-item';
+    item.innerHTML = `
+      <span class="attachment-icon">${fileIcon(att.name)}</span>
+      <a class="attachment-name" href="${att.url}" target="_blank" rel="noopener" title="${escapeAttr(att.name)}">${att.name}</a>
+      <button class="attachment-delete" title="Remove" onclick="deleteAttachment('${key}', '${escapeAttr(att.storageRef)}')">×</button>
+    `;
+    list.appendChild(item);
+  });
 }
 
 function flashSaved() {
@@ -969,7 +1156,8 @@ function exportFeedback() {
       lines.push('Page:      ' + page.name);
       lines.push('URL:       ' + BASE + page.path);
       lines.push('Status:    ' + (saved.approved ? 'APPROVED' : 'PENDING'));
-      if (saved.refUrl) lines.push('Reference: ' + saved.refUrl);
+      if (saved.refs) saved.refs.filter(Boolean).forEach((r, i) => lines.push(`Reference ${i+1}: ${r}`));
+      if (saved.attachments) Object.values(saved.attachments).forEach(a => lines.push('Attachment: ' + a.name));
       lines.push('Notes:     ' + ((saved.notes || '').trim() || '(none)'));
     });
     lines.push('');
